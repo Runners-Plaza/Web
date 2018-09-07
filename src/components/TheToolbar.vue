@@ -23,7 +23,7 @@ export default {
       var title = titles[this.$route.name]
       if (title)
         return title
-      return 'Runner\'s Plaza'
+      return 'Runners\' Plaza'
     }
   }
 }

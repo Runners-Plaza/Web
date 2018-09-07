@@ -17,7 +17,7 @@ export default {
   name: 'the-footer',
   data () {
     return {
-      title: 'Runner\'s Plaza'
+      title: 'Runners\' Plaza'
     }
   }
 }
