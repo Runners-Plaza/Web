@@ -1,9 +1,5 @@
 import Vue from 'vue'
 
-const me = {
-  exist: false
-}
-
 const sidebar = {
   show: true
 }
@@ -13,7 +9,6 @@ const Global = {
     Vue.mixin({
       data () {
         return {
-          me,
           sidebar
         }
       }
