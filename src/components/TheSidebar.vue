@@ -42,7 +42,13 @@ export default {
           icon: 'home',
           title: 'Home',
           to: 'home'
-        }
+        },
+        {
+          name: 'login',
+          icon: 'home',
+          title: 'Login',
+          to: 'login'
+        },
       ]
     }
   },
