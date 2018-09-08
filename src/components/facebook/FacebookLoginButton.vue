@@ -4,7 +4,6 @@
 
 
 <script>
-import "../../assets/FacebookAsset.js";
 import Facebook from '../../classes/Facebook.js'
 
 let facebook = null;
