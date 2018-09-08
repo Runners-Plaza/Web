@@ -18,7 +18,7 @@ export default {
           let headers = {
             Authorization: "Bearer " + response.authResponse.accessToken,
           };
-          self.$http
+          self.axios
             .get(process.env.VUE_APP_API_ENDPOINT_BASE + "/user", {
               headers: headers
             })
@@ -29,8 +29,8 @@ export default {
               },
               response => {
                 console.log(response);
-                self.$http
-                  .patch(process.env.VUE_APP_API_ENDPOINT_BASE + "/user", "", {
+                self.axios
+                  .patch(process.env.VUE_APP_API_ENDPOINT_BASE + "/user", {}, {
                     headers: headers
                   })
                   .then(
