@@ -1,6 +1,7 @@
 import '@babel/polyfill'
 import Vue from 'vue'
 import './plugins/vuetify'
+import './plugins/facebook'
 import './plugins/global'
 import './plugins/runners-plaza'
 import './plugins/me'
