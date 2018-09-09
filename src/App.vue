@@ -1,12 +1,12 @@
 <template>
   <v-app>
     <the-sidebar />
-    <the-toolbar />
-    <v-content>
-      <router-view />
-      <the-toast />
-    </v-content>
-    <the-footer />
+      <the-toolbar />
+        <v-content>
+          <router-view />
+            <the-toast />
+        </v-content>
+        <the-footer />
   </v-app>
 </template>
 
@@ -24,23 +24,24 @@ export default {
   },
   methods: {},
   created() {
-    var self = this;
+    let self = this;
     this.facebook.afterSuccess((response) => {
-        self.oauth.setTokenData(response.authResponse);
-        self.runnersPlaza.setTokenData(response.authResponse);
-        self.login().then(() => {
-          self.$router.replace({ name: "home" });
-        });
-    });
-    var tokenData = this.oauth.getTokenData();
-    if (tokenData) {
-      this.runnersPlaza.setTokenData(tokenData);
-      this.login().then(() => {
-        if (this.$router.history.current.name == "login" && this.me.show) {
-          this.$router.replace({ name: "home" });
-        }
+      self.oauth.setTokenData(response.authResponse);
+      self.runnersPlaza.setTokenData(response.authResponse);
+      self.login().then(() => {
+        self.$router.replace({ name: "home" });
       });
-    } else this.$router.replace({ name: "login" });
+    });
+    let tokenData = this.oauth.getTokenData();
+    if (tokenData) {
+      if (this.$router.history.current.name === "login") {
+        this.$router.replace({ name: "home" });
+      }
+      this.runnersPlaza.setTokenData(tokenData);
+      this.login();
+    } else {
+      this.$router.replace({ name: "login" });
+    }
   }
 };
 </script>
