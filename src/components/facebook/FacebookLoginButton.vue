@@ -11,7 +11,5 @@ export default {
       this.facebook.checkLoginState()
     }
   },
-  mounted() {
-  }
 };
 </script>

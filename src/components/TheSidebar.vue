@@ -44,12 +44,6 @@ export default {
           title: "Home",
           to: "home"
         });
-        if (this.me.can.own) {
-        }
-        if (this.me.can.manage) {
-        }
-        if (this.me.can.attend) {
-        }
         items.push({
           name: "logout",
           icon: "exit_to_app",
@@ -69,8 +63,11 @@ export default {
   },
   methods: {
     clickOn(item) {
-      if (item.name === "logout") this.logout();
-      else this.$router.replace({ name: item.to });
+      if (item.name === "logout") {
+        this.logout();
+      } else {
+        this.$router.replace({ name: item.to });
+      }
     }
   }
 };
