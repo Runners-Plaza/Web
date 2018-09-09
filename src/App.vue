@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import TheSidebar from './components/TheSidebar';
-import TheToolbar from './components/TheToolbar';
-import TheFooter from './components/TheFooter';
-import TheToast from './components/TheToast';
+import TheSidebar from './components/TheSidebar'
+import TheToolbar from './components/TheToolbar'
+import TheFooter from './components/TheFooter'
+import TheToast from './components/TheToast'
 
 export default {
   name: 'App',
@@ -25,26 +25,26 @@ export default {
     TheToast,
   },
   created() {
-    let self = this;
+    let self = this
     this.facebook.afterSuccess((response) => {
-      self.oauth.setTokenData(response.authResponse);
-      self.runnersPlaza.setTokenData(response.authResponse);
+      self.oauth.setTokenData(response.authResponse)
+      self.runnersPlaza.setTokenData(response.authResponse)
       self.login().then(() => {
-        this.toaster.success('Logged in.');
-        self.$router.replace({ name: 'home' });
-      });
-    });
-    let tokenData = this.oauth.getTokenData();
+        this.toaster.success('Logged in.')
+        self.$router.replace({ name: 'home' })
+      })
+    })
+    let tokenData = this.oauth.getTokenData()
     if (tokenData) {
       if (this.$router.history.current.name === 'login') {
-        this.$router.replace({ name: 'home' });
+        this.$router.replace({ name: 'home' })
       }
-      this.runnersPlaza.setTokenData(tokenData);
+      this.runnersPlaza.setTokenData(tokenData)
       this.login().then(() => {
-        this.toaster.success('Logged in.');
-      });
+        this.toaster.success('Logged in.')
+      })
     } else {
-      this.$router.replace({ name: 'login' });
+      this.$router.replace({ name: 'login' })
     }
   }
 }

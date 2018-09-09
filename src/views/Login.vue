@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import FacebookLoginButton from '../components/facebook/FacebookLoginButton.vue';
+import FacebookLoginButton from '@/components/facebook/FacebookLoginButton.vue'
+
 export default {
   name: "Login",
   props: {
@@ -19,7 +20,7 @@ export default {
   components: {
     FacebookLoginButton
   },
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

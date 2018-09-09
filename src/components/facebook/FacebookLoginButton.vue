@@ -11,5 +11,5 @@ export default {
       this.facebook.checkLoginState()
     }
   },
-};
+}
 </script>

@@ -36,39 +36,39 @@ export default {
   name: "the-sidebar",
   computed: {
     items() {
-      var items = [];
+      var items = []
       if (this.me.show) {
         items.push({
           name: "home",
           icon: "home",
           title: "Home",
           to: "home"
-        });
+        })
         items.push({
           name: "logout",
           icon: "exit_to_app",
           title: "Log out",
           to: ""
-        });
+        })
       } else {
         items.push({
           name: "login",
           icon: "login",
           title: "Login",
           to: "login"
-        });
+        })
       }
-      return items;
+      return items
     }
   },
   methods: {
     clickOn(item) {
       if (item.name === "logout") {
-        this.logout();
+        this.logout()
       } else {
-        this.$router.replace({ name: item.to });
+        this.$router.replace({ name: item.to })
       }
     }
   }
-};
+}
 </script>
