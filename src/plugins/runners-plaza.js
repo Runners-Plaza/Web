@@ -2,24 +2,23 @@ import Vue from 'vue'
 import axios from 'axios'
 import toast from './global'
 
-const levelNumbers = {
-  Owner: 3,
-  Manager: 2,
-  Member: 1,
-}
-
 const toastMessages = {
   POST: 'Created',
   PUT: 'Updated',
   DELETE: 'Deleted',
 }
 
+const Position = {
+  Manager: 'Manager',
+  Member: 'Member',
+}
+
 const requestMethods = {
-    get: 'GET',
-    post: 'POST',
-    put: 'PUT',
-    patch: 'PATCH',
-    delete: 'DELETE',
+  get: 'GET',
+  post: 'POST',
+  put: 'PUT',
+  patch: 'PATCH',
+  delete: 'DELETE',
 }
 
 function createClient (token = null) {
@@ -31,26 +30,18 @@ function createClient (token = null) {
   })
 }
 
-function assignLevelNumber (user) {
-  user.levelNumber = levelNumbers[user.position]
-  return user
-}
-
 function assignCan (user) {
   var can = {
-    own: false,
     manage: false,
     attend: false
   }
-  if (user.levelNumber >= levelNumbers.Owner) {
-    can.own = true
-  }
-  if (user.levelNumber >= levelNumbers.Manager) {
+  if (user.position === Position.Manager) {
     can.manage = true
   }
-  if (user.levelNumber >= levelNumbers.Member) {
+  if (user.position === Position.Member) {
     can.attend = true
   }
+
   user.can = can
   return user
 }
@@ -69,29 +60,27 @@ const RunnersPlaza = {
           this.$route.replace({name: ''})
         }
         this.queue = []
-        return this;
+        return this
       },
       async getMyself () {
         const me = await this.get('/user')
-        return assignCan(assignLevelNumber(me), this.tokenData.scopes)
+        return assignCan(me)
       },
       async updateMyself (user) {
         const me = await this.patch('/user', {
-            name: user.name,
+          name: user.name,
         })
-        return assignLevelNumber(me)
+        return me
       },
       async getUsers () {
         const users = await this.get('/users')
-        for (var user of users)
-          assignLevelNumber(user)
         return users
       },
       async patchUser (user) {
         const patchedUser = await this.patch(`/users/${user.id}`, {
           level: user.level
         })
-        return assignLevelNumber(patchedUser)
+        return patchedUser
       },
       async get (url) {
         return await this.request(requestMethods.get, url)
@@ -131,13 +120,14 @@ const RunnersPlaza = {
                 toast.error('Something went wrong.')
               }
             }
-          } else
+          } else {
             this.queue.push({
               method,
               url,
               data,
               resolve
             })
+          }
         })
       }
     }
