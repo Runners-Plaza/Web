@@ -4,7 +4,7 @@ import './plugins/global'
 import './plugins/vuetify'
 import './plugins/facebook'
 import './plugins/runners-plaza'
-import './plugins/OAuth'
+import './plugins/oauth'
 import App from './App.vue'
 import router from './router'
 
