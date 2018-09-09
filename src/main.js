@@ -1,13 +1,16 @@
 import '@babel/polyfill'
 import Vue from 'vue'
-import './plugins/vuetify'
 import './plugins/global'
+import './plugins/vuetify'
+import './plugins/facebook'
+import './plugins/runners-plaza'
+import './plugins/oauth'
 import App from './App.vue'
 import router from './router'
 
 Vue.config.productionTip = false
 
-new Vue({
+new Vue ({
   router,
-  render: h => h(App)
-}).$mount('#app')
+  render: h => h (App),
+}).$mount ('#app')

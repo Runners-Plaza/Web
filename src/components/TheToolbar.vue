@@ -20,11 +20,12 @@ export default {
   name: 'the-toolbar',
   computed: {
     title () {
-      var title = titles[this.$route.name]
-      if (title)
+      let title = titles[this.$route.name]
+      if (title) {
         return title
+      }
       return 'Runners\' Plaza'
     }
-  }
+  },
 }
 </script>

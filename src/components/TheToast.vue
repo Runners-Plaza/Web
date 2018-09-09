@@ -1,0 +1,10 @@
+<template>
+  <v-snackbar
+    v-model="snackbar.show"
+    :color="snackbar.color"
+    :timeout="snackbar.timeout"
+    right
+    >
+    {{snackbar.message}}
+  </v-snackbar>
+</template>
