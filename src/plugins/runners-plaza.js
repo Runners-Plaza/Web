@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import axios from 'axios'
-import toast from './toast'
+import toast from './global'
 
 const levelNumbers = {
   Owner: 3,
@@ -11,7 +11,7 @@ const levelNumbers = {
 const toastMessages = {
   POST: 'Created',
   PUT: 'Updated',
-  DELETE: 'Deleted'
+  DELETE: 'Deleted',
 }
 
 const requestMethods = {
