@@ -24,6 +24,14 @@ export default {
   },
   methods: {},
   created() {
+    var self = this;
+    this.facebook.afterSuccess((response) => {
+        self.oauth.setTokenData(response.authResponse);
+        self.runnersPlaza.setTokenData(response.authResponse);
+        self.login().then(() => {
+          self.$router.replace({ name: "home" });
+        });
+    });
     var tokenData = this.oauth.getTokenData();
     if (tokenData) {
       this.runnersPlaza.setTokenData(tokenData);
