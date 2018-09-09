@@ -6,7 +6,6 @@ const levelNumbers = {
   Owner: 3,
   Manager: 2,
   Member: 1,
-  Guest: 0
 }
 
 const toastMessages = {
