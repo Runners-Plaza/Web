@@ -35,40 +35,42 @@
 export default {
   name: "the-sidebar",
   computed: {
-    items() {
-      var items = []
+    items () {
+      let items = []
       if (this.me.show) {
-        items.push({
+        items.push ({
           name: "home",
           icon: "home",
           title: "Home",
-          to: "home"
+          to: "home",
         })
-        items.push({
-          name: "logout",
+        items.push ({
+          name: "log out",
           icon: "exit_to_app",
           title: "Log out",
-          to: ""
+          to: "",
         })
       } else {
-        items.push({
-          name: "login",
-          icon: "login",
-          title: "Login",
-          to: "login"
+        items.push ({
+          name: "log in",
+          icon: "perm_identity",
+          title: "Log in",
+          to: "login",
         })
       }
       return items
-    }
+    },
   },
   methods: {
-    clickOn(item) {
-      if (item.name === "logout") {
-        this.logout()
+    clickOn (item) {
+      if (item.name === "log out") {
+        this.logout ().then (() => {
+          this.toaster.success ('Logged out.')
+        })
       } else {
-        this.$router.replace({ name: item.to })
+        this.$router.replace ({ name: item.to })
       }
-    }
-  }
+    },
+  },
 }
 </script>

@@ -3,7 +3,7 @@
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
         <img src="@/assets/logo.png" alt="Vuetify.js" class="mb-5">
-        <FacebookLoginButton></FacebookLoginButton>
+        <FacebookLoginButton />
       </v-layout>
     </v-slide-y-transition>
   </v-container>
@@ -15,10 +15,10 @@ import FacebookLoginButton from '@/components/facebook/FacebookLoginButton.vue'
 export default {
   name: "Login",
   props: {
-    msg: String
+    msg: String,
   },
   components: {
-    FacebookLoginButton
+    FacebookLoginButton,
   },
 }
 </script>

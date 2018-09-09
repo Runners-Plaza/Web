@@ -2,41 +2,38 @@ import Vue from 'vue'
 import '@/assets/FacebookAsset.js'
 
 const Facebook = {
-  install(Vue) {
+  install (Vue) {
     Vue.prototype.facebook = {
-      checkLoginState() {
+      success: Function,
+      afterSuccess (success) {
+        this.success = success
+      },
+      checkLoginState () {
         let self = this
-        FB.getLoginStatus(function (response) {
-          self.statusChangeCallback(response)
+        FB.getLoginStatus ((response) => {
+          self.statusChangeCallback (response)
         })
       },
-      login() {
+      login () {
         let self = this
-        FB.login(
-          function (response) {
-            if (response.authResponse) {
-              self.statusChangeCallback(response)
-            }
-          },
-          {
-            scope: "email, public_profile",
-            return_scopes: true
+        FB.login ((response) => {
+          if (response.authResponse) {
+            self.statusChangeCallback (response)
           }
-        )
+        },{
+          scope: "email, public_profile",
+          return_scopes: true,
+        })
       },
-      statusChangeCallback(response) {
+      statusChangeCallback (response) {
         if (response.status === "connected") {
-          this.success(response)
+          this.success (response)
         } else {
-          this.login()
+          this.login ()
         }
       },
-      success: Function,
-      afterSuccess(success) {
-        this.success = success
-      }
     }
   }
 }
 
-Vue.use(Facebook)
+Vue.use (Facebook)

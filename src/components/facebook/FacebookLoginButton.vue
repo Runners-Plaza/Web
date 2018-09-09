@@ -7,9 +7,9 @@
 export default {
   name: "FacebookLoginButton",
   methods: {
-    login: function() {
-      this.facebook.checkLoginState()
-    }
+    login () {
+      this.facebook.checkLoginState ()
+    },
   },
 }
 </script>

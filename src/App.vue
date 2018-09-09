@@ -24,27 +24,26 @@ export default {
     TheFooter,
     TheToast,
   },
-  created() {
-    let self = this
-    this.facebook.afterSuccess((response) => {
-      self.oauth.setTokenData(response.authResponse)
-      self.runnersPlaza.setTokenData(response.authResponse)
-      self.login().then(() => {
-        this.toaster.success('Logged in.')
-        self.$router.replace({ name: 'home' })
+  created () {
+    this.facebook.afterSuccess ((response) => {
+      this.oauth.setTokenData (response.authResponse)
+      this.runnersPlaza.setTokenData (response.authResponse)
+      this.login ().then (() => {
+        this.toaster.success ('Logged in.')
+        this.$router.replace ({ name: 'home' })
       })
     })
-    let tokenData = this.oauth.getTokenData()
+    let tokenData = this.oauth.getTokenData ()
     if (tokenData) {
       if (this.$router.history.current.name === 'login') {
-        this.$router.replace({ name: 'home' })
+        this.$router.replace ({ name: 'home' })
       }
-      this.runnersPlaza.setTokenData(tokenData)
-      this.login().then(() => {
+      this.runnersPlaza.setTokenData (tokenData)
+      this.login ().then (() => {
         this.toaster.success('Logged in.')
       })
     } else {
-      this.$router.replace({ name: 'login' })
+      this.$router.replace ({ name: 'login' })
     }
   }
 }
