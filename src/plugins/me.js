@@ -21,7 +21,7 @@ const Me = {
         logout () {
           this.oauth.clearTokenData()
           this.me.show = false
-          this.$router.replace({ name: 'home' })
+          this.$router.replace({ name: 'login' })
         }
       }
     })
