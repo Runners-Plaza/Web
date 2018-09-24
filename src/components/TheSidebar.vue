@@ -44,6 +44,14 @@ export default {
           title: "Home",
           to: "home",
         })
+        if (this.me.position === 'Manager') {
+          items.push ({
+            name: "users",
+            icon: "person",
+            title: "Users",
+            to: "users",
+          })
+        }
         items.push ({
           name: "log out",
           icon: "exit_to_app",
