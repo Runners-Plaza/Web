@@ -44,6 +44,12 @@ export default {
           title: "Home",
           to: "home",
         })
+        items.push ({
+          name: "profile",
+          icon: "person",
+          title: "My Profile",
+          to: "profile",
+        })
         if (this.me.position === 'Manager') {
           items.push ({
             name: "users",
