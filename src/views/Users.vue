@@ -64,7 +64,6 @@ export default {
       newUser.position = position
       this.runnersPlaza.patchUser (newUser).then (newUser => {
         Object.assign (user, newUser)
-        this.toaster.success ('Change successfully.')
       })
     }
   },

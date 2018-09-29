@@ -5,6 +5,7 @@ import toast from './global'
 const toastMessages = {
   POST: 'Created',
   PUT: 'Updated',
+  PATCH: 'Updated',
   DELETE: 'Deleted',
 }
 
