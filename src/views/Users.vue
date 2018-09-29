@@ -54,17 +54,17 @@ export default {
     }
   },
   created () {
-    this.runnersPlaza.getUsers().then(users => {
+    this.runnersPlaza.getUsers ().then (users => {
       this.users = users
     })
   },
   methods: {
     changePosition (user, position) {
-      let newUser = Object.assign({}, user)
+      let newUser = Object.assign ({}, user)
       newUser.position = position
-      this.runnersPlaza.patchUser(newUser).then(newUser => {
-        Object.assign(user, newUser)
-        this.toaster.success('Change successfully.')
+      this.runnersPlaza.patchUser (newUser).then (newUser => {
+        Object.assign (user, newUser)
+        this.toaster.success ('Change successfully.')
       })
     }
   },
