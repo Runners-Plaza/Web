@@ -1,5 +1,5 @@
 <template>
-  <v-form v-model="valid" class="profile">
+  <v-form v-model="valid" class="profile ma-3">
     <v-text-field
       v-model="name"
       label="Name"
