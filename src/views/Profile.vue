@@ -13,6 +13,7 @@
     ></v-text-field>
     <v-btn
       block
+      dark
       :disabled="!valid"
       color="teal darken-1"
       @click="updateProfile(name, email)"
