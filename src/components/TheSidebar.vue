@@ -43,17 +43,16 @@ export default {
           icon: "home",
           title: "Home",
           to: "home",
-        })
-        items.push ({
+        }, {
           name: "profile",
-          icon: "person",
+          icon: "account_box",
           title: "My Profile",
           to: "profile",
         })
         if (this.me.position === 'Manager') {
           items.push ({
             name: "users",
-            icon: "person",
+            icon: "people",
             title: "Users",
             to: "users",
           })
