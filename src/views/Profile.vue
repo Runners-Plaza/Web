@@ -12,10 +12,12 @@
       required
     ></v-text-field>
     <v-btn
+      block
       :disabled="!valid"
+      color="teal darken-1"
       @click="updateProfile(name, email)"
     >
-    submit
+    save
     </v-btn>
   </v-form>
 </template>
