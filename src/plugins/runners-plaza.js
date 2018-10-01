@@ -5,6 +5,7 @@ import toast from './global'
 const toastMessages = {
   POST: 'Created',
   PUT: 'Updated',
+  PATCH: 'Updated',
   DELETE: 'Deleted',
 }
 
@@ -69,6 +70,7 @@ const RunnersPlaza = {
       async updateMyself (user) {
         const me = await this.patch ('/user', {
           name: user.name,
+          email: user.email,
         })
         return me
       },
@@ -78,7 +80,7 @@ const RunnersPlaza = {
       },
       async patchUser (user) {
         const patchedUser = await this.patch (`/users/${user.id}`, {
-          level: user.level,
+          position: user.position,
         })
         return patchedUser
       },
