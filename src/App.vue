@@ -25,22 +25,31 @@ export default {
     TheToast,
   },
   created () {
+    let tokenData = null
+    let language = this.$cookie.get ('language')
+
+    if (language === null) {
+      this.$cookie.set ('language', this.$i18n.locale, '1')
+    } else {
+      this.$i18n.locale = language
+    }
+
     this.facebook.afterSuccess ((response) => {
       this.oauth.setTokenData (response.authResponse)
       this.runnersPlaza.setTokenData (response.authResponse)
       this.login ().then (() => {
-        this.toaster.success ('Logged in.')
+        this.toaster.success (this.$t ('login.success'))
         this.$router.replace ({ name: 'home' })
       })
     })
-    let tokenData = this.oauth.getTokenData ()
+    tokenData = this.oauth.getTokenData ()
     if (tokenData) {
       if (this.$router.history.current.name === 'login') {
         this.$router.replace ({ name: 'home' })
       }
       this.runnersPlaza.setTokenData (tokenData)
       this.login ().then (() => {
-        this.toaster.success('Logged in.')
+        this.toaster.success (this.$t ('login.success'))
       })
     } else {
       this.$router.replace ({ name: 'login' })

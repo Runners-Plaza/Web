@@ -1,5 +1,5 @@
 <template>
-  <v-btn v-on:click="login" color="info">Login From Facebook</v-btn>
+  <v-btn v-on:click="login" color="info">{{ this.$t ('login.from.facebook') }}</v-btn>
 </template>
 
 

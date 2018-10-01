@@ -3,10 +3,10 @@ import axios from 'axios'
 import toast from './global'
 
 const toastMessages = {
-  POST: 'Created',
-  PUT: 'Updated',
-  PATCH: 'Updated',
-  DELETE: 'Deleted',
+  POST: 'created',
+  PUT: 'updated',
+  PATCH: 'updated',
+  DELETE: 'deleted',
 }
 
 const Position = {
@@ -112,14 +112,14 @@ const RunnersPlaza = {
                 data,
               })
               if (toastMessages[method]) {
-                toast.success (toastMessages[method])
+                toast.success (this.$t (toastMessages[method]))
               }
               resolve (response.data)
             } catch (error) {
               if (error.response && error.response.data.error_description) {
                 toast.error (error.response.data.error_description)
               } else {
-                toast.error ('Something went wrong.')
+                toast.error (this.$t ('error.unknown'))
               }
             }
           } else {
