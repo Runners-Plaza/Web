@@ -46,14 +46,14 @@ export default {
         }, {
           name: "profile",
           icon: "account_box",
-          title: "My Profile",
+          title: this.$t ('my.profile'),
           to: "profile",
         })
         if (this.me.position === 'Manager') {
           items.push ({
             name: "users",
             icon: "people",
-            title: "Users",
+            title: this.$t ('users'),
             to: "users",
           })
         }
