@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import toast from './global'
+import i18n from '@/i18n'
 
 const toastMessages = {
   POST: 'created',
@@ -112,14 +113,14 @@ const RunnersPlaza = {
                 data,
               })
               if (toastMessages[method]) {
-                toast.success (this.$t (toastMessages[method]))
+                toast.success (i18n.t (toastMessages[method]))
               }
               resolve (response.data)
             } catch (error) {
               if (error.response && error.response.data.error_description) {
                 toast.error (error.response.data.error_description)
               } else {
-                toast.error (this.$t ('error.unknown'))
+                toast.error (i18n.t ('error.unknown'))
               }
             }
           } else {
