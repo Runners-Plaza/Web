@@ -24,6 +24,11 @@ let en_US = {
   error: {
     unknown: 'Something went wrong.',
   },
+  manager: 'Manager',
+  member: 'Member',
+  name: 'Name',
+  email: 'E-Mail',
+  save: 'Save',
 }
 
 export default en_US

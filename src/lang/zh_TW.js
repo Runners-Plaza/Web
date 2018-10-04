@@ -24,6 +24,11 @@ let zh_TW = {
   error: {
     unknown: '發生未知錯誤',
   },
+  manager: '管理員',
+  member: '會員',
+  name: '姓名',
+  email: '電子郵件信箱',
+  save: '儲存',
 }
 
 export default zh_TW
