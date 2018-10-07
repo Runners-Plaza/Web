@@ -19,6 +19,6 @@ export default {
     return {
       title: 'Runners\' Plaza'
     }
-  }
+  },
 }
 </script>

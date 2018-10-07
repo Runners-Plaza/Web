@@ -2,13 +2,13 @@
   <v-form v-model="valid" class="profile ma-3">
     <v-text-field
       v-model="name"
-      label="Name"
+      :label="$t ('name')"
       required
     ></v-text-field>
     <v-text-field
       v-model="email"
       :rules="emailRules"
-      label="E-mail"
+      :label="$t ('email')"
       required
     ></v-text-field>
     <v-btn
@@ -18,7 +18,7 @@
       color="teal darken-1"
       @click="updateProfile(name, email)"
     >
-    save
+    {{ $t ('save') }}
     </v-btn>
   </v-form>
 </template>

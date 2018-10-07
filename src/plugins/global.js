@@ -1,5 +1,16 @@
 import Vue from 'vue'
 
+const languages = [
+  {
+    id: 'en_US',
+    name: 'English',
+  },
+  {
+    id: 'zh_TW',
+    name: '繁體中文',
+  },
+]
+
 const me = {
   show: false,
 }
@@ -41,6 +52,7 @@ const Global = {
       data () {
         return {
           me,
+          languages,
           sidebar,
           snackbar,
           toaster,
