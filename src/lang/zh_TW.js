@@ -1,4 +1,5 @@
 let zh_TW = {
+  runners_plaza: '跑者廣場',
   home : '首頁',
   my: {
     profile: '個人資料',

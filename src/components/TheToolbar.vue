@@ -31,7 +31,10 @@
 </template>
 
 <script>
-const titles = {}
+const titles = {
+  users: 'users',
+  profile: 'my.profile',
+}
 
 export default {
   name: 'the-toolbar',
@@ -39,9 +42,9 @@ export default {
     title () {
       let title = titles[this.$route.name]
       if (title) {
-        return title
+        return this.$t (title)
       }
-      return 'Runners\' Plaza'
+      return this.$t ('runners_plaza')
     },
     lanauages () {
       return this.lanauages

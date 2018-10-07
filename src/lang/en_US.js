@@ -1,4 +1,5 @@
 let en_US = {
+  runners_plaza: "Runners' Plaza",
   home : 'Home',
   my: {
     profile: 'My Profile',
