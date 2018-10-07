@@ -23,7 +23,7 @@
               <v-list-tile-action>
                 <v-icon v-text="position.icon"></v-icon>
               </v-list-tile-action>
-              <v-list-tile-title v-text="position.label"></v-list-tile-title>
+              <v-list-tile-title v-text="$t (position.label)"></v-list-tile-title>
             </v-list-tile>
           </v-list>
         </v-menu>
@@ -44,11 +44,11 @@ export default {
       },
       positions: [
         {
-          label: this.$t ('manager'),
+          label: 'manager',
           name: 'Manager',
           icon: 'settings',
         },{
-          label: this.$t ('member'),
+          label: 'member',
           name: 'Member',
           icon: 'person',
         },
