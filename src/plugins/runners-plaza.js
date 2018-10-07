@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import toast from './global'
-import i18n from '@/i18n'
+import i18n from './i18n'
 
 const toastMessages = {
   POST: 'created',
