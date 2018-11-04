@@ -8,12 +8,6 @@ const Facebook = {
       afterSuccess (success) {
         this.success = success
       },
-      checkLoginState () {
-        let self = this
-        FB.getLoginStatus ((response) => {
-          self.statusChangeCallback (response)
-        })
-      },
       login () {
         let self = this
         FB.login ((response) => {
