@@ -7,13 +7,6 @@
     v-model="sidebar.show"
   >
     <v-list>
-      <v-list-tile v-if="me.show">
-        <v-list-tile-content>
-          <v-list-tile-title v-text="me.name"></v-list-tile-title>
-          <v-list-tile-sub-title v-text="me.email"></v-list-tile-sub-title>
-        </v-list-tile-content>
-      </v-list-tile>
-      <v-divider v-if="me.show" />
       <v-list-tile
         v-for="(item, i) in items"
         :key="i"
@@ -37,40 +30,13 @@ export default {
   computed: {
     items () {
       let items = []
-      if (this.me.show) {
-        items.push ({
-          name: "home",
-          icon: "home",
-          title: this.$t ('home'),
-          to: "home",
-        }, {
-          name: "profile",
-          icon: "account_box",
-          title: this.$t ('my.profile'),
-          to: "profile",
-        })
-        if (this.me.position === 'Manager') {
-          items.push ({
-            name: "users",
-            icon: "people",
-            title: this.$t ('users'),
-            to: "users",
-          })
-        }
-        items.push ({
-          name: "log out",
-          icon: "exit_to_app",
-          title: this.$t ('log.out'),
-          to: "",
-        })
-      } else {
-        items.push ({
-          name: "log in",
-          icon: "perm_identity",
-          title: this.$t ('log.in'),
-          to: "login",
-        })
-      }
+      items.push ({
+        name: "home",
+        icon: "home",
+        title: this.$t ('home'),
+        to: "home",
+      })
+//    if (this.me.position === 'Manager') {}
       return items
     },
   },

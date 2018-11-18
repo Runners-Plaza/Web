@@ -4,29 +4,52 @@
     dark
     clipped-left
     app
-  >
+    >
     <v-toolbar-side-icon
-      @click.stop="sidebar.show = !sidebar.show"
+    @click.stop="sidebar.show = !sidebar.show"
     >
     </v-toolbar-side-icon>
-    <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-toolbar-title v-text="title"></v-toolbar-title>
 
     <v-spacer></v-spacer>
 
-    <v-menu>
-      <v-toolbar-title slot="activator">
-        <v-icon>language</v-icon>
-      </v-toolbar-title>
-      <v-list>
-        <v-list-tile
-          v-for="language in languages"
-          :key="language.id"
-          @click="changeLanguage (language)"
-        >
-          <v-list-tile-title v-text="language.name"></v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-menu>
+    <v-toolbar-items>
+      <v-menu left bottom>
+        <v-btn icon slot="activator">
+          <v-icon>language</v-icon>
+        </v-btn>
+        <v-list>
+          <v-list-tile
+                    v-for="language in languages"
+                    :key="language.id"
+                    @click="changeLanguage (language)"
+                    >
+                    <v-list-tile-title v-text="language.name"></v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+      <v-menu left bottom>
+        <v-btn icon slot="activator">
+          <v-icon>person</v-icon>
+        </v-btn>
+        <v-list>
+          <v-list-tile v-if="me.show">
+            <v-list-tile-content>
+              <v-list-tile-title v-text="me.name"></v-list-tile-title>
+              <v-list-tile-sub-title v-text="me.email"></v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider v-if="me.show" />
+          <v-list-tile
+                                     v-for="profileService in profileServices"
+                                     :key="profileService.id"
+                                     @click="executeService (profileService)"
+                                     >
+                                     <v-list-tile-title v-text="profileService.title"></v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+    </v-toolbar-items>
   </v-toolbar>
 </template>
 
@@ -49,12 +72,54 @@ export default {
     lanauages () {
       return this.lanauages
     },
+    profileServices () {
+      let items = []
+      if (this.me.show) {
+        items.push ({
+          name: "profile",
+          icon: "account_box",
+          title: this.$t ('my.profile'),
+          to: "profile",
+        })
+        if (this.me.position === 'Manager') {
+          items.push ({
+            name: "users",
+            icon: "people",
+            title: this.$t ('users'),
+            to: "users",
+          })
+        }
+        items.push ({
+          name: "log out",
+          icon: "exit_to_app",
+          title: this.$t ('log.out'),
+          to: "",
+        })
+      } else {
+        items.push ({
+          name: "log in",
+          icon: "perm_identity",
+          title: this.$t ('log.in'),
+          to: "login",
+        })
+      }
+      return items
+    },
   },
   methods: {
     changeLanguage (language) {
       this.$i18n.locale = language.id
       this.$cookie.set ('language', language.id, '1')
       this.toaster.success (this.$t ('changed'))
+    },
+    executeService (service) {
+      if (service.name === "log out") {
+        this.logout ().then (() => {
+          this.toaster.success (this.$t ('logout.success'))
+        })
+      } else {
+        this.$router.replace ({ name: service.to })
+      }
     },
   },
 }
