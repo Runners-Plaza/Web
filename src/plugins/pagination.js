@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 const paging = {
   page: 1,
-  per_page: 1,
+  per_page: 8,
   last_page: 1,
 }
 

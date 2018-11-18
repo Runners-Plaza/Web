@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import axios from 'axios'
 import toast from './global'
+import pagination from './pagination'
 import i18n from './i18n'
+import parse from 'parse-link-header'
 
 const toastMessages = {
   POST: 'created',
@@ -76,8 +78,7 @@ const RunnersPlaza = {
         return me
       },
       async getUsers () {
-        const users = await this.get ('/users')
-        return users
+        return await this.get ('/users')
       },
       async patchUser (user) {
         const patchedUser = await this.patch (`/users/${user.id}`, {
@@ -107,13 +108,23 @@ const RunnersPlaza = {
               toast.dismiss ()
             }
             try {
+              let link = null
+
+              url = pagination.appendPaging (url)
+
               const response = await this.client.request ({
                 method,
                 url,
                 data,
               })
+
               if (toastMessages[method]) {
                 toast.success (i18n.t (toastMessages[method]))
+              }
+
+              link = parse (response.headers.link)
+              if (link != null) {
+                pagination.updateLastPage (link.last.page)
               }
               resolve (response.data)
             } catch (error) {
