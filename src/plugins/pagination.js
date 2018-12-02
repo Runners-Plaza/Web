@@ -20,7 +20,7 @@ const pagination = {
   getPaging () {
     return paging
   },
-  appendPaging(url) {
+  appendPaging (url) {
     return url + '?page=' + paging.page + '&per_page=' + paging.per_page
   },
   resetPaging () {
@@ -35,7 +35,7 @@ const Pagination = {
     Vue.mixin ({
       data () {
         return {
-          pagination
+          pagination,
         }
       },
     })

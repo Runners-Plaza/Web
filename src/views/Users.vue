@@ -1,5 +1,4 @@
 <template>
-  <div>
     <v-list class="users">
       <v-list-tile
         v-for="user in users"
@@ -19,7 +18,7 @@
               <v-list-tile
                 v-for="(position, i) in positions"
                 :key="i"
-                @click="changePosition(user, position.name)"
+                @click="changePosition (user, position.name)"
               >
                 <v-list-tile-action>
                   <v-icon v-text="position.icon"></v-icon>
@@ -31,12 +30,14 @@
         </v-list-tile-action>
       </v-list-tile>
     </v-list>
-  </div>
 </template>
 
 <script>
 export default {
   name: 'users',
+  inject: [
+    'changePaging',
+  ],
   props: [
     'reloadView',
   ],
@@ -66,8 +67,8 @@ export default {
   methods: {
     async getUsers () {
       await this.runnersPlaza.getUsers ().then (users => {
+        this.changePaging ()
         this.users = users
-        this.$emit ('reload-paging')
       })
     },
     changePosition (user, position) {

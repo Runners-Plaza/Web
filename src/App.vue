@@ -4,12 +4,10 @@
     <the-toolbar />
     <v-content>
       <router-view
-        @reload-paging="changePaging"
         :reloadView="reloadView"
       ></router-view>
       <the-pagination
         v-show="enablePaging"
-        @change-page="changePage"
         :reloadPaging="reloadPaging"
       ></the-pagination>
       <the-toast />
@@ -79,15 +77,21 @@ export default {
   methods: {
     changePage (page) {
       this.pagination.updatePage (page)
-      this.reloadView = this.reloadView == 1 ? 0 : 1
+      this.reloadView = !this.reloadView
     },
     changePaging () {
-      this.reloadPaging = this.reloadPaging == 1 ? 0 : 1
+      this.reloadPaging = !this.reloadPaging
     }
   },
   watch: {
     $route (to, from) {
       this.pagination.resetPaging ()
+    }
+  },
+  provide: function () {
+    return {
+      changePage: this.changePage,
+      changePaging: this.changePaging,
     }
   },
 }

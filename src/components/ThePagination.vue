@@ -3,7 +3,8 @@
     <v-pagination
       v-model="currentPage"
       :length="lastPage"
-      @input="$emit('change-page', currentPage)"
+      @input="changePage (currentPage)"
+      :total-visible="7"
     ></v-pagination>
   </div>
 </template>
@@ -11,6 +12,9 @@
 <script>
 export default {
   name: "the-pagination",
+  inject: [
+    'changePage',
+  ],
   props: [
     'reloadPaging',
   ],
@@ -28,7 +32,7 @@ export default {
       let paging = this.pagination.getPaging ()
 
       this.currentPage = paging.page
-      this.lastPage = parseInt(paging.last_page)
+      this.lastPage = parseInt (paging.last_page)
     },
   },
   watch: {
