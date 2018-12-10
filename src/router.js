@@ -13,33 +13,21 @@ export default new Router ({
       path: '/',
       name: 'home',
       component: Home,
-      meta: {
-        enablePaging: false,
-      },
     },
     {
       path: '/login',
       name: 'login',
       component: Login,
-      meta: {
-        enablePaging: false,
-      },
     },
     {
       path: '/users',
       name: 'users',
       component: Users,
-      meta: {
-        enablePaging: true,
-      },
     },
     {
       path: '/profile',
       name: 'profile',
       component: Profile,
-      meta: {
-        enablePaging: false,
-      },
     },
   ]
 })

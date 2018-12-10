@@ -87,19 +87,29 @@ const RunnersPlaza = {
         return patchedUser
       },
       async get (url) {
-        return await this.request (requestMethods.get, url)
+        let link = null
+        let response = null
+
+        url = pagination.appendPaging (url)
+        response = await this.request (requestMethods.get, url)
+        link = parse (response.headers.link)
+        if (link != null) {
+          pagination.updateLastPage (link.last.page)
+        }
+
+        return response.data
       },
       async post (url, data) {
-        return await this.request (requestMethods.post, url, data)
+        return await this.request (requestMethods.post, url, data).data
       },
       async put (url, data) {
-        return await this.request (requestMethods.put, url, data)
+        return await this.request (requestMethods.put, url, data).data
       },
       async patch (url, data) {
-        return await this.request (requestMethods.patch, url, data)
+        return await this.request (requestMethods.patch, url, data).data
       },
       async delete (url) {
-        return await this.request (requestMethods.delete, url)
+        return await this.request (requestMethods.delete, url).data
       },
       request (method, url, data = null) {
         return new Promise (async (resolve) => {
@@ -108,10 +118,6 @@ const RunnersPlaza = {
               toast.dismiss ()
             }
             try {
-              let link = null
-
-              url = pagination.appendPaging (url)
-
               const response = await this.client.request ({
                 method,
                 url,
@@ -122,11 +128,7 @@ const RunnersPlaza = {
                 toast.success (i18n.t (toastMessages[method]))
               }
 
-              link = parse (response.headers.link)
-              if (link != null) {
-                pagination.updateLastPage (link.last.page)
-              }
-              resolve (response.data)
+              resolve (response)
             } catch (error) {
               if (error.response && error.response.data.error_description) {
                 toast.error (error.response.data.error_description)

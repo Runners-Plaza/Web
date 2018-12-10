@@ -3,13 +3,7 @@
     <the-sidebar />
     <the-toolbar />
     <v-content>
-      <router-view
-        :reloadView="reloadView"
-      ></router-view>
-      <the-pagination
-        v-show="enablePaging"
-        :reloadPaging="reloadPaging"
-      ></the-pagination>
+      <router-view></router-view>
       <the-toast />
     </v-content>
     <the-footer />
@@ -21,7 +15,6 @@ import TheSidebar from './components/TheSidebar'
 import TheToolbar from './components/TheToolbar'
 import TheFooter from './components/TheFooter'
 import TheToast from './components/TheToast'
-import ThePagination from './components/ThePagination'
 
 export default {
   name: 'App',
@@ -30,18 +23,6 @@ export default {
     TheToolbar,
     TheFooter,
     TheToast,
-    ThePagination,
-  },
-  computed: {
-    enablePaging () {
-      return this.$route.meta.enablePaging
-    },
-  },
-  data () {
-    return {
-      reloadView: 0,
-      reloadPaging: 0,
-    }
   },
   created () {
     let tokenData = null
@@ -72,26 +53,6 @@ export default {
       })
     } else {
       this.$router.replace ({ name: 'login' })
-    }
-  },
-  methods: {
-    changePage (page) {
-      this.pagination.updatePage (page)
-      this.reloadView = !this.reloadView
-    },
-    changePaging () {
-      this.reloadPaging = !this.reloadPaging
-    }
-  },
-  watch: {
-    $route (to, from) {
-      this.pagination.resetPaging ()
-    }
-  },
-  provide: function () {
-    return {
-      changePage: this.changePage,
-      changePaging: this.changePaging,
     }
   },
 }

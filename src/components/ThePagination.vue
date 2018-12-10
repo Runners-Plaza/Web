@@ -1,10 +1,8 @@
 <template>
-  <div @update-paging="updatePaging" class="text-xs-center">
+  <div class="text-xs-center">
     <v-pagination
       v-model="currentPage"
       :length="lastPage"
-      @input="changePage (currentPage)"
-      :total-visible="7"
     ></v-pagination>
   </div>
 </template>
@@ -15,9 +13,6 @@ export default {
   inject: [
     'changePage',
   ],
-  props: [
-    'reloadPaging',
-  ],
   data () {
     return {
       currentPage: 1,
@@ -25,19 +20,23 @@ export default {
     }
   },
   mounted () {
-    this.currentPage = 1
+    this.updatePage ()
   },
   methods: {
-    updatePaging () {
+    reload () {
       let paging = this.pagination.getPaging ()
 
       this.currentPage = paging.page
       this.lastPage = parseInt (paging.last_page)
     },
+    updatePage () {
+      this.pagination.updatePage (this.currentPage)
+      this.changePage ()
+    },
   },
   watch: {
-    reloadPaging () {
-      this.updatePaging ()
+    currentPage () {
+      this.updatePage ()
     },
   },
 }

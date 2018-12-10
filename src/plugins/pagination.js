@@ -9,7 +9,7 @@ const paging = {
 const pagination = {
   updateLastPage (lastPage) {
     Object.assign (paging, {
-      last_page: lastPage,
+      last_page: parseInt (lastPage),
     })
   },
   updatePage (page) {
