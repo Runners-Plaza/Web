@@ -29,9 +29,10 @@ export default {
       this.currentPage = paging.page
       this.lastPage = parseInt (paging.last_page)
     },
-    updatePage () {
+    async updatePage () {
       this.pagination.updatePage (this.currentPage)
-      this.changePage ()
+      await this.changePage ()
+      this.reload ()
     },
   },
   watch: {

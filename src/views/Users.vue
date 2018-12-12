@@ -29,7 +29,7 @@
         </v-menu>
       </v-list-tile-action>
     </v-list-tile>
-    <the-pagination ref="pagination"></the-pagination>
+    <the-pagination />
   </v-list>
 </template>
 
@@ -63,15 +63,12 @@ export default {
   },
   provide () {
     return {
-      changePage: this.changePage,
+      changePage: this.getUsers,
     }
   },
   methods: {
     async getUsers () {
-      await this.runnersPlaza.getUsers ().then (users => {
-        this.users = users
-        this.$refs.pagination.reload ()
-      })
+      this.users = await this.runnersPlaza.getUsers ()
     },
     changePosition (user, position) {
       let newUser = Object.assign ({}, user)
@@ -79,9 +76,6 @@ export default {
       this.runnersPlaza.patchUser (newUser).then (newUser => {
         Object.assign (user, newUser)
       })
-    },
-    changePage () {
-      this.getUsers ()
     },
   },
 }

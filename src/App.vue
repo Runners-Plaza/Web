@@ -3,7 +3,7 @@
     <the-sidebar />
     <the-toolbar />
     <v-content>
-      <router-view></router-view>
+      <router-view />
       <the-toast />
     </v-content>
     <the-footer />
