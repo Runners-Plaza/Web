@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import axios from 'axios'
 import toast from './global'
+import pagination from './pagination'
 import i18n from './i18n'
+import parse from 'parse-link-header'
 
 const toastMessages = {
   POST: 'created',
@@ -76,8 +78,7 @@ const RunnersPlaza = {
         return me
       },
       async getUsers () {
-        const users = await this.get ('/users')
-        return users
+        return await this.get ('/users')
       },
       async patchUser (user) {
         const patchedUser = await this.patch (`/users/${user.id}`, {
@@ -86,19 +87,29 @@ const RunnersPlaza = {
         return patchedUser
       },
       async get (url) {
-        return await this.request (requestMethods.get, url)
+        let link = null
+        let response = null
+
+        url = pagination.appendPaging (url)
+        response = await this.request (requestMethods.get, url)
+        link = parse (response.headers.link)
+        if (link != null) {
+          pagination.updateLastPage (link.last.page)
+        }
+
+        return response.data
       },
       async post (url, data) {
-        return await this.request (requestMethods.post, url, data)
+        return await this.request (requestMethods.post, url, data).data
       },
       async put (url, data) {
-        return await this.request (requestMethods.put, url, data)
+        return await this.request (requestMethods.put, url, data).data
       },
       async patch (url, data) {
-        return await this.request (requestMethods.patch, url, data)
+        return await this.request (requestMethods.patch, url, data).data
       },
       async delete (url) {
-        return await this.request (requestMethods.delete, url)
+        return await this.request (requestMethods.delete, url).data
       },
       request (method, url, data = null) {
         return new Promise (async (resolve) => {
@@ -112,10 +123,12 @@ const RunnersPlaza = {
                 url,
                 data,
               })
+
               if (toastMessages[method]) {
                 toast.success (i18n.t (toastMessages[method]))
               }
-              resolve (response.data)
+
+              resolve (response)
             } catch (error) {
               if (error.response && error.response.data.error_description) {
                 toast.error (error.response.data.error_description)

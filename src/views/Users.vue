@@ -29,12 +29,18 @@
         </v-menu>
       </v-list-tile-action>
     </v-list-tile>
+    <the-pagination />
   </v-list>
 </template>
 
 <script>
+import ThePagination from '../components/ThePagination'
+
 export default {
   name: 'users',
+  components: {
+    ThePagination,
+  },
   data () {
     return {
       users: [],
@@ -55,19 +61,22 @@ export default {
       ],
     }
   },
-  created () {
-    this.runnersPlaza.getUsers ().then (users => {
-      this.users = users
-    })
+  provide () {
+    return {
+      changePage: this.getUsers,
+    }
   },
   methods: {
+    async getUsers () {
+      this.users = await this.runnersPlaza.getUsers ()
+    },
     changePosition (user, position) {
       let newUser = Object.assign ({}, user)
       newUser.position = position
       this.runnersPlaza.patchUser (newUser).then (newUser => {
         Object.assign (user, newUser)
       })
-    }
+    },
   },
 }
 </script>

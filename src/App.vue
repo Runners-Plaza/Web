@@ -54,6 +54,6 @@ export default {
     } else {
       this.$router.replace ({ name: 'login' })
     }
-  }
+  },
 }
 </script>
