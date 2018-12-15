@@ -1,6 +1,7 @@
 let en_US = {
   runners_plaza: "Runners' Plaza",
-  home : 'Home',
+  home: 'Home',
+  main_page_text: 'Welcome to Runners-Plaza',
   my: {
     profile: 'My Profile',
   },
@@ -30,6 +31,11 @@ let en_US = {
   name: 'Name',
   email: 'E-Mail',
   save: 'Save',
+  news: 'News',
+  contest: 'Contests',
+  forum: 'Forum',
+  marathon_survey: 'Marathon Survey',
+  grade_report: 'Grade Report',
 }
 
 export default en_US
