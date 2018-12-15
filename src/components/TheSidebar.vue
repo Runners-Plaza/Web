@@ -35,6 +35,31 @@ export default {
         icon: "home",
         title: this.$t ('home'),
         to: "home",
+      },{
+        name: "news",
+        icon: "announcement",
+        title: this.$t ('news'),
+        to: "",
+      },{
+        name: "contest",
+        icon: "event",
+        title: this.$t ('contest'),
+        to: "",
+      },{
+        name: "forum",
+        icon: "view_headline",
+        title: this.$t ('forum'),
+        to: "",
+      },{
+        name: "marathon_survey",
+        icon: "assignment",
+        title: this.$t ('marathon_survey'),
+        to: "",
+      },{
+        name: "grade_report",
+        icon: "list_alt",
+        title: this.$t ('grade_report'),
+        to: "",
       })
 //    if (this.me.position === 'Manager') {}
       return items
