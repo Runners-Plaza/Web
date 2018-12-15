@@ -1,18 +1,8 @@
 <template>
-  <v-toolbar
-    color="teal"
-    dark
-    clipped-left
-    app
-    >
-    <v-toolbar-side-icon
-    @click.stop="sidebar.show = !sidebar.show"
-    >
-    </v-toolbar-side-icon>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
-
-    <v-spacer></v-spacer>
-
+  <v-toolbar color="teal" dark clipped-left app>
+    <v-toolbar-side-icon @click.stop="sidebar.show = !sidebar.show" />
+    <v-toolbar-title v-text="title" />
+    <v-spacer />
     <v-toolbar-items>
       <v-menu left bottom>
         <v-btn icon slot="activator">
@@ -20,11 +10,10 @@
         </v-btn>
         <v-list>
           <v-list-tile
-                    v-for="language in languages"
-                    :key="language.id"
-                    @click="changeLanguage (language)"
-                    >
-                    <v-list-tile-title v-text="language.name"></v-list-tile-title>
+            v-for="language in languages"
+            :key="language.id"
+            @click="changeLanguage (language)">
+            <v-list-tile-title v-text="language.name" />
           </v-list-tile>
         </v-list>
       </v-menu>
@@ -35,17 +24,16 @@
         <v-list>
           <v-list-tile v-if="me.show">
             <v-list-tile-content>
-              <v-list-tile-title v-text="me.name"></v-list-tile-title>
-              <v-list-tile-sub-title v-text="me.email"></v-list-tile-sub-title>
+              <v-list-tile-title v-text="me.name" />
+              <v-list-tile-sub-title v-text="me.email" />
             </v-list-tile-content>
           </v-list-tile>
           <v-divider v-if="me.show" />
           <v-list-tile
-                                     v-for="profileService in profileServices"
-                                     :key="profileService.id"
-                                     @click="executeService (profileService)"
-                                     >
-                                     <v-list-tile-title v-text="profileService.title"></v-list-tile-title>
+            v-for="profileService in profileServices"
+            :key="profileService.id"
+            @click="executeService (profileService)">
+            <v-list-tile-title v-text="profileService.title" />
           </v-list-tile>
         </v-list>
       </v-menu>
