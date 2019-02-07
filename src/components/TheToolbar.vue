@@ -45,6 +45,7 @@
 const titles = {
   users: 'users',
   profile: 'my.profile',
+  marathon_survey_index: 'marathon_survey.index',
 }
 
 export default {

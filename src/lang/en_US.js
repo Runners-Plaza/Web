@@ -36,6 +36,9 @@ let en_US = {
   forum: 'Forum',
   marathon_survey: 'Marathon Survey',
   grade_report: 'Grade Report',
+  marathon_survey: {
+    index: 'Marathon Survey',
+  },
 }
 
 export default en_US

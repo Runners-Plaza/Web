@@ -5,6 +5,8 @@ import Login from './views/Login.vue'
 import Profile from './views/Profile.vue'
 import Users from './views/Users.vue'
 
+import MarathonSurveyIndex from './views/marathon-survey/Index.vue'
+
 Vue.use (Router)
 
 export default new Router ({
@@ -28,6 +30,11 @@ export default new Router ({
       path: '/profile',
       name: 'profile',
       component: Profile,
+    },
+    {
+      path: '/marathon-survey/index',
+      name: 'marathon_survey_index',
+      component: MarathonSurveyIndex,
     },
   ]
 })

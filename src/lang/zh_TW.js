@@ -34,8 +34,10 @@ let zh_TW = {
   news: '最新消息',
   contest: '全國賽會',
   forum: '留言板',
-  marathon_survey: '馬拉松普查',
   grade_report: '成績報吿',
+  marathon_survey: {
+    index: '馬拉松普查',
+  },
 }
 
 export default zh_TW

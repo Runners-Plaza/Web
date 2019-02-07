@@ -53,8 +53,8 @@ export default {
       },{
         name: "marathon_survey",
         icon: "assignment",
-        title: this.$t ('marathon_survey'),
-        to: "",
+        title: this.$t ('marathon_survey.index'),
+        to: "marathon_survey_index",
       },{
         name: "grade_report",
         icon: "list_alt",
