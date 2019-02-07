@@ -14,6 +14,8 @@ yarn-error.log*
 # Editor directories and files
 .idea
 .vscode
+.vs
+web.iml
 *.suo
 *.ntvs*
 *.njsproj
