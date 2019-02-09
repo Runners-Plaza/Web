@@ -38,6 +38,18 @@ let zh_TW = {
   marathon_survey: {
     index: '馬拉松普查',
   },
+  latest_break_pb: '最新破PB跑者',
+  latest_complete_first_marathon: '最新完成初馬跑者',
+  statistics: {
+    index: '統計資訊',
+    total_people_count: '普查總人數',
+    total_data_count: '普查總資料筆數',
+    average_complete_times: '平均完賽次數',
+    total_contest_count: '普查總賽事筆數',
+  },
+  times: '次',
+  records: '筆',
+  person: '人',
 }
 
 export default zh_TW

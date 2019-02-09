@@ -39,6 +39,18 @@ let en_US = {
   marathon_survey: {
     index: 'Marathon Survey',
   },
+  latest_break_pb: 'Latest Break PB',
+  latest_complete_first_marathon: 'Latest Complete First Marathon',
+  statistics: {
+    index: 'Statistics',
+    total_people_count: 'Total People Count',
+    total_data_count: 'Total Data Count',
+    average_complete_times: 'Average Complete Contests',
+    total_contest_count: 'Total Contest Count',
+  },
+  times: 'times',
+  records: '',
+  person: '',
 }
 
 export default en_US
