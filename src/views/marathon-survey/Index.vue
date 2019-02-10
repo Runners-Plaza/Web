@@ -1,18 +1,21 @@
 <template>
   <v-container fluid>
-    <v-slide-y-transition mode="out-in">
-      <v-layout row>
-        <v-layout column align-center>
-          <the-statistics />
-        </v-layout>
-        <v-layout column align-center>
-          <h6 class="title">{{ $t ('latest_break_pb') }}</h6>
-        </v-layout>
-        <v-layout column align-center>
-          <h6 class="title">{{ $t ('latest_complete_first_marathon') }}</h6>
-        </v-layout>
-      </v-layout>
-    </v-slide-y-transition>
+    <v-layout row wrap>
+      <v-flex xs12 sm4>
+        <survey-statistics-list />
+      </v-flex>
+      <v-flex xs12 sm4>
+        <latest-break-personal-best-list />
+      </v-flex>
+      <v-flex xs12 sm4>
+        <latest-complete-first-marathon-list />
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap>
+      <v-flex xs12 justify-center>
+        <record-list />
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
@@ -33,23 +36,20 @@ a {
   color: #42b983;
 }
 </style>
+
 <script>
-import TheStatistics from '../../components/marathon-survey/TheStatistics.vue'
+import SurveyStatisticsList from '../../components/marathon-survey/SurveyStatisticsList.vue'
+import LatestBreakPersonalBestList from '../../components/marathon-survey/LatestBreakPersonalBestList.vue'
+import LatestCompleteFirstMarathonList from '../../components/marathon-survey/LatestCompleteFirstMarathonList.vue'
+import RecordList from '../../components/marathon-survey/RecordList.vue'
 
 export default {
   name: "MarathonSurveyIndex",
-  data() {
-    return {
-      items: [
-        {
-        },
-      ],
-    }
-  },
-  props: {
-  },
   components: {
-    TheStatistics,
+    SurveyStatisticsList,
+    LatestBreakPersonalBestList,
+    LatestCompleteFirstMarathonList,
+    RecordList,
   },
 }
 </script>

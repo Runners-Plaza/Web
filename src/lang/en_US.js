@@ -34,7 +34,6 @@ let en_US = {
   news: 'News',
   contest: 'Contests',
   forum: 'Forum',
-  marathon_survey: 'Marathon Survey',
   grade_report: 'Grade Report',
   marathon_survey: {
     index: 'Marathon Survey',
@@ -51,6 +50,11 @@ let en_US = {
   times: 'times',
   records: '',
   person: '',
+  runners_list: 'Runners List',
+  group: '',
+  search: 'Search',
+  organization: 'Organization',
+  complete_count: 'Complete Count',
 }
 
 export default en_US

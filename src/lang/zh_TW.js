@@ -50,6 +50,11 @@ let zh_TW = {
   times: '次',
   records: '筆',
   person: '人',
+  runners_list: '跑者列表',
+  group: '組',
+  search: '搜尋',
+  organization: '單位',
+  complete_count: '完賽次數',
 }
 
 export default zh_TW

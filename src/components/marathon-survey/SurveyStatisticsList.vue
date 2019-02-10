@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: "the-statistics",
+  name: "survey-statistics-list",
   data () {
     return {
       statistics: {
