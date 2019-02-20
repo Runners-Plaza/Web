@@ -1,10 +1,27 @@
 <template>
   <v-container fluid>
-    <v-slide-y-transition mode="out-in">
-      <v-layout column align-center>
+    <v-layout column align-center>
         <h6 class="title">{{ $t ('main_page_text') }}</h6>
-      </v-layout>
-    </v-slide-y-transition>
+    </v-layout>
+    <v-layout row wrap>
+      <v-flex xs12 sm4>
+        <survey-statistics-list />
+      </v-flex>
+      <v-flex xs12 sm4>
+        <latest-break-personal-best-list />
+      </v-flex>
+      <v-flex xs12 sm4>
+        <latest-complete-first-marathon-list />
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap>
+        <v-flex xs12 sm6 align-center>
+            <latest-registered-runners-list />
+        </v-flex>    
+        <v-flex xs12 sm6 align-center>
+            <runners-honor-roll />
+        </v-flex>    
+    </v-layout>
   </v-container>
 </template>
 
@@ -25,3 +42,22 @@ a {
   color: #42b983;
 }
 </style>
+<script>
+import SurveyStatisticsList from '../components/marathon-survey/SurveyStatisticsList.vue'
+import LatestBreakPersonalBestList from '../components/marathon-survey/LatestBreakPersonalBestList.vue'
+import LatestCompleteFirstMarathonList from '../components/marathon-survey/LatestCompleteFirstMarathonList.vue'
+import LatestRegisteredRunnersList from '../components/marathon-survey/LatestRegisteredRunnersList.vue'
+import RunnersHonorRoll from '../components/marathon-survey/RunnersHonorRoll.vue'
+
+export default {
+  name: "Home",
+  components: {
+    SurveyStatisticsList,
+    LatestBreakPersonalBestList,
+    LatestCompleteFirstMarathonList,
+    LatestRegisteredRunnersList,
+    RunnersHonorRoll,
+  },
+}
+
+</script>

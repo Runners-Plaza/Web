@@ -40,6 +40,7 @@ let zh_TW = {
   },
   latest_break_pb: '最新破PB跑者',
   latest_complete_first_marathon: '最新完成初馬跑者',
+  latest_register_runner: '最新註冊跑者',
   statistics: {
     index: '統計資訊',
     total_people_count: '普查總人數',
@@ -55,6 +56,11 @@ let zh_TW = {
   search: '搜尋',
   organization: '單位',
   complete_count: '完賽次數',
+  runners_honor_roll: '榮譽榜',
+  runner_information: '跑者資訊',
+  register_record: '成績登錄',
+  review_runner: '審查跑者',
+  review_record: '審查成績',
 }
 
 export default zh_TW

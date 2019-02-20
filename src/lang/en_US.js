@@ -40,6 +40,7 @@ let en_US = {
   },
   latest_break_pb: 'Latest Break PB',
   latest_complete_first_marathon: 'Latest Complete First Marathon',
+  latest_register_runner: 'Latest Register Runner',
   statistics: {
     index: 'Statistics',
     total_people_count: 'Total People Count',
@@ -55,6 +56,11 @@ let en_US = {
   search: 'Search',
   organization: 'Organization',
   complete_count: 'Complete Count',
+  runners_honor_roll: 'Honor Roll',
+  runner_information: 'Runner Information',
+  register_record: 'Register Record',
+  review_runner: 'Review Runner',
+  review_record: 'Review Record',
 }
 
 export default en_US

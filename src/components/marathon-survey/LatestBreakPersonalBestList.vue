@@ -45,19 +45,19 @@ export default {
          name: 'Test',
          time: '6:01:00',
          contestName: 'Test3',
-         avatar: null,
+         avatar: 'https://s.gravatar.com/avatar/aee110cd7bc08cbbbee5bf2a143f5a50?s=80',
        },
        {
          name: 'Test',
          time: '6:02:00',
          contestName: 'Test3',
-         avatar: null,
+         avatar: 'https://s.gravatar.com/avatar/aee110cd7bc08cbbbee5bf2a143f5a50?s=80',
        },
        {
          name: 'Test',
          time: '6:03:00',
          contestName: 'Test3',
-         avatar: null,
+         avatar: 'https://s.gravatar.com/avatar/aee110cd7bc08cbbbee5bf2a143f5a50?s=80',
        },
       ]
     },
