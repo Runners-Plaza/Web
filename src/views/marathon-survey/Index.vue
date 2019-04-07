@@ -38,10 +38,10 @@ a {
 </style>
 
 <script>
-import SurveyStatisticsList from '../../components/marathon-survey/SurveyStatisticsList.vue'
-import LatestBreakPersonalBestList from '../../components/marathon-survey/LatestBreakPersonalBestList.vue'
-import LatestCompleteFirstMarathonList from '../../components/marathon-survey/LatestCompleteFirstMarathonList.vue'
-import RecordList from '../../components/marathon-survey/RecordList.vue'
+import SurveyStatisticsList from '../../components/widgets/SurveyStatisticsList.vue'
+import LatestBreakPersonalBestList from '../../components/widgets/LatestBreakPersonalBestList.vue'
+import LatestCompleteFirstMarathonList from '../../components/widgets/LatestCompleteFirstMarathonList.vue'
+import RecordList from '../../components/widgets/RecordList.vue'
 
 export default {
   name: "MarathonSurveyIndex",
