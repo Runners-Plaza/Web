@@ -21,7 +21,26 @@ const pagination = {
     return paging
   },
   appendPaging (url) {
-    return url + '?page=' + paging.page + '&per_page=' + paging.per_page
+    if (url.indexOf ('page=') > -1 || url.indexOf ('per_page=') > -1) {
+      return url
+    }
+
+    if (url.indexOf ('?') > -1) {
+      return url + '&page=' + paging.page + '&per_page=' + paging.per_page
+    } else {
+      return url + '?page=' + paging.page + '&per_page=' + paging.per_page
+    }
+  },
+  appendPagingForNextOne (url) {
+    if (url.indexOf ('page=') > -1 || url.indexOf ('per_page=') > -1) {
+      return url
+    }
+
+    if (url.indexOf('?') > -1) {
+      return url + '&page=1&per_page=1'
+    } else {
+      return url + '?page=1&per_page=1'
+    }
   },
   resetPaging () {
     Object.assign (paging, {
