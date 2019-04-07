@@ -9,12 +9,14 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "moment": "^2.24.0",
     "parse-link-header": "^1.0.1",
     "vue": "^2.5.17",
     "vue-cookie": "^1.1.4",
     "vue-i18n": "^8.1.0",
     "vue-router": "^3.0.1",
-    "vuetify": "^1.0.19"
+    "vuetify": "^1.0.19",
+    "vuetify-datetime-picker": "^1.0.13"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.0.0-beta.49",
