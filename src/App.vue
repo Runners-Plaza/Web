@@ -52,7 +52,7 @@ export default {
         this.toaster.success (this.$t ('login.success'))
       })
     } else {
-      this.$router.replace ({ name: 'login' })
+      this.runnersPlaza.setTokenData ()
     }
   },
 }
