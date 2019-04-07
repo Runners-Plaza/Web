@@ -25,6 +25,7 @@
             v-for="(subItem, j) in item.subItems"
             :key="j"
             @click="clickOn (subItem)"
+            v-show="subItem.only === undefined || me.position === subItem.only"
            >
             <v-list-tile-action>
               <v-icon v-html="subItem.icon"></v-icon>
@@ -67,39 +68,43 @@ export default {
         title: this.$t ('news'),
         to: "",
       },{
+        name: "contest_list",
+        icon: "announcement",
+        title: this.$t ('contest.list'),
+        to: "events",
+      },{
         name: "marathon_survey",
         icon: "assignment",
         title: this.$t ('marathon_survey.index'),
-        to: "marathon_survey_index",
         subItems: [
            {
-             name: "runner_information",
+             name: "personal_score",
              icon: "directions_run",
-             title: this.$t('runner_information'),
-             to: "",
+             title: this.$t('personal_score'),
+             to: "runner",
            },
            {
              name: "register_record",
              icon: "event_available",
              title: this.$t('register_record'),
-             to: "",
+             to: "runner_register_record",
            },
-         ],
-      })
-    if (this.me.position === 'Manager') {
-      items[items.length -1].subItems.push({
-             name: "runner_review",
+           {
+             name: "runner-review",
              icon: "directions_run",
              title: this.$t('review_runner'),
-             to: "",
+             to: "runners",
+             only: 'Manager',
            },
            {
              name: "record_review",
              icon: "event_available",
              title: this.$t('review_record'),
              to: "",
+             only: 'Manager',
+           }
+         ],
       })
-    }
       items.push({
         name: "grade_report",
         icon: "list_alt",

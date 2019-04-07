@@ -46,6 +46,9 @@ const titles = {
   users: 'users',
   profile: 'my.profile',
   marathon_survey_index: 'marathon_survey.index',
+  marathon_survey_personal_score: 'personal_score',
+  marathon_survey_runner_review: 'review_runner',
+  marathon_survey_runner_detail: 'review_runner',
 }
 
 export default {
@@ -70,7 +73,7 @@ export default {
           title: this.$t ('my.profile'),
           to: "profile",
         })
-        if (this.me.position === 'Manager') {
+        if (this.me.can.manage) {
           items.push ({
             name: "users",
             icon: "people",
