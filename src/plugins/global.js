@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import moment from 'moment'
 
 const languages = [
   {
@@ -66,8 +67,29 @@ const Global = {
         },
         async logout () {
           this.oauth.clearTokenData ()
+          this.me = {}
           this.me.show = false
+          this.me.can = {
+            manage: false,
+            attend: false,
+          }
+          this.backToLogin ()
+        },
+        hasPermission (manage = false) {
+          if (this.me.show) {
+            if (manage) {
+              return this.me.can.manage
+            } else {
+              return this.me.can.attend
+            }
+          }
+          return false
+        },
+        backToLogin () {
           this.$router.replace ({ name: 'login' })
+        },
+        convertDate (date) {
+          return moment (date).format ('YYYY-MM-DD HH:mm:ss') + ' +08:00'
         },
       },
     })
