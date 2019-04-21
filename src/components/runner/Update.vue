@@ -48,8 +48,10 @@
     ></v-text-field>
 
     <v-btn
+      block
+      dark
       :disabled="!valid"
-      color="success"
+      color="teal darken-1"
       @click="validate"
     >
       {{ $t ('submit') }}

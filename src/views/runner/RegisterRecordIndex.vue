@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <v-subheader>
-      {{ $t ('runner.register_record') }}
-    </v-subheader>
+  <div class="register-record">
     <v-container fluid>
       <v-layout row wrap>
 	<v-flex xs12 sm6>
@@ -71,3 +68,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.register-record {
+  background: inherit
+}
+</style>

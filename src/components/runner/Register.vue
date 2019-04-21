@@ -70,14 +70,18 @@
     ></v-text-field>
 
     <v-btn
+      block
+      dark
       :disabled="!valid"
-      color="success"
+      color="teal darken-1"
       @click="validate"
     >
       {{ $t ('submit') }}
     </v-btn>
 
     <v-btn
+      block
+      dark
       color="error"
       @click="reset"
     >
@@ -141,7 +145,9 @@ export default {
       }
     },
     reset () {
-      this.$refs.form.reset()
+      if (confirm(this.$t('confirm.reset_form'))) {
+        this.$refs.form.reset()
+      }
     },
     resetValidation () {
       this.$refs.form.resetValidation()

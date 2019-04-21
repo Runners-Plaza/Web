@@ -1,5 +1,8 @@
 <template>
   <v-list v-if="runner">
+    <v-btn color="success"
+       to="/runners"
+       v-text="$t ('back_to.list')" />
     <v-list-tile>
       <v-list-tile-content>
         <v-list-tile-sub-title v-text="$t ('name')" />
