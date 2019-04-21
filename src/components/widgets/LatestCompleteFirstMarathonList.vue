@@ -1,5 +1,5 @@
 <template>
-  <v-list>
+  <v-list class="latest-complete-first-marathon-list">
     <v-subheader>
       {{ $t ('latest_complete_first_marathon') }}
     </v-subheader>
@@ -64,3 +64,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.latest-complete-first-marathon-list {
+  background: inherit
+}
+</style>

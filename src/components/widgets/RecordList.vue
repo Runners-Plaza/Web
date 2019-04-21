@@ -1,5 +1,5 @@
 <template>
-  <v-list>
+  <v-list class="record-list">
     <v-subheader>
       {{ $t ('runners_list') }}
     </v-subheader>
@@ -107,3 +107,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.record-list {
+  background: inherit
+}
+</style>

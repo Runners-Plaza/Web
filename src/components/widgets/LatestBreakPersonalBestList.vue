@@ -1,5 +1,5 @@
 <template>
-  <v-list>
+  <v-list class="latest-break-personal-best">
     <v-subheader>
       {{ $t ('latest_break_pb') }}
     </v-subheader>
@@ -64,3 +64,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.latest-break-personal-best {
+  background: inherit
+}
+</style>

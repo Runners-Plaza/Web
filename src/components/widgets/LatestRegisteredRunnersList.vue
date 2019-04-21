@@ -1,5 +1,5 @@
 <template>
-    <v-list>
+    <v-list class="latest-registered-runners">
         <v-subheader>
             {{ $t ('latest_register_runner') }}
         </v-subheader>
@@ -59,4 +59,11 @@
       ]
     },
   },
-}</script>
+}
+</script>
+
+<style scoped>
+.latest-registered-runners {
+  background: inherit
+}
+</style>

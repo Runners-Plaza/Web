@@ -1,5 +1,5 @@
 <template>
-    <v-list>
+    <v-list class="runner-honor-roll">
         <v-subheader>
             {{ $t ('runners_honor_roll') }}
         </v-subheader>
@@ -79,4 +79,11 @@
       ]
     },
   },
-}</script>
+}
+</script>
+
+<style scoped>
+.runner-honor-roll {
+  background: inherit
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <v-list>
+  <v-list class="survey-statistics-list">
     <v-subheader>
       {{ $t ('statistics.index') }}
     </v-subheader>
@@ -59,3 +59,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.survey-statistics-list {
+  background: inherit
+}
+</style>
