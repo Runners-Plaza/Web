@@ -81,7 +81,7 @@ export default {
              name: "personal_score",
              icon: "directions_run",
              title: this.$t('personal_score'),
-             to: "runner",
+             to: "",
            },
            {
              name: "register_record",

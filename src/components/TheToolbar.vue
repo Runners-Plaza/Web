@@ -45,10 +45,13 @@
 const titles = {
   users: 'users',
   profile: 'my.profile',
-  marathon_survey_index: 'marathon_survey.index',
-  marathon_survey_personal_score: 'personal_score',
-  marathon_survey_runner_review: 'review_runner',
-  marathon_survey_runner_detail: 'review_runner',
+  events: 'contest.list',
+  events_detail: 'contest.detail',
+  runner: 'runner_information',
+  runner_register_record: 'runner.register_record',
+  runner_register_record_detail: 'runner.register_record',
+  runners: 'runners_list',
+  runner_detail: 'runner_information',
 }
 
 export default {
@@ -72,6 +75,11 @@ export default {
           icon: "account_box",
           title: this.$t ('my.profile'),
           to: "profile",
+        },{
+          name: "runner",
+          icon: "direcions_run",
+          title: this.$t ('runner_information'),
+          to: "runner",
         })
         if (this.me.can.manage) {
           items.push ({
