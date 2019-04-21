@@ -91,9 +91,9 @@ let en_US = {
   location: 'Chinese Location',
   english_location: 'Location',
   link: 'Link',
-  iaaf: 'IAAF',
-  aims: 'AIMs',
-  measured: ' Distance was measured previously',
+  iaaf: 'IAAF Certified Contest',
+  aims: 'AIMS Certified Contest',
+  measured: ' Distance was measured previously by AIMS/IAAF staff',
   recordable: 'Recordable in Marathon Survey',
   contest_name: 'Contest Chinese Name',
   contest_english_name: 'Contest Name',
@@ -111,6 +111,9 @@ let en_US = {
     delete_application: 'Delete Application',
     register_record: 'Runner Record Register',
     create_record: 'Create Record',
+  },
+  confirm: {
+    reset_form: 'Confirm reset the form?',
   },
 }
 

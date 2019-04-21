@@ -92,9 +92,9 @@ let zh_TW = {
   location: '地點',
   english_location: '英文地點',
   link: '連結',
-  iaaf: 'IAAF',
-  aims: '有急救措施',
-  measured: ' 有事先測量過',
+  iaaf: 'IAAF認證賽事',
+  aims: 'AIMS認證賽事',
+  measured: ' 本賽道經AIMS/IAAF丈量員丈量',
   recordable: '有加入馬拉松普查',
   contest_name: '賽事名稱',
   contest_english_name: '賽事英文名稱',
@@ -111,6 +111,9 @@ let zh_TW = {
     delete_application: '刪除申請',
     register_record: '跑者成績登錄',
     create_record: '成績登錄',
+  },
+  confirm: {
+    reset_form: '確認重新填寫？',
   },
 }
 
