@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="event">
     <v-tabs
       slider-color="blue"
       centered
@@ -136,3 +136,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.event {
+  background: inherit
+}
+</style>

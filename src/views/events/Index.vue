@@ -1,10 +1,7 @@
 <template>
   <div>
-    <v-subheader>
-      {{ $t ('contest.list') }}
-    </v-subheader>
     <v-btn color="success"
-       to="create"
+       to="/events/create"
        v-if="me.show && me.can.manage"
        v-text="$t ('contest.add')" />
     <v-container fluid>
@@ -24,7 +21,7 @@
       </v-layout>
     </v-container>
 
-    <v-list three-line>
+    <v-list three-line class="events">
       <template v-for="(event, index) in events">
         <v-list-tile
           :key="index"
@@ -79,3 +76,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.events {
+  background: inherit
+}
+</style>
