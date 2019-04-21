@@ -57,3 +57,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.selection {
+  background: inherit
+}
+</style>
