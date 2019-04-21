@@ -76,14 +76,14 @@ export default new Router ({
       component: Events,
     },
     {
-      path: '/events/:id',
-      name: 'events_detail',
-      component: EventsDetail,
-    },
-    {
       path: '/events/create',
       name: 'events_create',
       component: EventsCreate,
+    },
+    {
+      path: '/events/:id',
+      name: 'events_detail',
+      component: EventsDetail,
     },
     {
       path: '/events/:id/update',
