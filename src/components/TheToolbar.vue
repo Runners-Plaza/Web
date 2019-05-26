@@ -52,6 +52,10 @@ const titles = {
   runner_register_record_detail: 'runner.register_record',
   runners: 'runners_list',
   runner_detail: 'runner_information',
+  runner_detail: 'runner_information',
+  events_update: 'contest.edit',
+  distance_create: 'distance.create',
+  distance_update: 'distance.update',
 }
 
 export default {
@@ -99,7 +103,7 @@ export default {
         items.push ({
           name: "log in",
           icon: "perm_identity",
-          title: this.$t ('log.in'),
+          title: this.$t ('login.from.facebook'),
           to: "login",
         })
       }
@@ -117,9 +121,14 @@ export default {
         this.logout ().then (() => {
           this.toaster.success (this.$t ('logout.success'))
         })
+      } else if (service.name === "log in"){
+        this.login ()
       } else {
         this.$router.replace ({ name: service.to })
       }
+    },
+    login () {
+      this.facebook.login ()
     },
   },
 }
