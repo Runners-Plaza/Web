@@ -115,6 +115,15 @@ let en_US = {
   confirm: {
     reset_form: 'Confirm reset the form?',
   },
+  distance: {
+    create: 'Add Distance',
+    update: 'Update Distance',
+    name: 'Distance Name',
+    number: 'Distance',
+    cost: 'Attend Fee',
+    time_limit: 'Time Limit',
+    runner_time_limit: 'Runner Time Limit',
+  },
 }
 
 export default en_US

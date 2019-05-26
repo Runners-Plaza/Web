@@ -115,6 +115,15 @@ let zh_TW = {
   confirm: {
     reset_form: '確認重新填寫？',
   },
+  distance: {
+    create: '新增距離',
+    update: '更新距離',
+    name: '距離名稱',
+    number: '距離',
+    cost: '報名費用',
+    time_limit: '時間限制',
+    runner_time_limit: '跑者時間限制',
+  },
 }
 
 export default zh_TW
