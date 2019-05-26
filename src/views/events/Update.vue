@@ -1,120 +1,152 @@
 <template>
-  <v-form
-    ref="form"
-    v-model="valid"
-    class="profile ma-3"
-    lazy-validation
-  >
+  <div class="events_update">
     <v-btn color="success"
        to="/events"
        v-text="$t ('back_to.list')" />
-    <h3 align="center">{{ $t ('contest.edit') }}</h3>
-    <v-text-field
-      v-model="form.name"
-      :counter="100"
-      :rules="nameRules"
-      :label="$t ('contest_name')"
-      required
-    ></v-text-field>
-
-    <v-text-field
-      v-model="form.english_name"
-      :counter="100"
-      :label="$t ('contest_english_name')"
-    ></v-text-field>
-
-    <v-text-field
-      v-model="form.organizer"
-      :counter="100"
-      :rules="nameRules"
-      :label="$t ('organizer')"
-      required
-    ></v-text-field>
-
-    <v-text-field
-      v-model="form.english_organizer"
-      :counter="100"
-      :label="$t ('english_organizer')"
-    ></v-text-field>
-
-    <v-text-field
-      v-model="form.location"
-      :counter="100"
-      :rules="nameRules"
-      :label="$t ('location')"
-      required
-    ></v-text-field>
-
-    <v-text-field
-      v-model="form.english_location"
-      :counter="100"
-      :label="$t ('english_location')"
-    ></v-text-field>
-
-    <v-text-field
-      v-model="form.region"
-      :counter="100"
-      :rules="nameRules"
-      :label="$t ('region')"
-      required
-    ></v-text-field>
-
-    <v-text-field
-      v-model="form.url"
-      :counter="200"
-      :rules="urlRules"
-      :label="$t ('link')"
-      required
-    ></v-text-field>
-
-    <v-datetime-picker
-      :label="$t ('start_at')"
-      locale="zh-tw"
-      v-model="form.start_at">
-    </v-datetime-picker>
-
-    <v-datetime-picker
-      :label="$t ('sign_start_at')"
-      locale="zh-tw"
-      v-model="form.sign_start_at">
-    </v-datetime-picker>
-
-    <v-datetime-picker
-      :label="$t ('sign_end_at')"
-      locale="zh-tw"
-      v-model="form.sign_end_at">
-    </v-datetime-picker>
-
-    <v-checkbox
-      v-model="form.iaaf"
-      :label="$t ('iaaf')"
-    ></v-checkbox>
-
-    <v-checkbox
-      v-model="form.aims"
-      :label="$t ('aims')"
-    ></v-checkbox>
-    
-    <v-checkbox
-      v-model="form.measured"
-      :label="$t ('measured')"
-    ></v-checkbox>
-
-    <v-checkbox
-      v-model="form.recordable"
-      :label="$t ('recordable')"
-    ></v-checkbox>
-
-    <v-btn
-      :disabled="!valid"
-      color="success"
-      @click="validate"
+    <v-btn color="success"
+       @click="createDistance ()"
+       v-text="$t ('distance.create')" />
+    <v-tabs
+      slider-color="blue"
+      centered
+      v-model="chosen_tab"
     >
-      {{ $t ('submit') }}
-    </v-btn>
+      <v-tab :href="`#detail`">
+        {{ $t ('contest.detail') }}
+      </v-tab>
+      <v-tab :href="`#distances`">
+        {{ $t ('contest.distances') }}
+      </v-tab>
+    </v-tabs>
+    <v-tabs-items v-model="chosen_tab">
+      <v-tab-item :value="`detail`">
+        <v-form
+          ref="form"
+          v-model="valid"
+          class="profile ma-3"
+          lazy-validation
+        >
+          <v-text-field
+            v-model="form.name"
+            :counter="100"
+            :rules="nameRules"
+            :label="$t ('contest_name')"
+            required
+          ></v-text-field>
 
-  </v-form>
+          <v-text-field
+            v-model="form.english_name"
+            :counter="100"
+            :label="$t ('contest_english_name')"
+          ></v-text-field>
 
+          <v-text-field
+            v-model="form.organizer"
+            :counter="100"
+            :rules="nameRules"
+            :label="$t ('organizer')"
+            required
+          ></v-text-field>
+
+          <v-text-field
+            v-model="form.english_organizer"
+            :counter="100"
+            :label="$t ('english_organizer')"
+          ></v-text-field>
+
+          <v-text-field
+            v-model="form.location"
+            :counter="100"
+            :rules="nameRules"
+            :label="$t ('location')"
+            required
+          ></v-text-field>
+
+          <v-text-field
+            v-model="form.english_location"
+            :counter="100"
+            :label="$t ('english_location')"
+          ></v-text-field>
+
+          <v-text-field
+            v-model="form.region"
+            :counter="100"
+            :rules="nameRules"
+            :label="$t ('region')"
+            required
+          ></v-text-field>
+
+          <v-text-field
+            v-model="form.url"
+            :counter="200"
+            :rules="urlRules"
+            :label="$t ('link')"
+            required
+          ></v-text-field>
+
+          <v-datetime-picker
+            :label="$t ('start_at')"
+            locale="zh-tw"
+            v-model="form.start_at">
+          </v-datetime-picker>
+
+          <v-datetime-picker
+            :label="$t ('sign_start_at')"
+            locale="zh-tw"
+            v-model="form.sign_start_at">
+          </v-datetime-picker>
+
+          <v-datetime-picker
+            :label="$t ('sign_end_at')"
+            locale="zh-tw"
+            v-model="form.sign_end_at">
+          </v-datetime-picker>
+
+          <v-checkbox
+            v-model="form.iaaf"
+            :label="$t ('iaaf')"
+          ></v-checkbox>
+
+          <v-checkbox
+            v-model="form.aims"
+            :label="$t ('aims')"
+          ></v-checkbox>
+          
+          <v-checkbox
+            v-model="form.measured"
+            :label="$t ('measured')"
+          ></v-checkbox>
+
+          <v-checkbox
+            v-model="form.recordable"
+            :label="$t ('recordable')"
+          ></v-checkbox>
+
+          <v-btn
+            :disabled="!valid"
+            color="success"
+            @click="validate"
+          >
+            {{ $t ('submit') }}
+          </v-btn>
+        </v-form>
+      </v-tab-item>
+      <v-tab-item :value="`distances`">
+        <v-list three-line>
+          <v-list-tile
+            v-for="(distance, index) in distances"
+            @click="updateDistance (distance.id)"
+            :key="index">
+            <v-list-tile-content>
+              <v-list-tile-title v-html="distance.name"></v-list-tile-title>
+              <v-list-tile-sub-title v-html="distance.distance"></v-list-tile-sub-title>
+              <v-list-tile-title v-html="distance.cost"></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-tab-item>
+    </v-tabs-items>
+  </div>
 </template>
 
 <script>
@@ -124,6 +156,8 @@ export default {
     return {
       valid: false,
       id: null,
+      chosen_tab: 'detail',
+      distances: [],
       form: {
         name: '',
         english_name: '',
@@ -160,14 +194,13 @@ export default {
     this.runnersPlaza.getEvent (this.id).then (event => {
       this.form = event
     })
+    this.runnersPlaza.getDistances (this.id).then (distances => {
+      this.distances = distances
+    })
   },
   methods: {
     submit () {
-      let submitForm = {}
-      Object.assign (submitForm, this.form)
-      //TODO: Add distance handling
-      submitForm.distance = []
-      this.runnersPlaza.patchEvent (this.id, submitForm).then ((event) => {
+      this.runnersPlaza.patchEvent (this.id, this.form).then ((event) => {
         this.form = event
       })
     },
@@ -181,13 +214,19 @@ export default {
     },
     resetValidation () {
       this.$refs.form.resetValidation()
-    }
+    },
+    createDistance () {
+      this.$router.replace ('/events/' + this.id + '/distances/create')
+    },
+    updateDistance (id) {
+      this.$router.replace ('/events/' + this.id + '/distances/' + id + '/update')
+    },
   },
 }
 </script>
 
 <style>
-.profile {
-  background: inherit
+.events_update {
+  background: inherit;
 }
 </style>

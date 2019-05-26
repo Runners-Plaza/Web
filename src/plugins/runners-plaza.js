@@ -158,6 +158,21 @@ const RunnersPlaza = {
       async deleteEvent (id) {
         return await this.delete (`/events/${id}`)
       },
+      async getDistance (id) {
+        return await this.get (`/distances/${id}`)
+      },
+      async getDistances (id) {
+        return await this.get (`/events/${id}/distances`)
+      },
+      async postDistance (id, form) {
+        return await this.post (`/events/${id}/distances`, form)
+      },
+      async patchDistance (id, form) {
+        return await this.patch (`/distances/${id}`, form)
+      },
+      async deleteDistance (id) {
+        return await this.delete (`/distances/${id}`, form)
+      },
       async getNextOne (url) {
         url = pagination.appendPagingForNextOne (url)
         return await this.get (url)

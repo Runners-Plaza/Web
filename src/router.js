@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Login from './views/Login.vue'
 import Profile from './views/Profile.vue'
 import Users from './views/Users.vue'
 
@@ -13,8 +12,11 @@ import Runners from './views/runners/Index.vue'
 import RunnersDetail from './views/runners/Detail.vue'
 import Events from './views/events/Index.vue'
 import EventsDetail from './views/events/Detail.vue'
+import EventsDistanceDetail from './views/events/DistanceDetail.vue'
 import EventsCreate from './views/events/Create.vue'
 import EventsUpdate from './views/events/Update.vue'
+import DistanceCreate from './views/events/CreateDistance.vue'
+import DistanceUpdate from './views/events/UpdateDistance.vue'
 
 Vue.use (Router)
 
@@ -24,11 +26,6 @@ export default new Router ({
       path: '/',
       name: 'home',
       component: Home,
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login,
     },
     {
       path: '/users',
@@ -86,9 +83,24 @@ export default new Router ({
       component: EventsDetail,
     },
     {
+      path: '/events/:id/distances/:distanceId',
+      name: 'events_distance_detail',
+      component: EventsDistanceDetail,
+    },
+    {
       path: '/events/:id/update',
       name: 'events_update',
       component: EventsUpdate,
+    },
+    {
+      path: '/events/:id/distances/create',
+      name: 'distance_create',
+      component: DistanceCreate,
+    },
+    {
+      path: '/events/:id/distances/:distanceId/update',
+      name: 'distance_update',
+      component: DistanceUpdate,
     },
   ]
 })

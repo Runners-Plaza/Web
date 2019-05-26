@@ -106,8 +106,19 @@
           </v-list-tile>
         </v-list>
       </v-tab-item>
-      <v-tab-item :value="`distances`">
-        To be announced
+      <v-tab-item v-if="distances" :value="`distances`">
+        <v-list three-line>
+          <v-list-tile
+            v-for="(distance, index) in distances"
+            @click="distanceDetail (distance.id)"
+            :key="index">
+            <v-list-tile-content>
+              <v-list-tile-title v-html="distance.name"></v-list-tile-title>
+              <v-list-tile-sub-title v-html="distance.distance"></v-list-tile-sub-title>
+              <v-list-tile-title v-html="distance.cost"></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
       </v-tab-item>
       <v-tab-item :value="`records`">
       </v-tab-item>
@@ -122,16 +133,25 @@ export default {
     return {
       event: null,
       chosen_tab: 'detail',
+      id: null,
+      distances: null,
     }
   },
   created () {
+    this.id = this.$route.params.id
     this.getThisEvent ()
   },
   methods: {
     getThisEvent () {
-      this.runnersPlaza.getEvent(this.$route.params.id).then ((event) => {
+      this.runnersPlaza.getEvent(this.id).then ((event) => {
         this.event = event
       })
+      this.runnersPlaza.getDistances (this.id).then (distances => {
+        this.distances = distances
+      })
+    },
+    distanceDetail (id) {
+      this.$router.replace ('/events/' + this.id + '/distances/' + id)
     },
   },
 }
