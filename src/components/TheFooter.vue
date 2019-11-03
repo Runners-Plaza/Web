@@ -1,5 +1,5 @@
 <template>
-  <v-footer fixed app>
+  <v-footer fixed>
     <v-flex
       teal
       lighten-2

@@ -1,6 +1,6 @@
 <template>
   <v-toolbar color="teal" dark clipped-left app>
-    <v-toolbar-side-icon @click.stop="sidebar.show = !sidebar.show" />
+    <v-toolbar-side-icon @click.stop="transformSidebar ()" />
     <v-toolbar-title v-text="title" />
     <v-spacer />
     <v-toolbar-items>
@@ -116,6 +116,9 @@ export default {
     },
   },
   methods: {
+    transformSidebar () {
+      this.sidebar.mini = !this.sidebar.mini
+    },
     changeLanguage (language) {
       this.$i18n.locale = language.id
       this.$cookie.set ('language', language.id, '1')

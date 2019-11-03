@@ -17,7 +17,7 @@ const me = {
 }
 
 const sidebar = {
-  show: true,
+  mini: true,
 }
 
 const snackbar = {

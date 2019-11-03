@@ -4,7 +4,10 @@
     enable-resize-watcher
     fixed
     app
-    v-model="sidebar.show"
+    bottom
+    permanent="true"
+    :mini-variant.sync="sidebar.mini"
+     mini-variant-width="120"
   >
     <v-list>
       <div
@@ -48,12 +51,18 @@
         </v-list-tile>
       </div>
     </v-list>
+    <the-footer />
   </v-navigation-drawer>
 </template>
 
 <script>
+import TheFooter from './TheFooter'
+
 export default {
   name: "the-sidebar",
+  components: {
+    TheFooter,
+  },
   computed: {
     items () {
       let items = []
