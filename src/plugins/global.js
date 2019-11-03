@@ -67,12 +67,13 @@ const Global = {
         },
         async logout () {
           this.oauth.clearTokenData ()
-          this.me = {}
+          Object.assign (this.me, {})
           this.me.show = false
           this.me.can = {
             manage: false,
             attend: false,
           }
+          this.me.position = null
           this.backToLogin ()
         },
         hasPermission (manage = false) {

@@ -25,7 +25,7 @@
             v-for="(subItem, j) in item.subItems"
             :key="j"
             @click="clickOn (subItem)"
-            v-show="subItem.only === undefined || me.position === subItem.only"
+            v-show="show (subItem.only)"
            >
             <v-list-tile-action>
               <v-icon v-html="subItem.icon"></v-icon>
@@ -81,26 +81,28 @@ export default {
              name: "personal_score",
              icon: "directions_run",
              title: this.$t('personal_score'),
-             to: "",
+             to: "runner_records",
+             only: 'Member',
            },
            {
              name: "register_record",
              icon: "event_available",
-             title: this.$t('register_record'),
+             title: this.$t('runner.create_record'),
              to: "runner_register_record",
+             only: 'Member',
            },
            {
-             name: "runner-review",
+             name: "runner_review",
              icon: "directions_run",
              title: this.$t('review_runner'),
              to: "runners",
              only: 'Manager',
            },
            {
-             name: "record_review",
+             name: "records_review",
              icon: "event_available",
              title: this.$t('review_record'),
-             to: "",
+             to: "records_review",
              only: 'Manager',
            }
          ],
@@ -115,6 +117,18 @@ export default {
     },
   },
   methods: {
+    show (only) {
+      this.$set (this.me, 'can', this.me.can)
+      if (only === undefined) {
+        return true
+      } else if (this.me.show && this.me.can.manage === true) {
+        return true
+      } else if (this.me.show && this.me.can.attend === true) {
+        return only === 'Member'
+      } else {
+        return false
+      }
+    },
     clickOn (item) {
       if (item.name === "log out") {
         this.logout ().then (() => {
