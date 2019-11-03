@@ -1,6 +1,6 @@
 <template>
   <v-list v-if="runner">
-    <v-btn color="success"
+    <v-btn color="blue lighten-3"
        to="/runners"
        v-text="$t ('back_to.list')" />
     <v-list-tile>
@@ -47,7 +47,7 @@
     </v-list-tile>
     <div v-if="ableToReview">
       <v-btn
-        color="success"
+        color="blue lighten-3"
         @click="accept (runner)"
       >
         {{ $t ('accept') }}

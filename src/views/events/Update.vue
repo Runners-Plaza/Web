@@ -1,9 +1,9 @@
 <template>
   <div class="events_update">
-    <v-btn color="success"
+    <v-btn color="blue lighten-3"
        to="/events"
        v-text="$t ('back_to.list')" />
-    <v-btn color="success"
+    <v-btn color="blue lighten-3"
        @click="createDistance ()"
        v-text="$t ('distance.create')" />
     <v-tabs
@@ -124,7 +124,7 @@
 
           <v-btn
             :disabled="!valid"
-            color="success"
+            color="blue lighten-3"
             @click="validate"
           >
             {{ $t ('submit') }}

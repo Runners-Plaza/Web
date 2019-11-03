@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn color="success"
+    <v-btn color="blue lighten-3"
        to="/events/create"
        v-if="me.show && me.can.manage"
        v-text="$t ('contest.add')" />

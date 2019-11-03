@@ -13,7 +13,7 @@
       <div
         v-for="(item, i) in items"
         :key="i"
-        :class="{'teal--text': $route.name === item.to}"
+        :class="{'blue--text': $route.name === item.to}"
       >
         <v-list-group v-if="item.subItems" no-action>
           <v-list-tile slot="activator">

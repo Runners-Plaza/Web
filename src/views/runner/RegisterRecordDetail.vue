@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-btn color="success"
+    <v-btn color="blue lighten-3"
        to="/runner/register_record"
        v-text="$t ('back_to.list')" />
-    <v-btn color="success"
+    <v-btn color="blue lighten-3"
        @click="createRecord ()"
        v-text="$t ('runner.create_record')" />
     <detail />

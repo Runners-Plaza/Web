@@ -1,6 +1,6 @@
 <template>
   <v-list v-if="distance" class="distance-detail">
-    <v-btn color="success"
+    <v-btn color="blue lighten-3"
        @click="backToDetail ()"
        v-text="$t ('back_to.list')" />
     <v-list-tile>

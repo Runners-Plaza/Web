@@ -1,6 +1,6 @@
 <template>
   <div class="profile ma-3" v-if="record">
-    <v-btn color="success"
+    <v-btn color="blue lighten-3"
        to="/runner/records"
        v-text="$t ('back_to.list')" />
       <v-container fluid>
@@ -69,7 +69,7 @@
                   block
                   dark
                   :disabled="!valid"
-                  color="teal darken-1"
+                  color="blue lighten-3"
                   @click="validate"
                 >
                   {{ $t ('submit') }}

@@ -1,6 +1,6 @@
 <template>
   <div class="profile ma-3" v-show="record">
-    <v-btn color="success"
+    <v-btn color="blue lighten-3"
        to="/records/review"
        v-text="$t ('back_to.list')" />
     <v-container fluid>
@@ -65,7 +65,8 @@
                 ></v-text-field>
               </v-list-tile>
               <v-btn
-                color="success"
+                color="blue lighten-3"
+                dark
                 @click="accept ()"
               >
                 {{ $t ('accept') }}
@@ -73,6 +74,7 @@
 
               <v-btn
                 color="error"
+                dark
                 @click="reject ()"
               >
               {{ $t ('reject') }}
@@ -81,6 +83,7 @@
             <div v-else>
               <v-btn
                 color="error"
+                dark
                 @click="pending ()"
               >
               {{ $t ('re_review') }}

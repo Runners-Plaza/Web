@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar color="teal" dark clipped-left app>
+  <v-toolbar color="blue lighten-2" dark clipped-left app>
     <v-toolbar-side-icon @click.stop="transformSidebar ()" />
     <v-toolbar-title v-text="title" />
     <v-spacer />

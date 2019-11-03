@@ -5,6 +5,9 @@
     class="profile ma-3"
     lazy-validation
   >
+    <v-btn color="blue lighten-3"
+       to="/events"
+       v-text="$t ('back_to.list')" />
     <h3 align="center">{{ $t ('contest.add') }}</h3>
     <v-text-field
       v-model="form.name"
@@ -106,7 +109,7 @@
       block
       dark
       :disabled="!valid"
-      color="teal darken-1"
+      color="blue lighten-3"
       @click="validate"
     >
       {{ $t ('submit') }}

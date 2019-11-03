@@ -73,7 +73,7 @@
       block
       dark
       :disabled="!valid"
-      color="teal darken-1"
+      color="blue lighten-3"
       @click="validate"
     >
       {{ $t ('submit') }}
