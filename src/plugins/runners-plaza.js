@@ -111,7 +111,7 @@ const RunnersPlaza = {
         return await this.get (`/runners/${id}`)
       },
       async getNextPendingRunner () {
-        return await this.getNextOne ('/runners?status=pending')
+        return await this.getNextOne ('/runners?status=Pending')
       },
       async postRunner (form) {
         return await this.post ('/runner', form)
@@ -119,7 +119,7 @@ const RunnersPlaza = {
       async patchRunner (form) {
         return await this.patch ('/runner', form)
       },
-      async acceptRunner (id, reason = '') {
+      async acceptRunner (id) {
         return await this.patch (`/runners/${id}/status`, {
           status: 'Approved',
           reason: '',
@@ -128,10 +128,10 @@ const RunnersPlaza = {
       async rejectRunner (id, reason = null) {
         return await this.patch (`/runners/${id}/status`, {
           status: 'Rejected',
-          reason: '',
+          reason: reason,
         })
       },
-      async pendingRunner (id, reason = null) {
+      async pendingRunner (id) {
         return await this.patch (`/runners/${id}/status`, {
           status: 'Pending',
           reason: '',
@@ -171,7 +171,59 @@ const RunnersPlaza = {
         return await this.patch (`/distances/${id}`, form)
       },
       async deleteDistance (id) {
-        return await this.delete (`/distances/${id}`, form)
+        return await this.delete (`/distances/${id}`)
+      },
+      async postDistanceRecord (id, form) {
+        return await this.post (`/distances/${id}/records`, form)
+      },
+      async getRecords (status) {
+        if (status === null) {
+          return await this.get (`/records`)
+        } else {
+          return await this.get (`/records?status=${status}`)
+        }
+      },
+      async getMyRecords () {
+        return await this.get (`/runner/records`)
+      },
+      async getRecord (id) {
+        return await this.get (`/records/${id}`)
+      },
+      async getNextPendingRecord () {
+        return await this.getNextOne ('/records?status=Pending')
+      },
+      async patchRecord (id) {
+        return await this.patch (`/records/${id}`, form)
+      },
+      async deleteRecord (id) {
+        return await this.delete (`/records/${id}`, form)
+      },
+      async postRecordCertificate (id, form) {
+        return await this.post (`/records/${id}/certificate`, form)
+      },
+      async getRecordCertificate (id) {
+        return await this.get (`/records/${id}/certificate`)
+      },
+      async getRecordError (id) {
+        return await this.get (`/records/${id}/error`);
+      },
+      async acceptRecord (id) {
+        return await this.patch(`/records/${id}/status`, {
+          status: 'Approved',
+          reason: '',
+        })
+      },
+      async rejectRecord (id, reason = '') {
+        return await this.patch(`/records/${id}/status`, {
+          status: 'Rejected',
+          reason: reason,
+        })
+      },
+      async pendingRecord (id) {
+        return await this.patch(`/records/${id}/status`, {
+          status: 'Pending',
+          reason: '',
+        })
       },
       async getNextOne (url) {
         url = pagination.appendPagingForNextOne (url)

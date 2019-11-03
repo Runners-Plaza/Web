@@ -7,7 +7,7 @@
     <v-list-tile>
       <v-list-tile-content>
         <v-list-tile-title>{{ $t ('statistics.total_people_count') }}</v-list-tile-title>
-        <v-list-tile-sub-title>{{ statistics.people_count + $t ('person') }}</v-list-tile-sub-title>
+        <v-list-tile-sub-title>{{ statistics.people_count + $t ('people') }}</v-list-tile-sub-title>
       </v-list-tile-content>
     </v-list-tile>
     <v-list-tile>

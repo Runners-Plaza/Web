@@ -56,6 +56,8 @@ const titles = {
   events_update: 'contest.edit',
   distance_create: 'distance.create',
   distance_update: 'distance.update',
+  runner_records: 'runner.records',
+  record_update: 'runner.record',
 }
 
 export default {

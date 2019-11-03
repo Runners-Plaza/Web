@@ -135,6 +135,7 @@ export default {
       chosen_tab: 'detail',
       id: null,
       distances: null,
+      records: null,
     }
   },
   created () {

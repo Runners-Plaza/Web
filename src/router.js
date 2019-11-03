@@ -5,6 +5,7 @@ import Profile from './views/Profile.vue'
 import Users from './views/Users.vue'
 
 import Runner from './views/runner/Index.vue'
+import RunnerRecords from './views/runner/Records.vue'
 import RunnerRegisterRecordIndex from './views/runner/RegisterRecordIndex.vue'
 import RunnerRegisterRecordDetail from './views/runner/RegisterRecordDetail.vue'
 import RunnerRecordCreate from './views/runner/RegisterRecord.vue'
@@ -17,6 +18,9 @@ import EventsCreate from './views/events/Create.vue'
 import EventsUpdate from './views/events/Update.vue'
 import DistanceCreate from './views/events/CreateDistance.vue'
 import DistanceUpdate from './views/events/UpdateDistance.vue'
+import RecordUpdate from './views/record/Update.vue'
+import RecordReview from './views/record/Review.vue'
+import RecordReviewDetail from './views/record/ReviewDetail.vue'
 
 Vue.use (Router)
 
@@ -41,6 +45,11 @@ export default new Router ({
       path: '/runner',
       name: 'runner',
       component: Runner,
+    },
+    {
+      path: '/runner/records',
+      name: 'runner_records',
+      component: RunnerRecords,
     },
     {
       path: '/runner/register_record',
@@ -101,6 +110,21 @@ export default new Router ({
       path: '/events/:id/distances/:distanceId/update',
       name: 'distance_update',
       component: DistanceUpdate,
+    },
+    {
+      path: '/records/:id/update',
+      name: 'record_update',
+      component: RecordUpdate,
+    },
+    {
+      path: '/records/review',
+      name: 'records_review',
+      component: RecordReview,
+    },
+    {
+      path: '/records/:id/review',
+      name: 'records_review_detail',
+      component: RecordReviewDetail,
     },
   ]
 })
