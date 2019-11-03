@@ -4,22 +4,6 @@
        to="/events/create"
        v-if="me.show && me.can.manage"
        v-text="$t ('contest.add')" />
-    <v-container fluid>
-      <v-layout row wrap>
-	<v-flex xs12 sm6>
-          <v-text-field
-            flat
-            :label="$t ('name')"
-            prepend-inner-icon="search" />
-        </v-flex>
-	<v-flex xs12 sm6>
-          <v-text-field
-            flat
-            :label="$t ('organization')"
-            prepend-inner-icon="search" />
-        </v-flex>
-      </v-layout>
-    </v-container>
 
     <v-list three-line class="events">
       <template v-for="(event, index) in events">
