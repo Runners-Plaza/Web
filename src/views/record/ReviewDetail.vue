@@ -13,6 +13,12 @@
                 <v-list-tile-title v-text="$t (record.status)" />
               </v-list-tile-content>
             </v-list-tile>
+            <v-list-tile v-show="reason">
+              <v-list-tile-content>
+                <v-list-tile-sub-title v-text="$t ('reason')" />
+                <v-list-tile-title v-text="$t (reason)" />
+              </v-list-tile-content>
+            </v-list-tile>
             <v-list-tile>
               <v-list-tile-content>
                 <v-list-tile-sub-title v-text="$t ('contest_name')" />
@@ -21,7 +27,7 @@
             </v-list-tile>
             <v-list-tile>
               <v-list-tile-content>
-                <v-list-tile-sub-title v-text="$t ('distance.name')" />
+                <v-list-tile-sub-title v-text="$t ('distance.number')" />
                 <v-list-tile-title v-text="record.distance.name" />
               </v-list-tile-content>
             </v-list-tile>
@@ -44,14 +50,20 @@
               </v-list-tile-content>
             </v-list-tile>
             <v-list-tile>
-              <v-text-field
-                v-model="reason"
-                :rules="stringRules"
-                :label="$t ('reason')"
-                required
-              ></v-text-field>
+              <v-list-tile-content>
+                <v-list-tile-sub-title v-text="$t ('contest_chip_time')" />
+                <v-list-tile-title v-text="contest_chip_time" />
+              </v-list-tile-content>
             </v-list-tile>
             <div v-if="ableToReview">
+              <v-list-tile>
+                <v-text-field
+                  v-model="newReason"
+                  :rules="stringRules"
+                  :label="$t ('reason')"
+                  required
+                ></v-text-field>
+              </v-list-tile>
               <v-btn
                 color="success"
                 @click="accept ()"
@@ -105,6 +117,7 @@ export default {
       record: null,
       record_certificate: null,
       reason: '',
+      newReason: '',
       stringRules: [
         v => !!v || 'This field is required',
         v => (v && v.length <= 100) || 'Name must be less than 100 characters'
@@ -120,7 +133,13 @@ export default {
       let minutes = Math.floor ((this.record.time % 3600) / 60)
       let seconds = this.record.time % 60
       return hours + ':' + minutes + ':' + seconds
-    }
+    },
+    contest_chip_time () {
+      let hours = Math.floor (this.record.chip_time / 3600)
+      let minutes = Math.floor ((this.record.chip_time % 3600) / 60)
+      let seconds = this.record.chip_time % 60
+      return hours + ':' + minutes + ':' + seconds
+    },
   },
   mounted () {
     this.id = this.$route.params.id
@@ -151,7 +170,7 @@ export default {
       })
     },
     reject () {
-      this.runnersPlaza.rejectRecord (this.record.id, this.reason).then (() => {
+      this.runnersPlaza.rejectRecord (this.record.id, this.newReason).then (() => {
         this.record_certificate = null
         this.getNextRecord ()
       })

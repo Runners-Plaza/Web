@@ -6,9 +6,14 @@
     v-show="this.distances"
     lazy-validation
   >
-    <h3 align="center">{{ $t ('runner.create_record') }}</h3>
-    <h4 align="center">{{ event_name }}</h4>
-
+    <v-btn color="success"
+       :to="returnLink"
+       v-text="$t ('back_to.list')" />
+    <v-text-field
+      v-model="event_name"
+      :label="$t ('contest_name')"
+      readonly
+    ></v-text-field>
     <v-select
       :items="this.distances"
       item-text="name"
@@ -152,6 +157,11 @@ export default {
         v => !!v || 'This field is required',
       ],
     }
+  },
+  computed: {
+    returnLink () {
+      return '/runner/register_record/' + this.id
+    },
   },
   mounted () {
     if ( ! this.hasPermission (true)) {

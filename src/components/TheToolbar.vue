@@ -57,7 +57,10 @@ const titles = {
   distance_create: 'distance.create',
   distance_update: 'distance.update',
   runner_records: 'runner.records',
+  runner_record_create: 'runner.create_record',
   record_update: 'runner.record',
+  records_review: 'record.review',
+  records_review_detail: 'record.review',
 }
 
 export default {
