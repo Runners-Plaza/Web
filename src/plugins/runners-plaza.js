@@ -26,12 +26,22 @@ const requestMethods = {
 }
 
 function createClient (token = null) {
-  return axios.create ({
-    baseURL: process.env.VUE_APP_API_ENDPOINT_BASE,
-    headers: {
-      Authorization: `Bearer ${token}`
-    },
-  })
+  let params = null
+
+  if (token != null) {
+    params = {
+      baseURL: process.env.VUE_APP_API_ENDPOINT_BASE,
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    }
+  } else {
+    params = {
+      baseURL: process.env.VUE_APP_API_ENDPOINT_BASE,
+    }
+  }
+
+  return axios.create (params)
 }
 
 function assignCan (user) {
@@ -41,6 +51,7 @@ function assignCan (user) {
   }
   if (user.position === Position.Manager) {
     can.manage = true
+    can.attend = true
   }
   if (user.position === Position.Member) {
     can.attend = true
@@ -58,7 +69,11 @@ const RunnersPlaza = {
       queue: [],
       setTokenData (tokenData) {
         this.tokenData = tokenData
-        this.client = createClient (tokenData.accessToken)
+        if (tokenData == null) {
+          this.client = createClient (null)
+        } else {
+          this.client = createClient (tokenData.accessToken)
+        }
         for (let request of this.queue) {
           this.request (request.method, request.url, request.data).then (request.resolve)
           this.$route.replace ({name: ''})
@@ -86,6 +101,134 @@ const RunnersPlaza = {
         })
         return patchedUser
       },
+      async getRunner () {
+        return await this.get ('/runner')
+      },
+      async getRunners (status) {
+        return await this.get (`/runners?status=${status}`)
+      },
+      async getRunnerDetail (id) {
+        return await this.get (`/runners/${id}`)
+      },
+      async getNextPendingRunner () {
+        return await this.getNextOne ('/runners?status=Pending')
+      },
+      async postRunner (form) {
+        return await this.post ('/runner', form)
+      },
+      async patchRunner (form) {
+        return await this.patch ('/runner', form)
+      },
+      async acceptRunner (id) {
+        return await this.patch (`/runners/${id}/status`, {
+          status: 'Approved',
+          reason: '',
+        })
+      },
+      async rejectRunner (id, reason = null) {
+        return await this.patch (`/runners/${id}/status`, {
+          status: 'Rejected',
+          reason: reason,
+        })
+      },
+      async pendingRunner (id) {
+        return await this.patch (`/runners/${id}/status`, {
+          status: 'Pending',
+          reason: '',
+        })
+      },
+      async deleteRunner (form) {
+        return await this.delete ('/runner')
+      },
+      async getEvent (id) {
+        return await this.get (`/events/${id}`)
+      },
+      async getEvents () {
+        return await this.get ('/events')
+      },
+      async getRecordableEvents () {
+        return await this.get ('/events?recordable=1')
+      },
+      async postEvent (form) {
+        return await this.post ('/events', form)
+      },
+      async patchEvent (id, form) {
+        return await this.patch (`/events/${id}`, form)
+      },
+      async deleteEvent (id) {
+        return await this.delete (`/events/${id}`)
+      },
+      async getDistance (id) {
+        return await this.get (`/distances/${id}`)
+      },
+      async getDistances (id) {
+        return await this.get (`/events/${id}/distances`)
+      },
+      async postDistance (id, form) {
+        return await this.post (`/events/${id}/distances`, form)
+      },
+      async patchDistance (id, form) {
+        return await this.patch (`/distances/${id}`, form)
+      },
+      async deleteDistance (id) {
+        return await this.delete (`/distances/${id}`)
+      },
+      async postDistanceRecord (id, form) {
+        return await this.post (`/distances/${id}/records`, form)
+      },
+      async getRecords (status) {
+        if (status === null) {
+          return await this.get (`/records`)
+        } else {
+          return await this.get (`/records?status=${status}`)
+        }
+      },
+      async getMyRecords () {
+        return await this.get (`/runner/records`)
+      },
+      async getRecord (id) {
+        return await this.get (`/records/${id}`)
+      },
+      async getNextPendingRecord () {
+        return await this.getNextOne ('/records?status=Pending')
+      },
+      async patchRecord (id) {
+        return await this.patch (`/records/${id}`, form)
+      },
+      async deleteRecord (id) {
+        return await this.delete (`/records/${id}`, form)
+      },
+      async postRecordCertificate (id, form) {
+        return await this.post (`/records/${id}/certificate`, form)
+      },
+      async getRecordCertificate (id) {
+        return await this.get (`/records/${id}/certificate`)
+      },
+      async getRecordError (id) {
+        return await this.get (`/records/${id}/error`);
+      },
+      async acceptRecord (id) {
+        return await this.patch(`/records/${id}/status`, {
+          status: 'Approved',
+          reason: '',
+        })
+      },
+      async rejectRecord (id, reason = '') {
+        return await this.patch(`/records/${id}/status`, {
+          status: 'Rejected',
+          reason: reason,
+        })
+      },
+      async pendingRecord (id) {
+        return await this.patch(`/records/${id}/status`, {
+          status: 'Pending',
+          reason: '',
+        })
+      },
+      async getNextOne (url) {
+        url = pagination.appendPagingForNextOne (url)
+        return await this.get (url)
+      },
       async get (url) {
         let link = null
         let response = null
@@ -100,16 +243,20 @@ const RunnersPlaza = {
         return response.data
       },
       async post (url, data) {
-        return await this.request (requestMethods.post, url, data).data
+        let response = await this.request (requestMethods.post, url, data)
+        return response.data
       },
       async put (url, data) {
-        return await this.request (requestMethods.put, url, data).data
+        let response = await this.request (requestMethods.put, url, data)
+        return response.data
       },
       async patch (url, data) {
-        return await this.request (requestMethods.patch, url, data).data
+        let response = await this.request (requestMethods.patch, url, data)
+        return response.data
       },
       async delete (url) {
-        return await this.request (requestMethods.delete, url).data
+        let response = await this.request (requestMethods.delete, url)
+        return response.data
       },
       request (method, url, data = null) {
         return new Promise (async (resolve) => {
@@ -132,6 +279,7 @@ const RunnersPlaza = {
             } catch (error) {
               if (error.response && error.response.data.error_description) {
                 toast.error (error.response.data.error_description)
+                resolve (error.response)
               } else {
                 toast.error (i18n.t ('error.unknown'))
               }

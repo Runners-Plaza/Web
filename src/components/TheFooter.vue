@@ -1,7 +1,7 @@
 <template>
-  <v-footer fixed app>
+  <v-footer fixed>
     <v-flex
-      teal
+      blue
       lighten-2
       py-2
       text-xs-center
