@@ -3,8 +3,7 @@
     <v-tabs
       slider-color="blue"
       centered
-      v-model="chosen_tab"
-    >
+      v-model="chosen_tab">
       <v-tab :href="`#detail`">
         {{ $t ('contest.detail') }}
       </v-tab>
@@ -83,25 +82,25 @@
           <v-list-tile>
             <v-checkbox
               v-model="event.iaaf"
-              disabled
+              readonly
               :label="$t ('iaaf')"/>
           </v-list-tile>
           <v-list-tile>
             <v-checkbox
               v-model="event.aims"
-              disabled
+              readonly
               :label="$t ('aims')"/>
           </v-list-tile>
           <v-list-tile>
             <v-checkbox
               v-model="event.measured"
-              disabled
+              readonly
               :label="$t ('measured')"/>
           </v-list-tile>
           <v-list-tile>
             <v-checkbox
               v-model="event.recordable"
-              disabled
+              readonly
               :label="$t ('recordable')"/>
           </v-list-tile>
         </v-list>

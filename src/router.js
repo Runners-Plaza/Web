@@ -92,6 +92,11 @@ export default new Router ({
       component: EventsDetail,
     },
     {
+      path: '/events/:id/distances/create',
+      name: 'distance_create',
+      component: DistanceCreate,
+    },
+    {
       path: '/events/:id/distances/:distanceId',
       name: 'events_distance_detail',
       component: EventsDistanceDetail,
@@ -100,11 +105,6 @@ export default new Router ({
       path: '/events/:id/update',
       name: 'events_update',
       component: EventsUpdate,
-    },
-    {
-      path: '/events/:id/distances/create',
-      name: 'distance_create',
-      component: DistanceCreate,
     },
     {
       path: '/events/:id/distances/:distanceId/update',
