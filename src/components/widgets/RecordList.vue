@@ -1,49 +1,48 @@
 <template>
-  <v-list class="record-list">
-    <v-subheader>
-      {{ $t ('runners_list') }}
-    </v-subheader>
-    <v-container fluid>
-      <v-layout row wrap>
-	<v-flex xs12 sm6>
-          <v-text-field
-            flat
-            :label="$t ('name')"
-            prepend-inner-icon="search" />
-        </v-flex>
-	<v-flex xs12 sm6>
-          <v-text-field
-            flat
-            :label="$t ('organization')"
-            prepend-inner-icon="search" />
-        </v-flex>
-      </v-layout>
-      <v-layout row wrap>
-        <v-flex xs12 sm12>
-          <v-select :items="count_select_list" :label="$t ('complete_count')" />
-	</v-flex>
-      </v-layout>
-    </v-container>
-
-    <v-list-tile
-      v-for="(member, index) in members"
-      :key="index"
-      avatar>
-      <v-list-tile-avatar>
-        <img :src="member.avatar">
-      </v-list-tile-avatar>
+  <v-layout row wrap>
+    <v-subheader v-text="$t ('runners_list')" />
+  </v-layout>
+  <v-layout row wrap>
+	  <v-flex xs12 sm6>
+      <v-text-field
+        flat
+        :label="$t ('name')"
+        prepend-inner-icon="search" />
+    </v-flex>
+    <v-flex xs12 sm6>
+      <v-text-field
+        flat
+        :label="$t ('organization')"
+        prepend-inner-icon="search" />
+    </v-flex>
+  </v-layout>
+  <v-layout row wrap>
+    <v-flex xs12 sm12>
+      <v-select :items="count_select_list" :label="$t ('complete_count')" />
+    </v-flex>
+  </v-layout>
+  <v-layout column wrap>
+    <v-list>
+      <v-list-tile
+        v-for="(member, index) in members"
+        :key="index"
+        avatar>
+        <v-list-tile-avatar>
+          <img :src="member.avatar">
+        </v-list-tile-avatar>
 
         <v-list-tile-content>
           <v-list-tile-title> {{ member.complete_count + $t ('times') }}</v-list-tile-title>
-      </v-list-tile-content>
+        </v-list-tile-content>
 
-      <v-list-tile-content>
-        <v-list-tile-title @click="" v-html="member.name"></v-list-tile-title>
-        <v-list-tile-sub-title v-html="member.organization"></v-list-tile-sub-title>
-        <v-list-tile-sub-title>{{ member.category + $t ('group') }}</v-list-tile-sub-title>
-      </v-list-tile-content>
-    </v-list-tile>
-  </v-list>
+        <v-list-tile-content>
+          <v-list-tile-title @click="" v-html="member.name"></v-list-tile-title>
+          <v-list-tile-sub-title v-html="member.organization"></v-list-tile-sub-title>
+          <v-list-tile-sub-title>{{ member.category + $t ('group') }}</v-list-tile-sub-title>
+        </v-list-tile-content>
+      </v-list-tile>
+    </v-list>
+  </v-layout>
 </template>
 
 <script>
@@ -107,9 +106,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.record-list {
-  background: inherit
-}
-</style>

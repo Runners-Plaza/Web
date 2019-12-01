@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <v-container fluid>
     <v-btn color="blue lighten-3"
        to="/events"
        v-text="$t ('back_to.list')" />
     <detail />
-  </div>
+  </v-container>
 </template>
 
 <script>

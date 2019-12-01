@@ -53,6 +53,7 @@ const titles = {
   runners: 'runners_list',
   runner_detail: 'runner_information',
   runner_detail: 'runner_information',
+  events_create: 'contest.add',
   events_update: 'contest.edit',
   distance_create: 'distance.create',
   distance_update: 'distance.update',

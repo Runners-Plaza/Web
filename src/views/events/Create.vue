@@ -1,130 +1,131 @@
 <template>
-  <v-form
-    ref="form"
-    v-model="valid"
-    class="profile ma-3"
-    lazy-validation
-  >
+  <v-container fluid>
     <v-btn color="blue lighten-3"
        to="/events"
        v-text="$t ('back_to.list')" />
-    <h3 align="center">{{ $t ('contest.add') }}</h3>
-    <v-text-field
-      v-model="form.name"
-      :counter="100"
-      :rules="nameRules"
-      :label="$t ('contest_name')"
-      required
-    ></v-text-field>
+    <v-layout column wrap>
+      <v-form
+        ref="form"
+        v-model="valid"
+        lazy-validation
+      >
+        <v-text-field
+          v-model="form.name"
+          :counter="100"
+          :rules="nameRules"
+          :label="$t ('contest_name')"
+          required
+        ></v-text-field>
 
-    <v-text-field
-      v-model="form.english_name"
-      :counter="100"
-      :label="$t ('contest_english_name')"
-    ></v-text-field>
+        <v-text-field
+          v-model="form.english_name"
+          :counter="100"
+          :label="$t ('contest_english_name')"
+        ></v-text-field>
 
-    <v-text-field
-      v-model="form.organizer"
-      :counter="100"
-      :rules="nameRules"
-      :label="$t ('organizer')"
-      required
-    ></v-text-field>
+        <v-text-field
+          v-model="form.organizer"
+          :counter="100"
+          :rules="nameRules"
+          :label="$t ('organizer')"
+          required
+        ></v-text-field>
 
-    <v-text-field
-      v-model="form.english_organizer"
-      :counter="100"
-      :label="$t ('english_organizer')"
-    ></v-text-field>
+        <v-text-field
+          v-model="form.english_organizer"
+          :counter="100"
+          :label="$t ('english_organizer')"
+        ></v-text-field>
 
-    <v-text-field
-      v-model="form.location"
-      :counter="100"
-      :rules="nameRules"
-      :label="$t ('location')"
-      required
-    ></v-text-field>
+        <v-text-field
+          v-model="form.location"
+          :counter="100"
+          :rules="nameRules"
+          :label="$t ('location')"
+          required
+        ></v-text-field>
 
-    <v-text-field
-      v-model="form.english_location"
-      :counter="100"
-      :label="$t ('english_location')"
-    ></v-text-field>
+        <v-text-field
+          v-model="form.english_location"
+          :counter="100"
+          :label="$t ('english_location')"
+        ></v-text-field>
 
-    <v-text-field
-      v-model="form.region"
-      :counter="100"
-      :rules="nameRules"
-      :label="$t ('region')"
-      required
-    ></v-text-field>
+        <v-text-field
+          v-model="form.region"
+          :counter="100"
+          :rules="nameRules"
+          :label="$t ('region')"
+          required
+        ></v-text-field>
 
-    <v-text-field
-      v-model="form.url"
-      :counter="200"
-      :rules="urlRules"
-      :label="$t ('link')"
-      required
-    ></v-text-field>
+        <v-text-field
+          v-model="form.url"
+          :counter="200"
+          :rules="urlRules"
+          :label="$t ('link')"
+          required
+        ></v-text-field>
 
-    <v-datetime-picker
-      :label="$t ('start_at')"
-      locale="zh-tw"
-      v-model="form.start_at">
-    </v-datetime-picker>
+        <v-datetime-picker
+          :label="$t ('start_at')"
+          locale="zh-tw"
+          v-model="form.start_at">
+        </v-datetime-picker>
 
-    <v-datetime-picker
-      :label="$t ('sign_start_at')"
-      locale="zh-tw"
-      v-model="form.sign_start_at">
-    </v-datetime-picker>
+        <v-datetime-picker
+          :label="$t ('sign_start_at')"
+          locale="zh-tw"
+          v-model="form.sign_start_at">
+        </v-datetime-picker>
 
-    <v-datetime-picker
-      :label="$t ('sign_end_at')"
-      locale="zh-tw"
-      v-model="form.sign_end_at">
-    </v-datetime-picker>
+        <v-datetime-picker
+          :label="$t ('sign_end_at')"
+          locale="zh-tw"
+          v-model="form.sign_end_at">
+        </v-datetime-picker>
 
-    <v-checkbox
-      v-model="form.iaaf"
-      :label="$t ('iaaf')"
-    ></v-checkbox>
+        <v-checkbox
+          v-model="form.iaaf"
+          :label="$t ('iaaf')"
+        ></v-checkbox>
 
-    <v-checkbox
-      v-model="form.aims"
-      :label="$t ('aims')"
-    ></v-checkbox>
-    
-    <v-checkbox
-      v-model="form.measured"
-      :label="$t ('measured')"
-    ></v-checkbox>
+        <v-checkbox
+          v-model="form.aims"
+          :label="$t ('aims')"
+        ></v-checkbox>
+        
+        <v-checkbox
+          v-model="form.measured"
+          :label="$t ('measured')"
+        ></v-checkbox>
 
-    <v-checkbox
-      v-model="form.recordable"
-      :label="$t ('recordable')"
-    ></v-checkbox>
+        <v-checkbox
+          v-model="form.recordable"
+          :label="$t ('recordable')"
+        ></v-checkbox>
 
-    <v-btn
-      block
-      dark
-      :disabled="!valid"
-      color="blue lighten-3"
-      @click="validate"
-    >
-      {{ $t ('submit') }}
-    </v-btn>
+        <v-btn
+          block
+          dark
+          :disabled="!valid"
+          color="blue lighten-3"
+          @click="validate"
+        >
+          {{ $t ('submit') }}
+        </v-btn>
 
-    <v-btn
-      block
-      dark
-      color="error"
-      @click="reset"
-    >
-      {{ $t ('reset_form') }}
-    </v-btn>
-  </v-form>
-
+        <v-btn
+          block
+          dark
+          color="error"
+          @click="reset"
+        >
+          {{ $t ('reset_form') }}
+        </v-btn>
+      </v-form>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -198,9 +199,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.profile {
-  background: inherit
-}
-</style>

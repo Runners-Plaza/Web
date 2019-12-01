@@ -1,23 +1,23 @@
 <template>
-  <v-list class="latest-break-personal-best">
-    <v-subheader>
-      {{ $t ('latest_break_pb') }}
-    </v-subheader>
-    <v-list-tile
-      v-for="(member, index) in members"
-      :key="index"
-      avatar>
-      <v-list-tile-avatar>
-        <img :src="member.avatar">
-      </v-list-tile-avatar>
+  <v-layout column wrap>
+    <v-list>
+      <v-subheader v-text="$t ('latest_break_pb')" />
+      <v-list-tile
+        v-for="(member, index) in members"
+        :key="index"
+        avatar>
+        <v-list-tile-avatar>
+          <img :src="member.avatar">
+        </v-list-tile-avatar>
 
-      <v-list-tile-content>
-        <v-list-tile-title @click="" v-html="member.name"></v-list-tile-title>
-        <v-list-tile-sub-title v-html="member.time"></v-list-tile-sub-title>
-        <v-list-tile-title @click="">{{ member.contestName }}</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title @click="" v-html="member.name"></v-list-tile-title>
+          <v-list-tile-sub-title v-html="member.time"></v-list-tile-sub-title>
+          <v-list-tile-title @click="">{{ member.contestName }}</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
   </v-list>
+  </v-layout>
 </template>
 
 <script>
@@ -64,9 +64,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.latest-break-personal-best {
-  background: inherit
-}
-</style>

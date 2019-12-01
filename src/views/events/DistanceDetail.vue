@@ -1,39 +1,43 @@
 <template>
-  <v-list v-if="distance" class="distance-detail">
+  <v-container fluid>
     <v-btn color="blue lighten-3"
        @click="backToDetail ()"
        v-text="$t ('back_to.list')" />
-    <v-list-tile>
-      <v-list-tile-content>
-	<v-list-tile-sub-title v-text="$t ('distance.name')" />
-	<v-list-tile-title v-text="distance.name" />
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-	<v-list-tile-sub-title v-text="$t ('distance.number')" />
-	<v-list-tile-title v-text="distance.distance" />
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-	<v-list-tile-sub-title v-text="$t ('distance.cost')" />
-	<v-list-tile-title v-text="distance.cost" />
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-	<v-list-tile-sub-title v-text="$t ('distance.time_limit')" />
-	<v-list-tile-title v-text="distance.time_limit" />
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-	<v-list-tile-sub-title v-text="$t ('distance.runner_time_limit')" />
-	<v-list-tile-title v-text="distance.runner_time_limit" />
-      </v-list-tile-content>
-    </v-list-tile>
-  </v-list>
+    <v-layout column wrap>
+      <v-list v-if="distance" class="distance-detail">
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('distance.name')" />
+            <v-list-tile-title v-text="distance.name" />
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('distance.number')" />
+            <v-list-tile-title v-text="distance.distance" />
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('distance.cost')" />
+            <v-list-tile-title v-text="distance.cost" />
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('distance.time_limit')" />
+            <v-list-tile-title v-text="distance.time_limit" />
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('distance.runner_time_limit')" />
+            <v-list-tile-title v-text="distance.runner_time_limit" />
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -61,9 +65,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.distance-detail {
-  background: inherit
-}
-</style>

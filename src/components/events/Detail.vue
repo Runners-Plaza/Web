@@ -1,5 +1,5 @@
 <template>
-  <div class="event">
+  <v-layout column wrap>
     <v-tabs
       slider-color="blue"
       centered
@@ -122,7 +122,7 @@
       <v-tab-item :value="`records`">
       </v-tab-item>
     </v-tabs-items>
-  </div>
+  </v-layout>
 </template>
 
 <script>
@@ -156,9 +156,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.event {
-  background: inherit
-}
-</style>

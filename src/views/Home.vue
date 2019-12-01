@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-layout column align-center>
+    <v-layout column align-center wrap>
         <h6 class="title">{{ $t ('main_page_text') }}</h6>
     </v-layout>
     <v-layout row wrap>
@@ -15,12 +15,12 @@
       </v-flex>
     </v-layout>
     <v-layout row wrap>
-        <v-flex xs12 sm6 align-center>
-            <latest-registered-runners-list />
-        </v-flex>    
-        <v-flex xs12 sm6 align-center>
-            <runners-honor-roll />
-        </v-flex>    
+      <v-flex xs12 sm6 align-center>
+        <latest-registered-runners-list />
+      </v-flex>    
+      <v-flex xs12 sm6 align-center>
+        <runners-honor-roll />
+      </v-flex>    
     </v-layout>
   </v-container>
 </template>
