@@ -192,17 +192,17 @@ const RunnersPlaza = {
       async getNextPendingRecord () {
         return await this.getNextOne ('/records?status=Pending')
       },
-      async patchRecord (id) {
+      async patchRecord (id, form) {
         return await this.patch (`/records/${id}`, form)
       },
       async deleteRecord (id) {
-        return await this.delete (`/records/${id}`, form)
+        return await this.delete (`/records/${id}`)
       },
       async postRecordCertificate (id, form) {
         return await this.post (`/records/${id}/certificate`, form)
       },
       async getRecordCertificate (id) {
-        return await this.get (`/records/${id}/certificate`)
+        return await this.get (`/records/${id}/certificate`, false)
       },
       async getRecordError (id) {
         return await this.get (`/records/${id}/error`);
@@ -229,12 +229,12 @@ const RunnersPlaza = {
         url = pagination.appendPagingForNextOne (url)
         return await this.get (url)
       },
-      async get (url) {
+      async get (url, needToast = true) {
         let link = null
         let response = null
 
         url = pagination.appendPaging (url)
-        response = await this.request (requestMethods.get, url)
+        response = await this.request (requestMethods.get, url, null, needToast)
         link = parse (response.headers.link)
         if (link != null) {
           pagination.updateLastPage (link.last.page)
@@ -242,23 +242,23 @@ const RunnersPlaza = {
 
         return response.data
       },
-      async post (url, data) {
-        let response = await this.request (requestMethods.post, url, data)
+      async post (url, data, needToast = true) {
+        let response = await this.request (requestMethods.post, url, data, needToast)
         return response.data
       },
-      async put (url, data) {
-        let response = await this.request (requestMethods.put, url, data)
+      async put (url, data, needToast = true) {
+        let response = await this.request (requestMethods.put, url, data, needToast)
         return response.data
       },
-      async patch (url, data) {
-        let response = await this.request (requestMethods.patch, url, data)
+      async patch (url, data, needToast = true) {
+        let response = await this.request (requestMethods.patch, url, data, needToast)
         return response.data
       },
-      async delete (url) {
-        let response = await this.request (requestMethods.delete, url)
+      async delete (url, needToast) {
+        let response = await this.request (requestMethods.delete, url, null, needToast)
         return response.data
       },
-      request (method, url, data = null) {
+      request (method, url, data = null, needToast = true) {
         return new Promise (async (resolve) => {
           if (this.client) {
             if (toastMessages[method]) {
@@ -271,17 +271,21 @@ const RunnersPlaza = {
                 data,
               })
 
-              if (toastMessages[method]) {
+              if (toastMessages[method] && needToast) {
                 toast.success (i18n.t (toastMessages[method]))
               }
 
               resolve (response)
             } catch (error) {
               if (error.response && error.response.data.error_description) {
-                toast.error (error.response.data.error_description)
+                if (needToast) {
+                  toast.error (error.response.data.error_description)
+                }
                 resolve (error.response)
               } else {
-                toast.error (i18n.t ('error.unknown'))
+                if (needToast) {
+                  toast.error (i18n.t ('error.unknown'))
+                }
               }
             }
           } else {
