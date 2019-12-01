@@ -131,6 +131,7 @@ let zh_TW = {
   record: {
     review: '成績審查',
     update: '成績更新',
+    delete_confirm: '確認刪除成績?',
   },
   bib_number: '號碼布號碼',
   hours: '時數',
@@ -146,6 +147,7 @@ let zh_TW = {
   certificate_was_not_uploaded: '沒有上傳成績證明',
   certificate_checking: '成績證明載入中，請稍等',
   reason: '原因',
+  delete: '刪除',
 }
 
 export default zh_TW

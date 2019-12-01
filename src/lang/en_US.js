@@ -131,6 +131,7 @@ let en_US = {
   record: {
     review: 'Record Review',
     update: 'Record Update',
+    delete_confirm: 'Delete record?',
   },
   bib_number: 'Bib Number',
   hours: 'Hours',
@@ -146,6 +147,7 @@ let en_US = {
   certificate_was_not_uploaded: 'Certificate was not uploaded',
   certificate_checking: 'Certificate loading, please wait.',
   reason: 'Reason',
+  delete: 'Delete',
 }
 
 export default en_US
