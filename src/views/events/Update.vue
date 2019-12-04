@@ -18,6 +18,9 @@
         <v-tab :href="`#distances`">
           {{ $t ('contest.distances') }}
         </v-tab>
+        <v-tab :href="`#records`">
+          {{ $t ('contest.records') }}
+        </v-tab>
       </v-tabs>
       <v-tabs-items v-model="chosen_tab">
         <v-tab-item :value="`detail`">
@@ -144,6 +147,20 @@
             </v-list-tile>
           </v-list>
         </v-tab-item>
+        <v-tab-item :value="`records`">
+          <v-list three-line>
+            <v-list-tile
+              v-for="(record, index) in records"
+              @click="recordDetail (record.id)"
+              :key="index">
+              <v-list-tile-content>
+                <v-list-tile-title v-html="record.distance.name"></v-list-tile-title>
+                <v-list-tile-sub-title v-html="formattedTime (record.time)"></v-list-tile-sub-title>
+                <v-list-tile-title v-html="record.runner.name"></v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-tab-item>
       </v-tabs-items>
     </v-layout>
   </v-container>
@@ -157,7 +174,8 @@ export default {
       valid: false,
       id: null,
       chosen_tab: 'detail',
-      distances: [],
+      distances: null,
+      records: null,
       form: {
         name: '',
         english_name: '',
@@ -255,9 +273,12 @@ export default {
     this.id = this.$route.params.id
     this.runnersPlaza.getEvent (this.id).then (event => {
       this.form = event
-    })
-    this.runnersPlaza.getDistances (this.id).then (distances => {
-      this.distances = distances
+      this.runnersPlaza.getDistances (this.id).then (distances => {
+        this.distances = distances
+      })
+      this.runnersPlaza.getRecordsOfEvent (this.id).then (records => {
+        this.records = records
+      })
     })
   },
   methods: {
@@ -282,6 +303,15 @@ export default {
     },
     updateDistance (id) {
       this.$router.replace ('/events/' + this.id + '/distances/' + id + '/update')
+    },
+    recordDetail (id) {
+      this.$router.replace ('/events/' + this.id + '/records/' + id)
+    },
+    formattedTime (time) {
+      let hours = Math.floor (time / 3600)
+      let minutes = Math.floor ((time % 3600) / 60)
+      let seconds = time % 60
+      return hours + ':' + minutes + ':' + seconds
     },
   },
 }
