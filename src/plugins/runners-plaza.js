@@ -176,6 +176,9 @@ const RunnersPlaza = {
       async postDistanceRecord (id, form) {
         return await this.post (`/distances/${id}/records`, form)
       },
+      async getRecordsOfEvent (id) {
+        return await this.get (`/records?event_id=${id}`)
+      },
       async getRecords (status) {
         if (status === null) {
           return await this.get (`/records`)

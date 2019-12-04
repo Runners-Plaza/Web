@@ -31,13 +31,11 @@
 
         <v-text-field
           v-model="form.time_limit"
-          :counter="100"
           :label="$t ('distance.time_limit')"
         ></v-text-field>
 
         <v-text-field
-          v-model="form.runner_time_limit"
-          :counter="100"
+          v-model="form.runner_limit"
           :label="$t ('distance.runner_time_limit')"
           required
         ></v-text-field>
@@ -74,8 +72,8 @@ export default {
         name: '',
         distance: 0,
         cost: 0,
-        time_limit: '',
-        runner_time_limit: '',
+        time_limit: 0,
+        runner_limit: 0,
       },
       nameRules: [
         v => !!v || 'Name is required',
@@ -86,7 +84,7 @@ export default {
   created () {
     this.id = this.$route.params.id
     this.distanceId = this.$route.params.distanceId
-    this.runnersPlaza.getDistance(this.id).then ((distance) => {
+    this.runnersPlaza.getDistance(this.distanceId).then ((distance) => {
       this.form = distance
     })
   },

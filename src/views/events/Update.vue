@@ -69,13 +69,11 @@
               :label="$t ('english_location')"
             ></v-text-field>
 
-            <v-text-field
-              v-model="form.region"
-              :counter="100"
-              :rules="nameRules"
-              :label="$t ('region')"
-              required
-            ></v-text-field>
+            <v-select :items="levelLabels" item-text="text" item-value="level" v-model="form.level" />
+            <p>{{ $t ('level') }}</p>
+
+            <v-select :items="regionLabels" item-text="text" item-value="region" v-model="form.region" />
+            <p>{{ $t ('region') }}</p>
 
             <v-text-field
               v-model="form.url"
@@ -187,6 +185,68 @@ export default {
         v => (v && v.length <= 200) || 'Url must be less than 100 characters'
       ],
     }
+  },
+  computed: {
+    levelLabels () {
+      return [
+        {
+          level: 'Activity',
+          text: this.$t ('levels.activity'),
+        },
+        {
+          level: 'Relay',
+          text: this.$t ('levels.relay'),
+        },
+        {
+          level: 'Trilathon',
+          text: this.$t ('levels.trilathon'),
+        },
+        {
+          level: 'LessThanTen',
+          text: this.$t ('levels.less_than_ten'),
+        },
+        {
+          level: 'TenToHalf',
+          text: this.$t ('levels.ten_to_half'),
+        },
+        {
+          level: 'Half',
+          text: this.$t ('levels.half'),
+        },
+        {
+          level: 'Full',
+          text: this.$t ('levels.full'),
+        },
+        {
+          level: 'Ultra',
+          text: this.$t ('levels.ultra'),
+        },
+      ]
+    },
+    regionLabels () {
+      return [
+        {
+          region: 'Northern',
+          text: this.$t ('regions.northern'),
+        },
+        {
+          region: 'Central',
+          text: this.$t ('regions.central'),
+        },
+        {
+          region: 'Southern',
+          text: this.$t ('regions.southern'),
+        },
+        {
+          region: 'Eastern',
+          text: this.$t ('regions.eastern'),
+        },
+        {
+          region: 'Others',
+          text: this.$t ('regions.others'),
+        },
+      ]
+    },
   },
   created () {
     if ( ! this.hasPermission (true)) {

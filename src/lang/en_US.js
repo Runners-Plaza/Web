@@ -122,10 +122,10 @@ let en_US = {
     create: 'Add Distance',
     update: 'Update Distance',
     name: 'Distance Name',
-    number: 'Distance',
-    cost: 'Attend Fee',
-    time_limit: 'Time Limit',
-    runner_time_limit: 'Runner Time Limit',
+    number: 'Distance(Meter)',
+    cost: 'Attend Fee(NTD)',
+    time_limit: 'Time Limit(Minutes)',
+    runner_time_limit: 'Runner Time Limit(Minutes)',
     select: 'Select Distance',
   },
   record: {
@@ -148,6 +148,24 @@ let en_US = {
   certificate_checking: 'Certificate loading, please wait.',
   reason: 'Reason',
   delete: 'Delete',
+  levels: 'Level',
+  levels: {
+    activity: 'Activity',
+    relay: 'Relay',
+    trilathon: 'Trilathon',
+    less_than_ten: 'Less than ten',
+    ten_to_half: 'Ten to Half',
+    half: 'Half',
+    full: 'Full',
+    ultra: 'Ultra',
+  },
+  regions: {
+    northern: 'Northern',
+    central: 'Central',
+    southern: 'Southern',
+    eastern: 'Eastern',
+    others: 'Others',
+  },
 }
 
 export default en_US

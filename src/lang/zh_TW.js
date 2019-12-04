@@ -122,10 +122,10 @@ let zh_TW = {
     create: '新增距離',
     update: '更新距離',
     name: '距離名稱',
-    number: '距離',
-    cost: '報名費用',
-    time_limit: '時間限制',
-    runner_time_limit: '跑者時間限制',
+    number: '距離（公尺）',
+    cost: '報名費用（元）',
+    time_limit: '時間限制（分鐘）',
+    runner_time_limit: '跑者時間限制（分鐘）',
     select: '選擇距離',
   },
   record: {
@@ -148,6 +148,24 @@ let zh_TW = {
   certificate_checking: '成績證明載入中，請稍等',
   reason: '原因',
   delete: '刪除',
+  level: '類型',
+  levels: {
+    activity: '活動',
+    relay: '休閒',
+    trilathon: '鐵人三項',
+    less_than_ten: '十公里以下',
+    ten_to_half: '十公里～半馬',
+    half: '半馬',
+    full: '全馬',
+    ultra: '超馬',
+  },
+  regions: {
+    northern: '北部',
+    central: '中部',
+    southern: '南部',
+    eastern: '東部',
+    others: '其他',
+  },
 }
 
 export default zh_TW

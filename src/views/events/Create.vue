@@ -51,13 +51,11 @@
           :label="$t ('english_location')"
         ></v-text-field>
 
-        <v-text-field
-          v-model="form.region"
-          :counter="100"
-          :rules="nameRules"
-          :label="$t ('region')"
-          required
-        ></v-text-field>
+        <v-select :items="levelLabels" item-text="text" item-value="level" v-model="form.level" />
+        <p>{{ $t ('level') }}</p>
+
+        <v-select :items="regionLabels" item-text="text" item-value="region" v-model="form.region" />
+        <p>{{ $t ('region') }}</p>
 
         <v-text-field
           v-model="form.url"
@@ -105,6 +103,31 @@
           :label="$t ('recordable')"
         ></v-checkbox>
 
+        <v-text-field
+          v-model="distance_form.name"
+          :label="$t ('distance.name')"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="distance_form.distance"
+          :label="$t ('distance.number')"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="distance_form.cost"
+          :label="$t ('distance.cost')"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="distance_form.time_limit"
+          :label="$t ('distance.time_limit')"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="distance_form.runner_limit"
+          :label="$t ('distance.runner_time_limit')"
+        ></v-text-field>
+
         <v-btn
           block
           dark
@@ -141,8 +164,8 @@ export default {
         english_organizer: '',
         location: '',
         english_location: '',
-        level: '',
-        region: '',
+        level: 'Full',
+        region: 'Northern',
         url: '',
         start_at: null,
         sign_start_at: null,
@@ -151,6 +174,13 @@ export default {
         aims: false,
         measured: false,
         recordable: false,
+      },
+      distance_form: {
+        name: '',
+        distance: 0,
+        cost: 0,
+        time_limit: 0,
+        runner_limit: 0,
       },
       nameRules: [
         v => !!v || 'Name is required',
@@ -161,6 +191,68 @@ export default {
         v => (v && v.length <= 200) || 'Url must be less than 100 characters'
       ],
     }
+  },
+  computed: {
+    levelLabels () {
+      return [
+        {
+          level: 'Activity',
+          text: this.$t ('levels.activity'),
+        },
+        {
+          level: 'Relay',
+          text: this.$t ('levels.relay'),
+        },
+        {
+          level: 'Trilathon',
+          text: this.$t ('levels.trilathon'),
+        },
+        {
+          level: 'LessThanTen',
+          text: this.$t ('levels.less_than_ten'),
+        },
+        {
+          level: 'TenToHalf',
+          text: this.$t ('levels.ten_to_half'),
+        },
+        {
+          level: 'Half',
+          text: this.$t ('levels.half'),
+        },
+        {
+          level: 'Full',
+          text: this.$t ('levels.full'),
+        },
+        {
+          level: 'Ultra',
+          text: this.$t ('levels.ultra'),
+        },
+      ]
+    },
+    regionLabels () {
+      return [
+        {
+          region: 'Northern',
+          text: this.$t ('regions.northern'),
+        },
+        {
+          region: 'Central',
+          text: this.$t ('regions.central'),
+        },
+        {
+          region: 'Southern',
+          text: this.$t ('regions.southern'),
+        },
+        {
+          region: 'Eastern',
+          text: this.$t ('regions.eastern'),
+        },
+        {
+          region: 'Others',
+          text: this.$t ('regions.others'),
+        },
+      ]
+    },
   },
   mounted () {
     if ( ! this.hasPermission (true)) {
@@ -175,11 +267,16 @@ export default {
       submitForm.start_at = this.convertDate (submitForm.start_at)
       submitForm.sign_start_at = this.convertDate (submitForm.sign_start_at)
       submitForm.sign_end_at = this.convertDate (submitForm.sign_end_at)
-      //TODO: Add distance handling
       submitForm.distance = []
-      this.runnersPlaza.postEvent(submitForm).then ((event) => {
+      this.runnersPlaza.postEvent (submitForm).then ((event) => {
         if (event.id != undefined) {
-          this.$router.replace ({ name: 'events/' + id + '/update', })
+          if (this.distance_form.name !== '' && this.distance_form.cost !== null && this.distance_form.runner_time_limit !== '') {
+            this.runnersPlaza.postDistance (event.id, this.distance_form).then ((distance) => {
+              this.$router.replace ('/events/' + event.id + '/update')
+            })
+          } else {
+            this.$router.replace ('/events/' + event.id + '/update')
+          }
         }
       })
     },
