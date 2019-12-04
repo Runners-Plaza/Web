@@ -46,10 +46,8 @@ export default {
     this.updateEventList ()
   },
   methods: {
-    updateEventList () {
-      this.runnersPlaza.getEvents().then ((events) => {
-        this.events = events
-      })
+    async updateEventList () {
+      this.events = await this.runnersPlaza.getEvents ()
     },
     eventDetail (id) {
       if (this.hasPermission (true)) {

@@ -48,10 +48,8 @@ export default {
       let seconds = time % 60
       return hours + ':' + minutes + ':' + seconds
     },
-    updateRecordList () {
-      this.runnersPlaza.getMyRecords().then ((records) => {
-        this.records = records
-      })
+    async updateRecordList () {
+      this.records = await this.runnersPlaza.getMyRecords()
     },
     recordDetail (id) {
       if (this.hasPermission (true)) {

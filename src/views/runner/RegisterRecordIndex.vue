@@ -58,10 +58,8 @@ export default {
     this.updateEventList ()
   },
   methods: {
-    updateEventList () {
-      this.runnersPlaza.getRecordableEvents ().then ((events) => {
-        this.events = events
-      })
+    async updateEventList () {
+      this.events = await this.runnersPlaza.getRecordableEvents ()
     },
     registerRecord (id) {
       this.$router.replace ('/runner/register_record/' + id)
