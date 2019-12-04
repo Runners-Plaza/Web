@@ -5,7 +5,7 @@
     fixed
     app
     bottom
-    permanent="true"
+    permanent
     :mini-variant.sync="sidebar.mini"
     mini-variant-width="75"
   >
