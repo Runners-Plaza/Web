@@ -1,113 +1,111 @@
 <template>
-  <div class="profile ma-3" v-show="record">
+  <v-container fluid v-show="record">
     <v-btn color="blue lighten-3"
-       to="/records/review"
-       v-text="$t ('back_to.list')" />
-    <v-container fluid>
-      <v-layout row wrap>
-        <v-flex md12 lg4>
-          <v-list>
+     to="/records/review"
+     v-text="$t ('back_to.list')" />
+    <v-layout row wrap>
+      <v-flex md12 lg6>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('status')" />
+              <v-list-tile-title v-text="$t (record.status)" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile v-show="reason">
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('reason')" />
+              <v-list-tile-title v-text="$t (reason)" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('contest_name')" />
+              <v-list-tile-title v-text="record.event.name" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('distance.number')" />
+              <v-list-tile-title v-text="record.distance.name" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('bib_number')" />
+              <v-list-tile-title v-text="record.bib_number" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('group')" />
+              <v-list-tile-title v-text="record.group" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('contest_complete_time')" />
+              <v-list-tile-title v-text="contest_complete_time" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('contest_chip_time')" />
+              <v-list-tile-title v-text="contest_chip_time" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <div v-if="ableToReview">
             <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-sub-title v-text="$t ('status')" />
-                <v-list-tile-title v-text="$t (record.status)" />
-              </v-list-tile-content>
+              <v-text-field
+                v-model="newReason"
+                :rules="stringRules"
+                :label="$t ('reason')"
+                required
+              ></v-text-field>
             </v-list-tile>
-            <v-list-tile v-show="reason">
-              <v-list-tile-content>
-                <v-list-tile-sub-title v-text="$t ('reason')" />
-                <v-list-tile-title v-text="$t (reason)" />
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-sub-title v-text="$t ('contest_name')" />
-                <v-list-tile-title v-text="record.event.name" />
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-sub-title v-text="$t ('distance.number')" />
-                <v-list-tile-title v-text="record.distance.name" />
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-sub-title v-text="$t ('bib_number')" />
-                <v-list-tile-title v-text="record.bib_number" />
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-sub-title v-text="$t ('group')" />
-                <v-list-tile-title v-text="record.group" />
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-sub-title v-text="$t ('contest_complete_time')" />
-                <v-list-tile-title v-text="contest_complete_time" />
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-sub-title v-text="$t ('contest_chip_time')" />
-                <v-list-tile-title v-text="contest_chip_time" />
-              </v-list-tile-content>
-            </v-list-tile>
-            <div v-if="ableToReview">
-              <v-list-tile>
-                <v-text-field
-                  v-model="newReason"
-                  :rules="stringRules"
-                  :label="$t ('reason')"
-                  required
-                ></v-text-field>
-              </v-list-tile>
-              <v-btn
-                color="blue lighten-3"
-                dark
-                @click="accept ()"
-              >
-                {{ $t ('accept') }}
-              </v-btn>
+            <v-btn
+              color="blue lighten-3"
+              dark
+              @click="accept ()"
+            >
+              {{ $t ('accept') }}
+            </v-btn>
 
-              <v-btn
-                color="error"
-                dark
-                @click="reject ()"
-              >
-              {{ $t ('reject') }}
-              </v-btn>
-            </div>
-            <div v-else>
-              <v-btn
-                color="error"
-                dark
-                @click="pending ()"
-              >
-              {{ $t ('re_review') }}
-              </v-btn>
-            </div>
-          </v-list>
-        </v-flex>
-        <v-flex md12 lg8>
-          <h3 align="center" v-if="record_certificate === null">
-            {{ $t ('certificate_checking') }}
-          </h3>
-          <h3 align="center" v-else-if="record_certificate === false">
-            {{ $t ('certificate_was_not_uploaded') }}
-          </h3>
-          <v-img
-            v-else
-            ref="preview"
-            :src="record_certificate"
-            class="img"
-          ></v-img>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </div>
+            <v-btn
+              color="error"
+              dark
+              @click="reject ()"
+            >
+            {{ $t ('reject') }}
+            </v-btn>
+          </div>
+          <div v-else>
+            <v-btn
+              color="error"
+              dark
+              @click="pending ()"
+            >
+            {{ $t ('re_review') }}
+            </v-btn>
+          </div>
+        </v-list>
+      </v-flex>
+      <v-flex md12 lg6>
+        <h3 align="center" v-if="record_certificate === null">
+          {{ $t ('certificate_checking') }}
+        </h3>
+        <h3 align="center" v-else-if="record_certificate === false">
+          {{ $t ('certificate_was_not_uploaded') }}
+        </h3>
+        <v-img
+          v-else
+          ref="preview"
+          :src="record_certificate"
+          class="certificate-img"
+        ></v-img>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -196,13 +194,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.profile {
-  background: inherit
-}
-
-.img {
-  width: 100%;
-}
-</style>

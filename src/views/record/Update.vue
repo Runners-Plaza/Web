@@ -1,99 +1,106 @@
 <template>
-  <div class="profile ma-3" v-if="record">
+  <v-container fluid v-if="record">
     <v-btn color="blue lighten-3"
        to="/runner/records"
        v-text="$t ('back_to.list')" />
-      <v-container fluid>
-        <v-layout row wrap>
-          <v-flex md12 lg8>
-            <v-list>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-sub-title v-text="$t ('status')" />
-                  <v-list-tile-title v-text="$t (record.status)" />
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile v-show="record.status === 'Rejected'">
-                <v-list-tile-content>
-                  <v-list-tile-sub-title v-text="$t ('reason')" />
-                  <v-list-tile-title v-text="reason" />
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-sub-title v-text="$t ('contest_name')" />
-                  <v-list-tile-title v-text="record.event.name" />
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-sub-title v-text="$t ('distance.number')" />
-                  <v-list-tile-title v-text="record.distance.name" />
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-sub-title v-text="$t ('bib_number')" />
-                  <v-list-tile-title v-text="record.bib_number" />
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-sub-title v-text="$t ('group')" />
-                  <v-list-tile-title v-text="record.group" />
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-sub-title v-text="$t ('contest_complete_time')" />
-                  <v-list-tile-title v-text="contest_complete_time" />
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-form
-                v-if="record.status === 'Pending'"
-                ref="form"
-                v-model="valid"
-                lazy-validation
-              >
-                <v-list-tile>
-                  <v-list-tile-content>
-                    <v-list-tile-sub-title v-text="$t ('certificate')" />
-                    <input
-                      type="file"
-                      ref="upload"
-                      @change="handleFileUpload"
-                    />
-                  </v-list-tile-content>
-                </v-list-tile>
-                <v-btn
-                  block
-                  dark
-                  :disabled="!valid"
-                  color="blue lighten-3"
-                  @click="validate"
-                >
-                  {{ $t ('submit') }}
-                </v-btn>
-              </v-form>
-            </v-list>
-          </v-flex>
-          <v-flex md12 lg4>
-            <h3 align="center" v-if="record_certificate === null">
-              {{ $t ('certificate_checking') }}
-            </h3>
-            <h3 align="center" v-else-if="record_certificate === false">
-              {{ $t ('certificate_was_not_uploaded') }}
-            </h3>
-            <v-img
-              v-else
-              ref="preview"
-              :src="record_certificate"
-              class="img"
-            ></v-img>
-          </v-flex>
-        </v-layout>
-      </v-container>
-  </div>
+    <v-layout row wrap>
+      <v-flex md12 lg6>
+        <v-list light>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('status')" />
+              <v-list-tile-title v-text="$t (record.status)" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile v-show="record.status === 'Rejected'">
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('reason')" />
+              <v-list-tile-title v-text="reason" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('contest_name')" />
+              <v-list-tile-title v-text="record.event.name" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('distance.number')" />
+              <v-list-tile-title v-text="record.distance.name" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('bib_number')" />
+              <v-list-tile-title v-text="record.bib_number" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('group')" />
+              <v-list-tile-title v-text="record.group" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('contest_complete_time')" />
+              <v-list-tile-title v-text="contest_complete_time" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-form
+            v-show="record.status === 'Pending'"
+            ref="form"
+            v-model="valid"
+            lazy-validation
+          >
+            <v-list-tile v-show="record_certificate === false">
+              <v-list-tile-content>
+                <v-list-tile-sub-title v-text="$t ('certificate')" />
+                <input
+                  type="file"
+                  ref="upload"
+                  @change="handleFileUpload"
+                />
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-btn
+              v-show="record_certificate === false"
+              block
+              dark
+              :disabled="!valid"
+              color="blue lighten-3"
+              @click="validate"
+              v-text="$t ('submit')"
+            >
+              {{ $t ('submit') }}
+            </v-btn>
+          </v-form>
+          <v-btn
+            v-show="record.status !== 'Approved'"
+            color="error"
+            block
+            dark
+            @click="deleteRecord ()"
+            v-text="$t ('delete')" />
+        </v-list>
+      </v-flex>
+      <v-flex md12 lg6>
+        <h3 align="center" v-if="record_certificate === null">
+          {{ $t ('certificate_checking') }}
+        </h3>
+        <h3 align="center" v-else-if="record_certificate === false">
+          {{ $t ('certificate_was_not_uploaded') }}
+        </h3>
+        <v-img
+          v-else
+          ref="preview"
+          :src="record_certificate"
+          class="certificate-img"
+        ></v-img>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -142,11 +149,18 @@ export default {
       })
     },
     submit () {
-      let formData = new FormData();
-      formData.append('certificate', this.form.certificate);
+      let formData = new FormData()
+      formData.append('certificate', this.form.certificate)
       this.runnersPlaza.postRecordCertificate(this.id, formData).then ((record) => {
         this.loadRecord ()
       })
+    },
+    deleteRecord () {
+      if (confirm (this.$t ('record.delete_confirm'))) {
+        this.runnersPlaza.deleteRecord(this.id).then ((record) => {
+          this.$router.replace ('/runner/records')
+        })
+      }
     },
     validate () {
       if (this.$refs.form.validate()) {
@@ -162,13 +176,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.profile {
-  background: inherit
-}
-
-.img {
-  width: 100%;
-}
-</style>

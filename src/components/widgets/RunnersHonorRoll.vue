@@ -1,25 +1,27 @@
 <template>
-    <v-list class="runner-honor-roll">
-        <v-subheader>
-            {{ $t ('runners_honor_roll') }}
-        </v-subheader>
-        <v-list-tile v-for="(member, index) in members"
-                     :key="index"
-                     avatar>
-            <v-list-tile-avatar>
-                <img :src="member.avatar">
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-                <v-list-tile-title> {{ member.complete_count + $t ('times') }}</v-list-tile-title>
-            </v-list-tile-content>
-            <v-list-tile-content>
-                <v-list-tile-title @click="" v-html="member.name"></v-list-tile-title>
-                <v-list-tile-sub-title v-html="member.organization"></v-list-tile-sub-title>
-                <v-list-tile-sub-title>{{ member.category + $t ('group') }}</v-list-tile-sub-title>
-            </v-list-tile-content>
-        </v-list-tile>
+  <v-layout column wrap>
+    <v-list>
+      <v-subheader v-text="$t ('runners_honor_roll')" />
+      <v-list-tile
+        v-for="(member, index) in members"
+        :key="index"
+        avatar>
+        <v-list-tile-avatar>
+          <img :src="member.avatar">
+        </v-list-tile-avatar>
+        <v-list-tile-content>
+          <v-list-tile-title> {{ member.complete_count + $t ('times') }}</v-list-tile-title>
+        </v-list-tile-content>
+        <v-list-tile-content>
+          <v-list-tile-title @click="" v-html="member.name"></v-list-tile-title>
+          <v-list-tile-sub-title v-html="member.organization"></v-list-tile-sub-title>
+          <v-list-tile-sub-title>{{ member.category + $t ('group') }}</v-list-tile-sub-title>
+        </v-list-tile-content>
+      </v-list-tile>
     </v-list>
+  </v-layout>
 </template>
+
 <script>
   export default {
   name: "runners-honor-roll",
@@ -81,9 +83,3 @@
   },
 }
 </script>
-
-<style scoped>
-.runner-honor-roll {
-  background: inherit
-}
-</style>

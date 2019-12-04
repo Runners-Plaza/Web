@@ -1,34 +1,33 @@
 <template>
-  <v-list class="survey-statistics-list">
-    <v-subheader>
-      {{ $t ('statistics.index') }}
-    </v-subheader>
-
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-title>{{ $t ('statistics.total_people_count') }}</v-list-tile-title>
-        <v-list-tile-sub-title>{{ statistics.people_count + $t ('people') }}</v-list-tile-sub-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-title>{{ $t ('statistics.total_data_count') }}</v-list-tile-title>
-        <v-list-tile-sub-title>{{ statistics.data_count + $t ('records') }}</v-list-tile-sub-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-title>{{ $t ('statistics.average_complete_times') }}</v-list-tile-title>
-        <v-list-tile-sub-title>{{ statistics.average_complete_times + ' ' + $t ('times') }}</v-list-tile-sub-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-title>{{ $t ('statistics.total_contest_count') }}</v-list-tile-title>
-        <v-list-tile-sub-title>{{ statistics.contest_count + $t ('records') }}</v-list-tile-sub-title>
-      </v-list-tile-content>
-    </v-list-tile>
-  </v-list>
+  <v-layout column wrap>
+    <v-subheader v-text="$t ('statistics.index')" />
+    <v-list>
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title>{{ $t ('statistics.total_people_count') }}</v-list-tile-title>
+          <v-list-tile-sub-title>{{ statistics.people_count + $t ('people') }}</v-list-tile-sub-title>
+        </v-list-tile-content>
+      </v-list-tile>
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title>{{ $t ('statistics.total_data_count') }}</v-list-tile-title>
+          <v-list-tile-sub-title>{{ statistics.data_count + $t ('records') }}</v-list-tile-sub-title>
+        </v-list-tile-content>
+      </v-list-tile>
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title>{{ $t ('statistics.average_complete_times') }}</v-list-tile-title>
+          <v-list-tile-sub-title>{{ statistics.average_complete_times + ' ' + $t ('times') }}</v-list-tile-sub-title>
+        </v-list-tile-content>
+      </v-list-tile>
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title>{{ $t ('statistics.total_contest_count') }}</v-list-tile-title>
+          <v-list-tile-sub-title>{{ statistics.contest_count + $t ('records') }}</v-list-tile-sub-title>
+        </v-list-tile-content>
+      </v-list-tile>
+    </v-list>
+  </v-layout>
 </template>
 
 <script>
@@ -59,9 +58,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.survey-statistics-list {
-  background: inherit
-}
-</style>

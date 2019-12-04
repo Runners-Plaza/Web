@@ -5,9 +5,9 @@
     fixed
     app
     bottom
-    permanent="true"
+    permanent
     :mini-variant.sync="sidebar.mini"
-     mini-variant-width="120"
+    mini-variant-width="75"
   >
     <v-list>
       <div
@@ -15,7 +15,7 @@
         :key="i"
         :class="{'blue--text': $route.name === item.to}"
       >
-        <v-list-group v-if="item.subItems" no-action>
+        <v-list-group v-if="item.subItems" append-icon="">
           <v-list-tile slot="activator">
             <v-list-tile-action>
               <v-icon v-html="item.icon"></v-icon>
@@ -78,7 +78,7 @@ export default {
         to: "",
       },{
         name: "contest_list",
-        icon: "announcement",
+        icon: "list",
         title: this.$t ('contest.list'),
         to: "events",
       },{

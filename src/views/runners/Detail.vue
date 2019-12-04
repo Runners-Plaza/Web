@@ -1,74 +1,72 @@
 <template>
-  <v-list v-if="runner">
-    <v-btn color="blue lighten-3"
-       to="/runners"
-       v-text="$t ('back_to.list')" />
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-sub-title v-text="$t ('name')" />
-        <v-list-tile-title v-text="runner.name" />
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-sub-title v-text="$t ('status')" />
-        <v-list-tile-title v-text="$t (runner.status)" />
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-sub-title v-text="$t ('alternative_name')" />
-        <v-list-tile-title v-text="runner.alternative_name" />
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-sub-title v-text="$t ('english_name')" />
-        <v-list-tile-title v-text="runner.english_name" />
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-sub-title v-text="$t ('alternative_english_name')" />
-        <v-list-tile-title v-text="runner.alternative_english_name" />
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-sub-title v-text="$t ('organization')" />
-        <v-list-tile-title v-text="runner.organization" />
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-sub-title v-text="$t ('phone')" />
-        <v-list-tile-title v-text="runner.phone" />
-      </v-list-tile-content>
-    </v-list-tile>
-    <div v-if="ableToReview">
-      <v-btn
-        color="blue lighten-3"
-        @click="accept (runner)"
-      >
-        {{ $t ('accept') }}
-      </v-btn>
-
-      <v-btn
-        color="error"
-        @click="reject (runner)"
-      >
-      {{ $t ('reject') }}
-      </v-btn>
-    </div>
-    <div v-else>
-      <v-btn
-        color="error"
-        @click="pending (runner)"
-      >
-      {{ $t ('re_review') }}
-      </v-btn>
-    </div>
-  </v-list>
+  <v-container fluid v-show="runner">
+    <v-layout row wrap>
+      <v-btn color="blue lighten-3"
+         to="/runners"
+         v-text="$t ('back_to.list')" />
+      <div v-if="ableToReview">
+        <v-btn color="blue lighten-3"
+          @click="accept (runner)"
+          v-text="$t ('accept')" />
+        <v-btn
+          color="error"
+          @click="reject (runner)"
+          v-text="$t ('reject')" />
+      </div>
+      <div v-else>
+        <v-btn
+          color="error"
+          @click="pending (runner)"
+          v-text="$t ('re_review')" />
+      </div>
+    </v-layout>
+    <v-layout column wrap>
+      <v-list>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('name')" />
+            <v-list-tile-title v-text="runner.name" />
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('status')" />
+            <v-list-tile-title v-text="$t (runner.status)" />
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('alternative_name')" />
+            <v-list-tile-title v-text="runner.alternative_name" />
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('english_name')" />
+            <v-list-tile-title v-text="runner.english_name" />
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('alternative_english_name')" />
+            <v-list-tile-title v-text="runner.alternative_english_name" />
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('organization')" />
+            <v-list-tile-title v-text="runner.organization" />
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title v-text="$t ('phone')" />
+            <v-list-tile-title v-text="runner.phone" />
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -81,7 +79,7 @@ export default {
   },
   computed: {
     ableToReview () {
-      return this.runner.status == 'Pending'
+      return this.runner !== null && this.runner.status == 'Pending'
     },
   },
   created () {

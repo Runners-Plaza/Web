@@ -1,94 +1,95 @@
 <template>
-  <v-form
-    ref="form"
-    v-model="valid"
-    class="profile ma-3"
-    lazy-validation
-  >
-    <h3 align="center">{{ $t ('register_to_be_runner') }}</h3>
-    <v-text-field
-      v-model="form.name"
-      :counter="10"
-      :rules="nameRules"
-      :label="$t ('name')"
-      required
-    ></v-text-field>
-
-    <v-text-field
-      v-model="form.alternative_name"
-      :counter="10"
-      :label="$t ('alternative_name')"
-    ></v-text-field>
-
-    <v-text-field
-      v-model="form.english_name"
-      :counter="30"
-      :label="$t ('english_name')"
-    ></v-text-field>
-
-    <v-text-field
-      v-model="form.alternative_english_name"
-      :counter="30"
-      :label="$t ('alternative_english_name')"
-    ></v-text-field>
-
-    <v-menu
-      v-model="birthdayMenu"
-      :close-on-content-click="false"
-      :nudge-right="40"
-      lazy
-      transition="scale-transition"
-      offset-y
-      full-width
-      min-width="290px"
+  <v-layout column wrap>
+    <v-form
+      ref="form"
+      v-model="valid"
+      class="profile ma-3"
+      lazy-validation
     >
+      <h3 align="center">{{ $t ('register_to_be_runner') }}</h3>
       <v-text-field
-        slot="activator"
-        v-model="form.birthday"
-        :label="$t ('birthday')"
-        prepend-icon="event"
-        :rules="birthdayRules"
+        v-model="form.name"
+        :counter="10"
+        :rules="nameRules"
+        :label="$t ('name')"
         required
-        readonly
       ></v-text-field>
-      <v-date-picker v-model="form.birthday" @input="birthdayMenu = false" />
-    </v-menu>
 
-    <v-text-field
-      v-model="form.phone"
-      :rules="phoneRules"
-      :label="$t ('phone')"
-      required
-    ></v-text-field>
+      <v-text-field
+        v-model="form.alternative_name"
+        :counter="10"
+        :label="$t ('alternative_name')"
+      ></v-text-field>
 
-    <v-text-field
-      v-model="form.organization"
-      :rules="organizationRules"
-      :counter=50
-      :label="$t ('organization')"
-      required
-    ></v-text-field>
+      <v-text-field
+        v-model="form.english_name"
+        :counter="30"
+        :label="$t ('english_name')"
+      ></v-text-field>
 
-    <v-btn
-      block
-      dark
-      :disabled="!valid"
-      color="blue lighten-3"
-      @click="validate"
-    >
-      {{ $t ('submit') }}
-    </v-btn>
+      <v-text-field
+        v-model="form.alternative_english_name"
+        :counter="30"
+        :label="$t ('alternative_english_name')"
+      ></v-text-field>
 
-    <v-btn
-      block
-      dark
-      color="error"
-      @click="reset"
-    >
-      {{ $t ('reset_form') }}
-    </v-btn>
-  </v-form>
+      <v-menu
+        v-model="birthdayMenu"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        lazy
+        transition="scale-transition"
+        offset-y
+        full-width
+        min-width="290px"
+      >
+        <v-text-field
+          slot="activator"
+          v-model="form.birthday"
+          :label="$t ('birthday')"
+          prepend-icon="event"
+          :rules="birthdayRules"
+          required
+          readonly
+        ></v-text-field>
+        <v-date-picker v-model="form.birthday" @input="birthdayMenu = false" />
+      </v-menu>
 
+      <v-text-field
+        v-model="form.phone"
+        :rules="phoneRules"
+        :label="$t ('phone')"
+        required
+      ></v-text-field>
+
+      <v-text-field
+        v-model="form.organization"
+        :rules="organizationRules"
+        :counter=50
+        :label="$t ('organization')"
+        required
+      ></v-text-field>
+
+      <v-btn
+        block
+        dark
+        :disabled="!valid"
+        color="blue lighten-3"
+        @click="validate"
+      >
+        {{ $t ('submit') }}
+      </v-btn>
+
+      <v-btn
+        block
+        dark
+        color="error"
+        @click="reset"
+      >
+        {{ $t ('reset_form') }}
+      </v-btn>
+    </v-form>
+  </v-layout>
 </template>
 
 <script>
@@ -155,9 +156,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.profile {
-  background: inherit
-}
-</style>

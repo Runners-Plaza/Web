@@ -1,26 +1,28 @@
 <template>
-  <v-form v-model="valid" class="profile ma-3">
-    <v-text-field
-      v-model="name"
-      :label="$t ('name')"
-      required
-    ></v-text-field>
-    <v-text-field
-      v-model="email"
-      :rules="emailRules"
-      :label="$t ('email')"
-      required
-    ></v-text-field>
-    <v-btn
-      block
-      dark
-      :disabled="!valid"
-      color="blue lighten-3"
-      @click="updateProfile(name, email)"
-    >
-    {{ $t ('save') }}
-    </v-btn>
-  </v-form>
+  <v-container fluid>
+    <v-layout column wrap>
+      <v-form v-model="valid">
+        <v-text-field
+          v-model="name"
+          :label="$t ('name')"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="email"
+          :rules="emailRules"
+          :label="$t ('email')"
+          required
+        ></v-text-field>
+        <v-btn
+          block
+          dark
+          :disabled="!valid"
+          color="blue lighten-3"
+          @click="updateProfile(name, email)"
+          v-text="$t ('save')" />
+      </v-form>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -61,9 +63,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.profile {
-  background: inherit
-}
-</style>

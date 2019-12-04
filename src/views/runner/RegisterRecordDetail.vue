@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container fluid>
     <v-btn color="blue lighten-3"
        to="/runner/register_record"
        v-text="$t ('back_to.list')" />
@@ -7,7 +7,7 @@
        @click="createRecord ()"
        v-text="$t ('runner.create_record')" />
     <detail />
-  </div>
+  </v-container>
 </template>
 
 <script>

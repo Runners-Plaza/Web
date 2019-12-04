@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <v-container fluid>
     <runner-information v-if="registered === true" />
     <runner-register v-if="registered === false" />
-  </div>
+  </v-container>
 </template>
 
 <script>

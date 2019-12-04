@@ -1,13 +1,13 @@
 <template>
-  <v-footer fixed>
+  <v-footer
+    fixed
+    color="white"
+    height="64">
     <v-flex
-      blue
-      lighten-2
       py-2
       text-xs-center
-      white--text
       >
-      &copy; 2018 - {{title}}
+      &copy; 2019 - {{title}}
     </v-flex>
   </v-footer>
 </template>

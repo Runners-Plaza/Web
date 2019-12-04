@@ -56,7 +56,13 @@ export default {
 </script>
 
 <style>
-.selection {
-  background: inherit
+.theme--light.v-list {
+  background: #fafafa;
+}
+.theme--light.v-tabs__bar {
+  background: #fafafa;
+}
+.certificate-img {
+  width: 100%,
 }
 </style>
