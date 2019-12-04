@@ -14,6 +14,7 @@ import RunnersDetail from './views/runners/Detail.vue'
 import Events from './views/events/Index.vue'
 import EventsDetail from './views/events/Detail.vue'
 import EventsDistanceDetail from './views/events/DistanceDetail.vue'
+import EventsRecordDetail from './views/events/RecordDetail.vue'
 import EventsCreate from './views/events/Create.vue'
 import EventsUpdate from './views/events/Update.vue'
 import DistanceCreate from './views/events/CreateDistance.vue'
@@ -102,14 +103,19 @@ export default new Router ({
       component: EventsDistanceDetail,
     },
     {
-      path: '/events/:id/update',
-      name: 'events_update',
-      component: EventsUpdate,
-    },
-    {
       path: '/events/:id/distances/:distanceId/update',
       name: 'distance_update',
       component: DistanceUpdate,
+    },
+    {
+      path: '/events/:id/records/:recordId',
+      name: 'events_record_detail',
+      component: EventsRecordDetail,
+    },
+    {
+      path: '/events/:id/update',
+      name: 'events_update',
+      component: EventsUpdate,
     },
     {
       path: '/records/:id/update',
