@@ -162,7 +162,7 @@ const RunnersPlaza = {
         return await this.get (`/distances/${id}`)
       },
       async getDistances (id) {
-        return await this.get (`/events/${id}/distances`)
+        return await this.get (`/events/${id}/distances`, false)
       },
       async postDistance (id, form) {
         return await this.post (`/events/${id}/distances`, form)
@@ -177,7 +177,7 @@ const RunnersPlaza = {
         return await this.post (`/distances/${id}/records`, form)
       },
       async getRecordsOfEvent (id) {
-        return await this.get (`/records?event_id=${id}`)
+        return await this.get (`/records?event_id=${id}`, false)
       },
       async getRecords (status) {
         if (status === null) {
@@ -205,7 +205,7 @@ const RunnersPlaza = {
         return await this.post (`/records/${id}/certificate`, form)
       },
       async getRecordCertificate (id) {
-        return await this.get (`/records/${id}/certificate`, false)
+        return await this.get (`/records/${id}/certificate`, false, false)
       },
       async getRecordError (id) {
         return await this.get (`/records/${id}/error`);
@@ -232,15 +232,19 @@ const RunnersPlaza = {
         url = pagination.appendPagingForNextOne (url)
         return await this.get (url)
       },
-      async get (url, needToast = true) {
+      async get (url, paging = true, needToast = true) {
         let link = null
         let response = null
 
-        url = pagination.appendPaging (url)
-        response = await this.request (requestMethods.get, url, null, needToast)
-        link = parse (response.headers.link)
-        if (link != null) {
-          pagination.updateLastPage (link.last.page)
+        if (paging) {
+          url = pagination.appendPaging (url)
+          response = await this.request (requestMethods.get, url, null, needToast)
+          link = parse (response.headers.link)
+          if (link != null) {
+            pagination.updateLastPage (link.last.page)
+          }
+        } else {
+          response = await this.request (requestMethods.get, url, null, needToast)
         }
 
         return response.data
