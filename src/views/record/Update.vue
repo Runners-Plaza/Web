@@ -149,8 +149,8 @@ export default {
       })
     },
     submit () {
-      let formData = new FormData();
-      formData.append('certificate', this.form.certificate);
+      let formData = new FormData()
+      formData.append('certificate', this.form.certificate)
       this.runnersPlaza.postRecordCertificate(this.id, formData).then ((record) => {
         this.loadRecord ()
       })

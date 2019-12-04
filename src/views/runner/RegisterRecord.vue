@@ -99,6 +99,13 @@
           :label="$t ('remark')"
         ></v-text-field>
 
+        <v-list-tile-sub-title v-text="$t ('certificate')" />
+        <input
+          type="file"
+          ref="upload"
+          @change="handleFileUpload"
+        />
+
         <v-btn
           block
           dark
@@ -147,12 +154,14 @@ export default {
         group_rank: null,
         remark: '',
       },
+      certificate_form: {
+        certificate: null,
+      },
       stringRules: [
         v => !!v || 'This field is required',
         v => (v && v.length <= 100) || 'Name must be less than 100 characters'
       ],
       numberRules: [
-        v => !!v || 'This field is required',
         v => /^\d+$/.test(v) || 'This field should be filled in numbers'
       ],
       numberOptionRules: [
@@ -182,11 +191,21 @@ export default {
   },
   methods: {
     submit () {
+      let formData = null
+
       this.form.time = this.form.hours * 3600 + this.form.minutes * 60 + this.form.seconds * 1
       this.form.chip_time = this.form.chip_hours * 3600 + this.form.chip_minutes * 60 + this.form.chip_seconds * 1
       this.runnersPlaza.postDistanceRecord(this.form.distance_id, this.form).then ((record) => {
         if (record.id != undefined) {
-          this.$router.replace ('/records/' + record.id + '/update')
+          if (this.certificate_form.certificate !== null) {
+            formData = new FormData()
+            formData.append('certificate', this.certificate_form.certificate)
+            this.runnersPlaza.postRecordCertificate(record.id, formData).then (() => {
+              this.$router.replace ('/records/' + record.id + '/update')
+            })
+          } else {
+            this.$router.replace ('/records/' + record.id + '/update')
+          }
         }
       })
     },
@@ -202,7 +221,10 @@ export default {
     },
     resetValidation () {
       this.$refs.form.resetValidation()
-    }
+    },
+    handleFileUpload () {
+      this.certificate_form.certificate = this.$refs.upload.files[0]
+    },
   },
 }
 </script>
