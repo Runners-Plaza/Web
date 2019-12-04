@@ -1,5 +1,8 @@
 <template>
-  <v-footer fixed color="#fff">
+  <v-footer
+    fixed
+    color="white"
+    height="64">
     <v-flex
       py-2
       text-xs-center
