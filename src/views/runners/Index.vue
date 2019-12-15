@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
-    <v-layout row wrap>
-      <v-select :items="statusLabels" item-text="text" item-value="status" v-model="status" @input="getRunners()"/>
+    <v-layout row wrap v-show="hasPermission (true)">
+      <v-select :items="statusLabels" item-text="text" item-value="status" v-model="status" @input="getRunners ()"/>
     </v-layout>
     <v-layout column wrap>
       <v-list three-line>
@@ -17,7 +17,7 @@
             </v-list-tile-content>
           </v-list-tile>
         </template>
-        <the-pagination />
+        <the-pagination/>
       </v-list>
     </v-layout>
   </v-container>
@@ -61,6 +61,9 @@ export default {
     }
   },
   created () {
+    if (! this.hasPermission(true)) {
+      this.status = 'Approved'
+    }
     this.getRunners ()
   },
   methods: {

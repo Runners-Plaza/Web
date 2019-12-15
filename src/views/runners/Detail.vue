@@ -1,10 +1,10 @@
 <template>
-  <v-container fluid v-show="runner">
+  <v-container fluid>
     <v-layout row wrap>
       <v-btn color="blue lighten-3"
          to="/runners"
          v-text="$t ('back_to.list')" />
-      <div v-if="ableToReview">
+      <div v-if="ableToReview" v-show="hasPermission (true)">
         <v-btn color="blue lighten-3"
           @click="accept (runner)"
           v-text="$t ('accept')" />
@@ -13,68 +13,35 @@
           @click="reject (runner)"
           v-text="$t ('reject')" />
       </div>
-      <div v-else>
+      <div v-else v-show="hasPermission (true)">
         <v-btn
           color="error"
           @click="pending (runner)"
           v-text="$t ('re_review')" />
       </div>
     </v-layout>
-    <v-layout column wrap>
-      <v-list>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-sub-title v-text="$t ('name')" />
-            <v-list-tile-title v-text="runner.name" />
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-sub-title v-text="$t ('status')" />
-            <v-list-tile-title v-text="$t (runner.status)" />
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-sub-title v-text="$t ('alternative_name')" />
-            <v-list-tile-title v-text="runner.alternative_name" />
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-sub-title v-text="$t ('english_name')" />
-            <v-list-tile-title v-text="runner.english_name" />
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-sub-title v-text="$t ('alternative_english_name')" />
-            <v-list-tile-title v-text="runner.alternative_english_name" />
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-sub-title v-text="$t ('organization')" />
-            <v-list-tile-title v-text="runner.organization" />
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-sub-title v-text="$t ('phone')" />
-            <v-list-tile-title v-text="runner.phone" />
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-layout>
+    <runner-detail :id="id" />
   </v-container>
 </template>
 
 <script>
+import RunnerDetail from '../../components/runner/Detail.vue'
+
 export default {
-  name: 'RunnerDetail',
+  name: 'RunnersDetail',
+  components: {
+    RunnerDetail,
+  },
   data () {
     return {
-      runner: null
+      id: null,
+      runner: null,
+    }
+  },
+  created () {
+    this.id = this.$route.params.id
+    if (this.hasPermission (true)) {
+      this.getThisRunner ()
     }
   },
   computed: {
@@ -82,28 +49,25 @@ export default {
       return this.runner !== null && this.runner.status == 'Pending'
     },
   },
-  created () {
-    this.getThisRunner ()
-  },
   methods: {
-    getThisRunner () {
-      this.runnersPlaza.getRunnerDetail(this.$route.params.id).then ((runner) => {
-        this.runner = runner
-      })
-    },
     accept () {
-      this.runnersPlaza.acceptRunner (this.runner.id).then (() => {
+      this.runnersPlaza.acceptRunner (this.id).then (() => {
         this.getNextRunner ()
       })
     },
     reject () {
-      this.runnersPlaza.rejectRunner (this.runner.id).then (() => {
+      this.runnersPlaza.rejectRunner (this.id).then (() => {
         this.getNextRunner ()
       })
     },
     pending () {
-      this.runnersPlaza.pendingRunner (this.runner.id).then (() => {
+      this.runnersPlaza.pendingRunner (this.id).then (() => {
         this.getThisRunner ()
+      })
+    },
+    getThisRunner () {
+      this.runnersPlaza.getRunnerDetail(this.id).then ((runner) => {
+        this.runner = runner
       })
     },
     getNextRunner () {
@@ -111,7 +75,7 @@ export default {
         if (runner.length == 0) {
           this.$router.replace ({ name: 'runners' })
         } else {
-          this.runner = runner[0]
+          this.id = runner[0].id
         }
       })
     }
