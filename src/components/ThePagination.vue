@@ -10,6 +10,9 @@
 <script>
 export default {
   name: "the-pagination",
+  props: [
+    'refreshCounter',
+  ],
   inject: [
     'changePage',
   ],
@@ -37,6 +40,9 @@ export default {
   },
   watch: {
     currentPage () {
+      this.updatePage ()
+    },
+    refreshCounter () {
       this.updatePage ()
     },
   },
