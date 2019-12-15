@@ -21,7 +21,7 @@
               <v-list-tile-title v-text="runner.name" />
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile>
+          <v-list-tile v-if="hasPermission (true)">
             <v-list-tile-content>
               <v-list-tile-sub-title v-text="$t ('status')" />
               <v-list-tile-title v-text="$t (runner.status)" />
