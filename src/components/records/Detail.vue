@@ -1,5 +1,5 @@
 <template>
-  <v-layout row wrap>
+  <v-layout row wrap v-if="record">
     <v-flex md12 lg4>
       <v-list>
         <v-list-tile>
