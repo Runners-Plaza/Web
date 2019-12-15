@@ -114,6 +114,8 @@ let en_US = {
     records: 'My Records',
     register_record: 'Runner Record Register',
     create_record: 'Create Record',
+    detail: 'Runner Detail',
+    list: 'Runner List',
   },
   confirm: {
     reset_form: 'Confirm reset the form?',
