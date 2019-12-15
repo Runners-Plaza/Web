@@ -1,5 +1,5 @@
 <template>
-  <div class="text-xs-center">
+  <div class="text-xs-center" v-show="lastPage !== 0">
     <v-pagination
       v-model="currentPage"
       :length="lastPage"
