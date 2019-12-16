@@ -119,3 +119,9 @@ export default {
   },
 }
 </script>
+
+<style scpoed>
+th, td {
+  padding: 0 8px !important;
+}
+</style>
