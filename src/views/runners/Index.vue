@@ -56,14 +56,11 @@ export default {
   },
   data () {
     return {
-      status: 'Pending',
+      status: 'Approved',
       runners: null,
     }
   },
   created () {
-    if (! this.hasPermission(true)) {
-      this.status = 'Approved'
-    }
     this.getRunners ()
   },
   methods: {
