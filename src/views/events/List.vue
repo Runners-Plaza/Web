@@ -54,33 +54,43 @@ export default {
         },{
           text: this.translatedLabel ('organizer'),
           value: 'organizer',
+          sortable: false,
         },{
           text: this.translatedLabel ('location'),
           value: 'location',
+          sortable: false,
         },{
           text: this.translatedLabel ('region'),
           value: 'region',
+          sortable: false,
         },{
           text: this.translatedLabel ('start_at'),
           value: 'start_at',
+          sortable: false,
         },{
           text: this.translatedLabel ('sign_start_at'),
           value: 'sign_start_at',
+          sortable: false,
         },{
           text: this.translatedLabel ('sign_end_at'),
           value: 'sign_end_at',
+          sortable: false,
         },{
           text: this.translatedLabel ('iaaf'),
           value: 'iaaf',
+          sortable: false,
         },{
           text: this.translatedLabel ('aims'),
           value: 'aims',
+          sortable: false,
         },{
           text: this.translatedLabel ('measured'),
           value: 'measured',
+          sortable: false,
         },{
           text: this.translatedLabel ('recordable'),
           value: 'recordable',
+          sortable: false,
         },
       ],
       events: [],
