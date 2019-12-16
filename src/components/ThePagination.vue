@@ -1,5 +1,5 @@
 <template>
-  <div class="text-xs-center">
+  <div class="text-xs-center" v-show="lastPage !== 0">
     <v-pagination
       v-model="currentPage"
       :length="lastPage"
@@ -10,6 +10,9 @@
 <script>
 export default {
   name: "the-pagination",
+  props: [
+    'refreshCounter',
+  ],
   inject: [
     'changePage',
   ],
@@ -37,6 +40,9 @@ export default {
   },
   watch: {
     currentPage () {
+      this.updatePage ()
+    },
+    refreshCounter () {
       this.updatePage ()
     },
   },
