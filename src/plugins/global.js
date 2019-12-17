@@ -92,6 +92,9 @@ const Global = {
         convertDate (date) {
           return moment (date).format ('YYYY-MM-DD HH:mm:ss') + ' +08:00'
         },
+        convertFormattedDate (date) {
+          return moment(date.replace(/ [+-](0[0-9]|1[0-2]):00/, ''))
+        },
       },
     })
   }
