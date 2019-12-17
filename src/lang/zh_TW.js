@@ -114,6 +114,8 @@ let zh_TW = {
     records: '個人成績列表',
     update_record: '跑者成績紀錄更新',
     create_record: '成績登錄',
+    detail: '跑者詳細資料',
+    list: '跑者列表',
   },
   confirm: {
     reset_form: '確認重新填寫？',

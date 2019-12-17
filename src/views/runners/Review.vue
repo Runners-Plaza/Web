@@ -1,5 +1,8 @@
 <template>
   <v-container fluid>
+    <v-layout row wrap v-show="hasPermission (true)">
+      <v-select :items="statusLabels" item-text="text" item-value="status" v-model="status" @input="getRunners ()"/>
+    </v-layout>
     <v-layout column wrap>
       <v-list three-line>
         <template v-for="(runner, index) in runners">
@@ -24,9 +27,27 @@
 import ThePagination from '../../components/ThePagination'
 
 export default {
-  name: 'RunnerIndex',
+  name: 'RunnerReview',
   components: {
     ThePagination,
+  },
+  computed: {
+    statusLabels () {
+      return [
+        {
+          status: 'Pending',
+          text: this.$t ('Pending'),
+        },
+        {
+          status: 'Rejected',
+          text: this.$t ('Rejected'),
+        },
+        {
+          status: 'Approved',
+          text: this.$t ('Approved'),
+        },
+      ]
+    },
   },
   provide () {
     return {
@@ -35,6 +56,7 @@ export default {
   },
   data () {
     return {
+      status: 'Pending',
       runners: null,
     }
   },
@@ -43,10 +65,10 @@ export default {
   },
   methods: {
     async getRunners () {
-      this.runners = await this.runnersPlaza.getRunners('Approved')
+      this.runners = await this.runnersPlaza.getRunners(this.status)
     },
     runnerInfo (id) {
-      this.$router.replace ('runners/' + id)
+      this.$router.replace ('/runners/' + id + '/review')
     },
   },
 }

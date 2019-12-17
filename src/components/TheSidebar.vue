@@ -83,6 +83,11 @@ export default {
         title: this.$t ('contest.list'),
         to: "events",
       },{
+        name: "runner_list",
+        icon: "directions_run",
+        title: this.$t ('runner.list'),
+        to: "runners",
+      },{
         name: "marathon_survey",
         icon: "assignment",
         title: this.$t ('marathon_survey.index'),
@@ -105,7 +110,7 @@ export default {
              name: "runner_review",
              icon: "directions_run",
              title: this.$t('review_runner'),
-             to: "runners",
+             to: "runners_review",
              only: 'Manager',
            },
            {

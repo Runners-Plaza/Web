@@ -110,6 +110,9 @@ const RunnersPlaza = {
       async getRunnerDetail (id) {
         return await this.get (`/runners/${id}`)
       },
+      async getRecordsOfRunner (id) {
+        return await this.get (`/runners/${id}/records`)
+      },
       async getNextPendingRunner () {
         return await this.getNextOne ('/runners?status=Pending')
       },
