@@ -6,6 +6,7 @@
     app
     bottom
     permanent
+    touchless
     :mini-variant.sync="sidebar.mini"
     mini-variant-width="75"
   >
