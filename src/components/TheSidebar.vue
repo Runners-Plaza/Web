@@ -109,7 +109,7 @@ export default {
              name: "runner_review",
              icon: "directions_run",
              title: this.$t('review_runner'),
-             to: "runners",
+             to: "runners_review",
              only: 'Manager',
            },
            {
