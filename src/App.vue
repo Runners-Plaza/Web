@@ -62,6 +62,9 @@ export default {
 .theme--light.v-tabs__bar {
   background: #fafafa;
 }
+.theme--light.v-table {
+  background: #fafafa;
+}
 .certificate-img {
   width: 100%,
 }

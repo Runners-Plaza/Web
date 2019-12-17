@@ -15,6 +15,7 @@ import RunnerRecordDetail from './views/runners/RecordDetail.vue'
 import RunnersDetail from './views/runners/Detail.vue'
 import RunnersReviewDetail from './views/runners/ReviewDetail.vue'
 import Events from './views/events/Index.vue'
+import EventsList from './views/events/List.vue'
 import EventsDetail from './views/events/Detail.vue'
 import EventsDistanceDetail from './views/events/DistanceDetail.vue'
 import EventsRecordDetail from './views/events/RecordDetail.vue'
@@ -98,7 +99,7 @@ export default new Router ({
     {
       path: '/events',
       name: 'events',
-      component: Events,
+      component: EventsList,
     },
     {
       path: '/events/create',
