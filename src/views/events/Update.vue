@@ -287,7 +287,6 @@ export default {
   methods: {
     submit () {
       let submitForm = {}
-      console.log (this.form)
       Object.assign (submitForm, this.form)
 
       submitForm.start_at = this.convertDate (submitForm.start_at)
