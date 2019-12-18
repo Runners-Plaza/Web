@@ -273,6 +273,9 @@ export default {
     this.id = this.$route.params.id
     this.runnersPlaza.getEvent (this.id).then (event => {
       this.form = event
+      this.form.start_at = this.convertFormattedDate (this.form.start_at)
+      this.form.sign_start_at = this.convertFormattedDate (this.form.sign_start_at)
+      this.form.sign_end_at = this.convertFormattedDate (this.form.sign_end_at)
       this.runnersPlaza.getDistances (this.id).then (distances => {
         this.distances = distances
       })
@@ -283,8 +286,17 @@ export default {
   },
   methods: {
     submit () {
-      this.runnersPlaza.patchEvent (this.id, this.form).then ((event) => {
+      let submitForm = {}
+      Object.assign (submitForm, this.form)
+
+      submitForm.start_at = this.convertDate (submitForm.start_at)
+      submitForm.sign_start_at = this.convertDate (submitForm.sign_start_at)
+      submitForm.sign_end_at = this.convertDate (submitForm.sign_end_at)
+      this.runnersPlaza.patchEvent (this.id, submitForm).then ((event) => {
         this.form = event
+        this.form.start_at = this.convertFormattedDate (this.form.start_at)
+        this.form.sign_start_at = this.convertFormattedDate (this.form.sign_start_at)
+        this.form.sign_end_at = this.convertFormattedDate (this.form.sign_end_at)
       })
     },
     validate () {
