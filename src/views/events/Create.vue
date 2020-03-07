@@ -125,7 +125,7 @@
 
         <v-text-field
           v-model="distance_form.runner_limit"
-          :label="$t ('distance.runner_time_limit')"
+          :label="$t ('distance.runner_limit')"
         ></v-text-field>
 
         <v-btn
@@ -270,7 +270,7 @@ export default {
       submitForm.distance = []
       this.runnersPlaza.postEvent (submitForm).then ((event) => {
         if (event.id != undefined) {
-          if (this.distance_form.name !== '' && this.distance_form.cost !== null && this.distance_form.runner_time_limit !== '') {
+          if (this.distance_form.name !== '' && this.distance_form.cost !== null && this.distance_form.runner_limit !== '') {
             this.runnersPlaza.postDistance (event.id, this.distance_form).then ((distance) => {
               this.$router.replace ('/events/' + event.id + '/update')
             })
