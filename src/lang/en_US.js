@@ -127,7 +127,7 @@ let en_US = {
     number: 'Distance(Meter)',
     cost: 'Attend Fee(NTD)',
     time_limit: 'Time Limit(Minutes)',
-    runner_time_limit: 'Runner Time Limit(Minutes)',
+    runner_limit: 'Number of runners',
     select: 'Select Distance',
   },
   record: {

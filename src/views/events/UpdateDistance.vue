@@ -36,7 +36,7 @@
 
         <v-text-field
           v-model="form.runner_limit"
-          :label="$t ('distance.runner_time_limit')"
+          :label="$t ('distance.runner_limit')"
           required
         ></v-text-field>
 

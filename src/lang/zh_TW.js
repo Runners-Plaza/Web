@@ -127,7 +127,7 @@ let zh_TW = {
     number: '距離（公尺）',
     cost: '報名費用（元）',
     time_limit: '時間限制（分鐘）',
-    runner_time_limit: '跑者時間限制（分鐘）',
+    runner_limit: '跑者人數限制（人）',
     select: '選擇距離',
   },
   record: {
