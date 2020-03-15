@@ -129,6 +129,7 @@ let en_US = {
     time_limit: 'Time Limit(Minutes)',
     runner_limit: 'Number of runners',
     select: 'Select Distance',
+    list: 'Distance List',
   },
   record: {
     review: 'Record Review',
