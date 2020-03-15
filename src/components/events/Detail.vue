@@ -113,7 +113,7 @@
             :key="index">
             <v-list-tile-content>
               <v-list-tile-title v-html="distance.name"></v-list-tile-title>
-              <v-list-tile-sub-title v-html="distance.distance"></v-list-tile-sub-title>
+              <v-list-tile-sub-title v-html="distance.distance / 1000 + $t ('kilometer')"></v-list-tile-sub-title>
               <v-list-tile-title v-html="distance.cost"></v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>

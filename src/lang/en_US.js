@@ -124,7 +124,7 @@ let en_US = {
     create: 'Add Distance',
     update: 'Update Distance',
     name: 'Distance Name',
-    number: 'Distance(Meter)',
+    number: 'Distance(KM)',
     cost: 'Attend Fee(NTD)',
     time_limit: 'Time Limit(Minutes)',
     runner_limit: 'Number of runners',
@@ -168,6 +168,7 @@ let en_US = {
     eastern: 'Eastern',
     others: 'Others',
   },
+  kilometer: 'KM',
 }
 
 export default en_US

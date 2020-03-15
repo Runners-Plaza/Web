@@ -14,7 +14,7 @@
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-sub-title v-text="$t ('distance.number')" />
-            <v-list-tile-title v-text="distance.distance" />
+            <v-list-tile-title v-text="distance.distance / 1000 + $t ('kilometer')" />
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
