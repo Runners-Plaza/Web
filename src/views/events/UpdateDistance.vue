@@ -86,11 +86,14 @@ export default {
     this.distanceId = this.$route.params.distanceId
     this.runnersPlaza.getDistance(this.distanceId).then ((distance) => {
       this.form = distance
+      this.form.distance /= 1000
     })
   },
   methods: {
     submit () {
-      this.runnersPlaza.patchDistance(this.distanceId, this.form).then ((distance) => {
+      let submitForm = this.form
+      submitForm.distance = submitForm.distance * 1000
+      this.runnersPlaza.patchDistance(this.distanceId, submitForm).then ((distance) => {
         this.$router.replace ('/events/' + this.id + '/update')
       })
     },

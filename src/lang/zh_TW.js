@@ -124,7 +124,7 @@ let zh_TW = {
     create: '新增距離',
     update: '更新距離',
     name: '距離名稱',
-    number: '距離（公尺）',
+    number: '距離（公里）',
     cost: '報名費用（元）',
     time_limit: '時間限制（分鐘）',
     runner_limit: '跑者人數限制（人）',
@@ -169,6 +169,7 @@ let zh_TW = {
     eastern: '東部',
     others: '其他',
   },
+  kilometer: '公里',
 }
 
 export default zh_TW
