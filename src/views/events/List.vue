@@ -18,6 +18,11 @@
             <td>{{ props.item.start_at }}</td>
             <td>{{ props.item.sign_start_at }}</td>
             <td>{{ props.item.sign_end_at }}</td>
+            <td>
+              <div class="text-center">
+                <v-chip label v-for="distance in props.item.distances">{{ distance.name }}</v-chip>
+              </div>
+            </td>
             <td><v-icon v-show="props.item.iaaf">done</v-icon></td>
             <td><v-icon v-show="props.item.aims">done</v-icon></td>
             <td><v-icon v-show="props.item.measured">done</v-icon></td>
@@ -75,6 +80,11 @@ export default {
           text: this.translatedLabel ('sign_end_at'),
           value: 'sign_end_at',
           sortable: false,
+        },{
+          text: this.translatedLabel ('distance.list'),
+          value: 'distances',
+          sortable: false,
+          width: '300',
         },{
           text: this.translatedLabel ('iaaf'),
           value: 'iaaf',
