@@ -1,18 +1,18 @@
 <template>
   <v-layout column wrap>
-    <v-list>
+    <v-list v-show="members">
       <v-subheader v-text="$t ('latest_register_runner')" />
       <v-list-tile
         v-for="(member, index) in members"
         :key="index"
         avatar>
         <v-list-tile-avatar>
-          <img :src="member.avatar">
+          <v-icon>person</v-icon>
         </v-list-tile-avatar>
         <v-list-tile-content>
-          <v-list-tile-title @click="" v-html="member.name"></v-list-tile-title>
-          <v-list-tile-sub-title v-html="member.time"></v-list-tile-sub-title>
-          <v-list-tile-title @click="">{{ member.contestName }}</v-list-tile-title>
+          <v-list-tile-title @click="" v-html="member.name" />
+          <v-list-tile-sub-title v-html="member.created_at" />
+          <v-list-tile-sub-title v-html="member.organization" />
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
@@ -24,14 +24,7 @@
   name: "latest-registered-runners-list",
   data () {
     return {
-      members: [
-       {
-         name: 'Test',
-         time: '6:00:00',
-         contestName: 'Test3',
-         avatar: null,
-       },
-      ],
+      members: null,
     }
   },
   mounted () {
@@ -39,26 +32,7 @@
   },
   methods: {
     async updateList () {
-      this.members = [
-       {
-         name: 'Test',
-         time: '6:01:00',
-         contestName: 'Test3',
-         avatar: 'https://s.gravatar.com/avatar/aee110cd7bc08cbbbee5bf2a143f5a50?s=80',
-       },
-       {
-         name: 'Test',
-         time: '6:02:00',
-         contestName: 'Test3',
-         avatar: 'https://s.gravatar.com/avatar/aee110cd7bc08cbbbee5bf2a143f5a50?s=80',
-       },
-       {
-         name: 'Test',
-         time: '6:03:00',
-         contestName: 'Test3',
-         avatar: 'https://s.gravatar.com/avatar/aee110cd7bc08cbbbee5bf2a143f5a50?s=80',
-       },
-      ]
+      this.members = await this.runnersPlaza.getRunners ('approved')
     },
   },
 }
