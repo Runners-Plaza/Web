@@ -7,7 +7,6 @@ import Users from './views/Users.vue'
 import Runner from './views/runner/Index.vue'
 import RunnerRecords from './views/runner/Records.vue'
 import RunnerRegisterRecordIndex from './views/runner/RegisterRecordIndex.vue'
-import RunnerRegisterRecordDetail from './views/runner/RegisterRecordDetail.vue'
 import RunnerRecordCreate from './views/runner/RegisterRecord.vue'
 import Runners from './views/runners/Index.vue'
 import RunnersReview from './views/runners/Review.vue'
@@ -60,11 +59,6 @@ export default new Router ({
       path: '/runner/register_record',
       name: 'runner_register_record',
       component: RunnerRegisterRecordIndex,
-    },
-    {
-      path: '/runner/register_record/:id',
-      name: 'runner_register_record_detail',
-      component: RunnerRegisterRecordDetail,
     },
     {
       path: '/runner/register_record/:id/create',
