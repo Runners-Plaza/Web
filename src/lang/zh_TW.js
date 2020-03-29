@@ -81,7 +81,9 @@ let zh_TW = {
     add: '新增賽事',
     edit: '更新賽事資訊',
     distances: '距離列表',
-    records: '成績紀錄',
+    distance_detail: '賽事距離資訊',
+    records: '賽事成績',
+    link: '賽事連結',
   },
   start_at: '開賽時間',
   sign_start_at: '開放報名時間',
@@ -132,6 +134,7 @@ let zh_TW = {
     list: '距離列表',
   },
   record: {
+    detail: '成績詳細資訊',
     review: '成績審查',
     update: '成績更新',
     delete_confirm: '確認刪除成績?',
@@ -170,6 +173,7 @@ let zh_TW = {
     others: '其他',
   },
   kilometer: '公里',
+  none: '無',
 }
 
 export default zh_TW

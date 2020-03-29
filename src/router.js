@@ -15,9 +15,9 @@ import RunnerRecordDetail from './views/runners/RecordDetail.vue'
 import RunnersDetail from './views/runners/Detail.vue'
 import RunnersReviewDetail from './views/runners/ReviewDetail.vue'
 import Events from './views/events/Index.vue'
-import EventsList from './views/events/List.vue'
 import EventsDetail from './views/events/Detail.vue'
 import EventsDistanceDetail from './views/events/DistanceDetail.vue'
+import EventsRecords from './views/events/Records.vue'
 import EventsRecordDetail from './views/events/RecordDetail.vue'
 import EventsCreate from './views/events/Create.vue'
 import EventsUpdate from './views/events/Update.vue'
@@ -99,7 +99,7 @@ export default new Router ({
     {
       path: '/events',
       name: 'events',
-      component: EventsList,
+      component: Events,
     },
     {
       path: '/events/create',
@@ -125,6 +125,11 @@ export default new Router ({
       path: '/events/:id/distances/:distanceId/update',
       name: 'distance_update',
       component: DistanceUpdate,
+    },
+    {
+      path: '/events/:id/records',
+      name: 'events_records',
+      component: EventsRecords,
     },
     {
       path: '/events/:id/records/:recordId',

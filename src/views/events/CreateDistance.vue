@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-btn color="blue lighten-3"
-      :to="`/events/${id}/update`"
+      @click="backToDetail"
       v-text="$t ('back_to.previous_page')" />
     <v-layout column wrap>
       <v-form
@@ -87,11 +87,14 @@ export default {
     this.id = this.$route.params.id
   },
   methods: {
+    backToDetail () {
+      this.$router.replace ('/events/' + this.id)
+    },
     submit () {
       let submitForm = this.form
       submitForm.distance = submitForm.distance * 1000
       this.runnersPlaza.postDistance(this.id, submitForm).then ((distance) => {
-        this.$router.replace ('/events/' + this.id + '/update')
+        this.$router.replace ('/events/' + this.id)
       })
     },
     validate () {

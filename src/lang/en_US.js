@@ -81,7 +81,9 @@ let en_US = {
     add: 'Add Contest',
     edit: 'Update Contest',
     distances: 'Distances',
+    distance_detail: 'Event Distance Detail',
     records: 'Contest Records',
+    link: 'Contest Link',
   },
   start_at: 'Start At',
   sign_start_at: 'Sign Start At',
@@ -132,6 +134,7 @@ let en_US = {
     list: 'Distance List',
   },
   record: {
+    detail: 'Record Detail',
     review: 'Record Review',
     update: 'Record Update',
     delete_confirm: 'Delete record?',
@@ -170,6 +173,7 @@ let en_US = {
     others: 'Others',
   },
   kilometer: 'KM',
+  none: 'None',
 }
 
 export default en_US

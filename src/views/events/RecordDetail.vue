@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-btn color="blue lighten-3"
-       @click="backToDetail ()"
+       @click="backToList ()"
        v-text="$t ('back_to.list')" />
     <detail
       :id="recordId"
@@ -28,8 +28,8 @@ export default {
     this.id = this.$route.params.id
   },
   methods: {
-    backToDetail () {
-      this.$router.replace ('/events/' + this.id)
+    backToList () {
+      this.$router.replace ('/events/' + this.id + '/records')
     },
   },
 }

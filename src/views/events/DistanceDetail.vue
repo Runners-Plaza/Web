@@ -3,6 +3,10 @@
     <v-btn color="blue lighten-3"
        @click="backToDetail ()"
        v-text="$t ('back_to.list')" />
+    <v-btn color="blue lighten-3"
+       v-show="hasPermission (true)"
+       @click="updateDistance ()"
+       v-text="$t ('distance.update')" />
     <v-layout column wrap>
       <v-list v-if="distance" class="distance-detail">
         <v-list-tile>
@@ -61,6 +65,9 @@ export default {
   methods: {
     backToDetail () {
       this.$router.replace ('/events/' + this.id)
+    },
+    updateDistance () {
+      this.$router.replace ('/events/' + this.id + '/distances/' + this.distanceId + '/update')
     },
   },
 }
