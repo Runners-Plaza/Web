@@ -94,7 +94,7 @@ export default {
       let submitForm = this.form
       submitForm.distance = submitForm.distance * 1000
       this.runnersPlaza.patchDistance(this.distanceId, submitForm).then ((distance) => {
-        this.$router.replace ('/events/' + this.id + '/update')
+        this.$router.replace ('/events/' + this.id + '/distances/' + this.distanceId)
       })
     },
     validate () {

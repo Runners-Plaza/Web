@@ -7,7 +7,6 @@ import Users from './views/Users.vue'
 import Runner from './views/runner/Index.vue'
 import RunnerRecords from './views/runner/Records.vue'
 import RunnerRegisterRecordIndex from './views/runner/RegisterRecordIndex.vue'
-import RunnerRegisterRecordDetail from './views/runner/RegisterRecordDetail.vue'
 import RunnerRecordCreate from './views/runner/RegisterRecord.vue'
 import Runners from './views/runners/Index.vue'
 import RunnersReview from './views/runners/Review.vue'
@@ -15,9 +14,9 @@ import RunnerRecordDetail from './views/runners/RecordDetail.vue'
 import RunnersDetail from './views/runners/Detail.vue'
 import RunnersReviewDetail from './views/runners/ReviewDetail.vue'
 import Events from './views/events/Index.vue'
-import EventsList from './views/events/List.vue'
 import EventsDetail from './views/events/Detail.vue'
 import EventsDistanceDetail from './views/events/DistanceDetail.vue'
+import EventsRecords from './views/events/Records.vue'
 import EventsRecordDetail from './views/events/RecordDetail.vue'
 import EventsCreate from './views/events/Create.vue'
 import EventsUpdate from './views/events/Update.vue'
@@ -62,11 +61,6 @@ export default new Router ({
       component: RunnerRegisterRecordIndex,
     },
     {
-      path: '/runner/register_record/:id',
-      name: 'runner_register_record_detail',
-      component: RunnerRegisterRecordDetail,
-    },
-    {
       path: '/runner/register_record/:id/create',
       name: 'runner_record_create',
       component: RunnerRecordCreate,
@@ -99,7 +93,7 @@ export default new Router ({
     {
       path: '/events',
       name: 'events',
-      component: EventsList,
+      component: Events,
     },
     {
       path: '/events/create',
@@ -125,6 +119,11 @@ export default new Router ({
       path: '/events/:id/distances/:distanceId/update',
       name: 'distance_update',
       component: DistanceUpdate,
+    },
+    {
+      path: '/events/:id/records',
+      name: 'events_records',
+      component: EventsRecords,
     },
     {
       path: '/events/:id/records/:recordId',

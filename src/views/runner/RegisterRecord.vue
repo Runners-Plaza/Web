@@ -1,22 +1,22 @@
 <template>
   <v-container fluid>
     <v-btn color="blue lighten-3"
-       :to="returnLink"
+       @click="backToList ()"
        v-text="$t ('back_to.list')" />
     <v-layout column wrap>
       <v-form
         ref="form"
         v-model="valid"
-        v-show="this.distances"
+        v-if="event"
         lazy-validation
       >
         <v-text-field
-          v-model="event_name"
+          v-model="event.name"
           :label="$t ('contest_name')"
           readonly
         ></v-text-field>
         <v-select
-          :items="this.distances"
+          :items="event.distances"
           item-text="name"
           item-value="id"
           :label="$t ('distance.select')"
@@ -136,8 +136,7 @@ export default {
     return {
       valid: false,
       id: null,
-      distances: null,
-      event_name: '',
+      event: null,
       form: {
         distance_id: 0,
         bib_number: '',
@@ -172,24 +171,20 @@ export default {
       ],
     }
   },
-  computed: {
-    returnLink () {
-      return '/runner/register_record/' + this.id
-    },
-  },
   mounted () {
-    if ( ! this.hasPermission (true)) {
-//      this.$router.replace ({ name: 'run', })
-    }
     this.id = this.$route.params.id
-    this.runnersPlaza.getDistances (this.id).then ((distances) => {
-      this.distances = distances
-    })
-    this.runnersPlaza.getEvent (this.id).then ((event) => {
-      this.event_name = event.name
-    })
+    if ( ! this.hasPermission (true)) {
+      this.$router.replace ('/events/' + this.id)
+    }
+    this.getEventDetail ()
   },
   methods: {
+    backToList () {
+      this.$router.replace ('/runner/register_record')
+    },
+    async getEventDetail () {
+      this.event = await this.runnersPlaza.getEvent (this.id)
+    },
     submit () {
       let formData = null
 
