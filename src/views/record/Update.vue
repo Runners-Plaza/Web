@@ -48,6 +48,20 @@
               <v-list-tile-title v-text="contest_complete_time" />
             </v-list-tile-content>
           </v-list-tile>
+          <div v-if="hasPermission(false)">
+            <v-list-tile>
+              <v-list-tile-content>
+                <v-list-tile-sub-title v-text="$t ('created_at')" />
+                <v-list-tile-title v-text="record.created_at" />
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-content>
+                <v-list-tile-sub-title v-text="$t ('updated_at')" />
+                <v-list-tile-title v-text="record.updated_at" />
+              </v-list-tile-content>
+            </v-list-tile>
+          </div>
           <v-form
             v-show="record.status === 'Pending'"
             ref="form"

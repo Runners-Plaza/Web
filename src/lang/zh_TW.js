@@ -19,6 +19,10 @@ let zh_TW = {
   logout: {
     success: '登出成功',
   },
+  created_at: '建立時間',
+  updated_at: '更新時間',
+  created_by: '建立者',
+  updated_by: '更新者',
   changed: '已變更',
   created: '已建立',
   updated: '已更新',

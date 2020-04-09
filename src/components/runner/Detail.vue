@@ -57,6 +57,20 @@
               <v-list-tile-title v-text="runner.phone" />
             </v-list-tile-content>
           </v-list-tile>
+          <div v-if="hasPermission(true)">
+            <v-list-tile>
+              <v-list-tile-content>
+                <v-list-tile-sub-title v-text="$t ('created_at')" />
+                <v-list-tile-title v-text="runner.created_at" />
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-content>
+                <v-list-tile-sub-title v-text="$t ('updated_at')" />
+                <v-list-tile-title v-text="runner.updated_at" />
+              </v-list-tile-content>
+            </v-list-tile>
+          </div>
         </v-list>
       </v-tab-item>
       <v-tab-item :value="`records`">

@@ -52,7 +52,7 @@ export default {
       this.records = await this.runnersPlaza.getMyRecords()
     },
     recordDetail (id) {
-      if (this.hasPermission (true)) {
+      if (this.hasPermission (false)) {
         this.$router.replace ('/records/' + id + '/update')
       } else {
         this.$router.replace ('/records/' + id)
