@@ -71,6 +71,11 @@ export default new Router ({
       component: RunnerRecordDetail,
     },
     {
+      path: '/runners/review',
+      name: 'runners_review',
+      component: RunnersReview,
+    },
+    {
       path: '/runners/:id',
       name: 'runners_detail',
       component: RunnersDetail,
@@ -84,11 +89,6 @@ export default new Router ({
       path: '/runners',
       name: 'runners',
       component: Runners,
-    },
-    {
-      path: '/runners/review',
-      name: 'runners_review',
-      component: RunnersReview,
     },
     {
       path: '/events',

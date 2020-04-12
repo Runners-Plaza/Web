@@ -39,6 +39,20 @@
             <v-list-tile-title v-text="distance.runner_limit" />
           </v-list-tile-content>
         </v-list-tile>
+        <div v-if="hasPermission(true)">
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('created_at')" />
+              <v-list-tile-title v-text="distance.created_at" />
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title v-text="$t ('updated_at')" />
+              <v-list-tile-title v-text="distance.updated_at" />
+            </v-list-tile-content>
+          </v-list-tile>
+        </div>
       </v-list>
     </v-layout>
   </v-container>

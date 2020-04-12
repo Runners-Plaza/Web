@@ -19,6 +19,10 @@ let en_US = {
   logout: {
     success: 'Logged out.',
   },
+  created_at: 'Created at',
+  updated_at: 'Updated at',
+  created_by: 'Created by',
+  updated_by: 'Updated by',
   changed: 'Changed',
   created: 'Created',
   updated: 'Updated',
